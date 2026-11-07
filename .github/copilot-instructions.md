@@ -87,4 +87,3 @@ Per-environment constants are in `src/config/config.*.ts` and unified in `src/co
 1. Keep features minimal — add only what is genuinely reusable.
 2. Add a Storybook story for any new component in `src/common/` or `src/components/`.
 3. Document new `src/common/` components in `src/common/README.md`.
-4. Update `todo.md` or create a plan file in `_plans/` for larger work.

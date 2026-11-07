@@ -78,7 +78,3 @@ src/
 ├── stores/        # Global state (React context)
 └── stories/       # Storybook stories
 ```
-
-## Roadmap
-
-Features are introduced incrementally. Planned additions are tracked in [`_plans/`](_plans/) and [`todo.md`](todo.md).
