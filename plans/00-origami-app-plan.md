@@ -22,6 +22,20 @@ Coordinate future work on Origami, currently an activity-approval forms app, thr
 | **Test Agent** | Derive tests from acceptance criteria; cover relevant form/service behavior, user-facing flows, accessibility, and regression cases using the repository’s existing Vitest and Testing Library setup. | Test plan, added or updated tests, and test results. |
 | **Review Agent** | Independently compare the proposed change and test evidence to the approved specification. Check for regressions, accessibility gaps, privacy/security concerns, and unnecessary scope. Report findings with severity and file/line references; do not silently expand scope. | Review findings and a clear approve-or-revise recommendation. |
 
+## Master plan: steps
+
+This is the global plan. Each step has its own focused plan, created only when that step is about to start. A step starts only after the previous step's deliverable is approved.
+
+| Step | Name | Owner | Detailed plan |
+|---|---|---|---|
+| 1 | Create the PRD | Spec Agent | [01-prd-plan.md](./01-prd-plan.md) |
+| 2 | Design | Design Agent | _To be written after Step 1 is approved_ |
+| 3 | Task breakdown | Orchestrator | _To be written_ |
+| 4 | Implementation, in small units | Per task | _To be written_ |
+| 5 | Tests | Test Agent | _To be written_ |
+| 6 | Review | Review Agent | _To be written_ |
+| 7 | Release | Orchestrator and human owner | _To be written_ |
+
 ## Workflow and handoffs
 
 1. **Intake — Orchestrator:** capture the requested outcome, affected users, constraints, and decision owner. Keep assumptions explicit.
