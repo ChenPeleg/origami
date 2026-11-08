@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="t"><title id="t">Folded paper crane with spread wings</title>
+<rect width="320" height="240" fill="var(--paper-shade,#E9EDF5)"/>
+<path d="M160 150 L40 96 L130 130 Z" fill="var(--paper,#fff)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M160 150 L280 96 L190 130 Z" fill="var(--paper,#fff)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M130 130 L160 188 L190 130 L160 112 Z" fill="var(--accent,#C2410C)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M190 130 L236 70 L246 62 L238 84 L204 142 Z" fill="var(--paper,#fff)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M130 130 L96 176 L84 202 L110 180 L146 146 Z" fill="var(--paper,#fff)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="228" cy="76" r="3" fill="var(--ink,#1F2A44)"/>
+</svg>

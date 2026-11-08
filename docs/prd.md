@@ -51,6 +51,7 @@ Source: `spec/prd-notes.txt` (read-only). Every requirement cites a note (N1-N7,
 - SVG illustrations with no dependency on Figma. (N6)
 - Mobile-first responsive layout that also works on desktop. (N6)
 - Local progress and language saving on the device. (N4, N7, A-8)
+- NEW (owner request 2026-11-08): navbar on every screen (logo/home, Catalog, Search, language switch; collapses to a menu on mobile), client-side search, and a sortable catalog table with name, level, pieces and time (stacked cards on mobile). (A-30..A-36)
 
 **Out of scope for v1, planned later (see section 4)**
 - Capacitor packaging for the stores. (N1)
@@ -85,6 +86,16 @@ Source: `spec/prd-notes.txt` (read-only). Every requirement cites a note (N1-N7,
 - **US-10.** As a learner, I want the app to work without an account or server. (N1, N7)
 - **US-11a (v1).** As the product owner, I want to review 2 sample SVG illustrations before approving the spec, and all step images delivered as SVG (SM4). (N6, Q-7)
 - **US-11b (not v1).** As the product owner, I want a later 3D asset or naming per step. (N2)
+
+New in this round (NEW, source: owner request 2026-11-08):
+
+- **US-12 (NEW, v1).** As a learner, I want a navbar on every screen with a logo that goes home, a Catalog link, a Search field and a language switch, so that I can move around without going back. (owner request 2026-11-08, A-33)
+- **US-13 (NEW, v1).** As a learner on a phone, I want the navbar to collapse into a menu, so that it fits a small screen. (owner request 2026-11-08, A-33)
+- **US-14 (NEW, v1).** As a learner, I want to search the guides by typing, so that I can find a model quickly. (owner request 2026-11-08, A-30..A-32)
+- **US-15 (NEW, v1).** As a learner, I want to see all origami models in one table with name, level, number of pieces and time, so that I can compare and pick one. (owner request 2026-11-08, A-34)
+- **US-16 (NEW, v1).** As a learner, I want to sort the table by any column, so that I can find, for example, the shortest or easiest model. (owner request 2026-11-08, A-35)
+- **US-17 (NEW, v1).** As a learner on a phone, I want the catalog table to remain usable on a small screen. (owner request 2026-11-08, A-35)
+- **US-18 (NEW, v1).** As the product owner, I want the mockups to show the folding work screen (step image, instruction, "Step n of N", Back/Next), so that I can approve the core experience. (owner request 2026-11-08, A-37)
 
 ## 6. Workflows and status
 
@@ -289,6 +300,21 @@ Format: `AC-n`, a checkable statement, covered stories, requirement IDs, verific
 - **AC-48.** Sign-off gate: the PRD is not approved until the owner has reviewed 2 sample SVGs and recorded approval in section 13. Covers: US-11a. Reqs: S-11, N6, Q-7 A. Verify: manual.
 - **AC-49.** (Not v1.) SVG parts use consistent names so a later 3D or animated version is possible; not needed for v1 function and not a v1 release gate. Covers: US-11b. Reqs: S-10, TC-7, N2. Verify: manual.
 
+### 9.9 New requirements (owner request 2026-11-08)
+
+- **AC-53.** Given any screen (catalog, overview, step view, completion screen), then a navbar is present with exactly 4 items: logo/home (navigates to the catalog home), Catalog, Search, language switch. Covers: US-12. Reqs: A-33. Verify: test.
+- **AC-54.** Given a 320-430 px viewport, then Catalog and Search are inside a collapsible menu (closed by default, opened and closed by a toggle button with `aria-expanded`), the logo and language switch stay visible, and every navbar target is at least 44x44 CSS px. Covers: US-13. Reqs: A-33, A-22. Verify: test, manual on phone.
+- **AC-55.** Given Hebrew (RTL), then the navbar layout is mirrored (logo at the inline start) and directional icons are flipped; in English (LTR) they are not. Covers: US-12, US-13. Reqs: A-33. Verify: test, manual.
+- **AC-56.** Given a query, when the user types, then the guides are filtered as they type by name, level or tags, case-insensitively and by substring, in the active language (the English name also matches); this makes no network request. Covers: US-14. Reqs: A-30, A-31, N1. Verify: test (including network-call check).
+- **AC-57.** Given an empty query, then all 4 guides are shown. Covers: US-14. Reqs: A-32. Verify: test.
+- **AC-58.** Given a query with no matches, then an empty state with a message and a "clear search" action is shown, and activating the action restores all guides. Covers: US-14. Reqs: A-32. Verify: test.
+- **AC-59.** The catalog table has the columns name, level, pieces and time (minutes), with a value in every column for all 4 guides. Covers: US-15. Reqs: A-34. Verify: test.
+- **AC-60.** Given a column header, when activated, then rows sort by that column, toggling ascending and descending, and the header exposes `aria-sort`; level sorts by the fixed scale (A-15), pieces and time sort numerically; the default order is simple to complex. Covers: US-16. Reqs: A-35, A-15. Verify: test.
+- **AC-61.** Given a row, when activated, then the guide overview opens. Covers: US-15. Reqs: A-35. Verify: test.
+- **AC-62.** Given a 320-430 px viewport, then the table is shown as stacked cards with name, level, pieces and time, with no horizontal scroll, and a sort control is still available. Covers: US-17. Reqs: A-35, Q-12. Verify: test, manual on phone.
+- **AC-63.** Given keyboard only, then the navbar, menu toggle, search field, clear action, sortable headers and rows are reachable, operable (Enter/Space) and show visible focus. Covers: US-12, US-14, US-16, US-17. Reqs: AX-2, A-35. Verify: test, manual.
+- **AC-64.** The mockup set contains the folding work screen (step image, instruction, "Step n of N", Back/Next), plus the navbar, search and catalog table, in Hebrew RTL and English, on mobile and desktop. Covers: US-18. Reqs: A-37. Verify: manual (owner review).
+
 ### 9.8 Traceability
 
 | Story | ACs |
@@ -305,6 +331,13 @@ Format: `AC-n`, a checkable statement, covered stories, requirement IDs, verific
 | US-10 | AC-14-22 |
 | US-11a | AC-44-48 |
 | US-11b | AC-49 (not v1) |
+| US-12 | AC-53, 55, 63 |
+| US-13 | AC-54, 55 |
+| US-14 | AC-56-58, 63 |
+| US-15 | AC-59, 61 |
+| US-16 | AC-60, 63 |
+| US-17 | AC-62, 63 |
+| US-18 | AC-64 |
 
 Gaps: P-6 (store disclosure) has no v1 AC because packaging is out of v1; AX-9 (dark mode) is optional. The AC-45 size budget is set (20 KB per SVG, Q-6 A). AC-1 (4 guides, Q-1 B) and AC-25 (Q-2 A) are no longer pending. AC-36's browser version list is still open (Q-8). AC-37 and AC-48 depend on owner judgement and sign-off. AC-49 (US-11b) is not a v1 criterion.
 
@@ -353,6 +386,14 @@ Gaps: P-6 (store disclosure) has no v1 AC because packaging is out of v1; AX-9 (
 | A-27 | The no-collection stance follows from "totally front end". |
 | A-28 | The notation follows common origami conventions. The exact style is a design-step decision. |
 | A-29 | Target browsers are current evergreen mobile and desktop browsers and the Capacitor webviews. |
+| A-30 | NEW (owner request 2026-11-08). Search is client-side over the 4 bundled guides, with no network (N1). Searchable fields: guide name, level and tags, in the active language (the English name is also matched). Open: Q-11. |
+| A-31 | NEW (owner request 2026-11-08). Search is case-insensitive, matches substrings and filters as the user types, with no debounce. |
+| A-32 | NEW (owner request 2026-11-08). An empty query shows all guides. A query with no matches shows an empty state with a message and a "clear search" action. |
+| A-33 | NEW (owner request 2026-11-08). Navbar contents: logo/home, Catalog, Search, language switch. It is the single home of the language switch. On mobile, Catalog and Search sit in a collapsible menu while the logo and language switch stay visible. Directional icons mirror in RTL. Targets are at least 44 px (A-22). Open: Q-10. |
+| A-34 | NEW (owner request 2026-11-08). "Number of pieces" means sheets of paper needed. "Time" means estimated minutes. Both are authored content metadata, so the guide model gains `pieces` and `minutes`. Open: Q-9, Q-14. |
+| A-35 | NEW (owner request 2026-11-08). The table sorts by clicking a column header (toggles ascending and descending, `aria-sort` announced). Default order is simple to complex. Level sorts by the fixed scale (A-15). Pieces and time sort numerically. A row opens the guide overview. On mobile the table becomes stacked cards (Q-12). Open: Q-12, Q-13. |
+| A-36 | NEW (owner request 2026-11-08). Search filters the table rows and sort orders them. Search text and sort state are not persisted. |
+| A-37 | NEW (owner request 2026-11-08). The mockup set includes the folding work screen, the navbar, search and the catalog table, in Hebrew RTL and English, on mobile and desktop. |
 
 ## 12. Open questions
 
