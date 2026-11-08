@@ -29,6 +29,12 @@ Source: `spec/prd-notes.txt` (notes N1-N7, in order of appearance).
 | Q-6 | Confirm WCAG level (A-25), 20 KB per SVG, and SM1-SM5? Recommend confirm as proposed. | Yes | Product owner | Resolved 2026-11-08 - owner chose A: confirmed WCAG 2.2 AA, 20 KB per SVG, SM1-SM5 (matched recommendation) |
 | Q-7 | Review 2 sample SVGs before PRD approval (N6, S-11, AC-48)? Recommend yes. | Yes | Product owner | Resolved 2026-11-08 - owner chose A: owner reviews 2 sample SVGs before approval (matched recommendation) |
 | Q-8 | Remaining non-blocking: browser version list (AC-36), restart/clear-progress confirmation (AC-16), Jump from Not started/Completed and Start-without-Next persistence (6.4), "browser language = he/en only" assumption, server-save intent, export/import, progress granularity. | No | Product owner | Open |
+| Q-9 | NEW (owner request 2026-11-08). "Number of pieces" = A) sheets of paper (recommended), B) number of steps, C) both columns. (A-34) | No | Product owner | Open |
+| Q-10 | NEW. Search UI: A) navbar field with live results dropdown, icon expands to field on mobile (recommended), B) results page, C) only filters the table. (A-33) | No | Product owner | Open |
+| Q-11 | NEW. Search fields: A) name, level, tags (recommended), B) name only, C) also step text. (A-30) | No | Product owner | Open |
+| Q-12 | NEW. Mobile table: A) stacked cards (recommended), B) horizontal scroll with sticky name column. (A-35, AC-62) | No | Product owner | Open |
+| Q-13 | NEW. Is the table the catalog (A, recommended: replaces the card list) or a second view with a toggle (B)? | No | Product owner | Open |
+| Q-14 | NEW. Who supplies pieces, minutes and tags: A) team proposes, owner reviews (recommended), B) owner supplies. Also whether time is a single value or a range. (A-34) | No | Product owner | Open |
 
 ## Non-blocking review findings (2026-11-08 status)
 Applied: AC section rewritten (AC-1..AC-52), AC-49/S-10 non-v1, P-4..P-6 citations, A-2, A-17, A-25 updated.

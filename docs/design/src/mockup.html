@@ -1,52 +1,152 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Origami Guides mockup</title>
+<title>Origami mockup</title>
 <style>
 :root{--bg:#F6F7FB;--ink:#1F2A44;--brand:#1F4FD8;--accent:#C2410C;--water:#2F6FBF;--muted:#4B5568;--line:#D5DAE5;--paper:#fff;--paper-shade:#E9EDF5}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Assistant,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.5}
-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#fff;border-block-end:1px solid var(--line)}
-.logo{font-weight:700;font-size:18px}
-.sw{display:flex;border:2px solid var(--brand);border-radius:12px;overflow:hidden}
-.sw span{min-width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--brand)}
-.sw span.on{background:var(--brand);color:#fff}
-main{max-width:1100px;margin:0 auto;padding:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Assistant,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.5;position:relative;min-height:100vh}
+a{color:inherit;text-decoration:none}
+nav.top{background:#fff;border-bottom:1px solid var(--line);padding:0 16px}
+.bar1{display:flex;align-items:center;gap:8px;min-height:60px;max-width:1100px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:18px;min-height:44px;color:var(--brand)}
+.links{display:flex;gap:4px;margin-inline-start:16px}
+.links a{min-height:44px;min-width:44px;padding:0 14px;display:flex;align-items:center;gap:6px;border-radius:8px;font-weight:600}
+.links a.cur{background:#E6ECFD;color:var(--brand);box-shadow:inset 0 -3px 0 var(--brand)}
+.sp{flex:1}
+.sw{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.sw span{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.sw .on{background:var(--brand);color:#fff}
+.burger{display:none;min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:22px;align-items:center;justify-content:center}
+.mm{display:none}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
 h1{font-size:26px;margin:8px 0 16px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:10px}
-.card svg,.hero svg{width:100%;height:auto;background:var(--paper-shade);border-radius:12px}
+h2{font-size:20px;margin:0 0 8px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;display:block}
 .grid{display:grid;gap:16px;grid-template-columns:1fr}
-.badge{display:inline-flex;gap:6px;align-items:center;border:1.5px solid var(--ink);border-radius:999px;padding:2px 10px;font-size:14px;font-weight:600;width:fit-content}
-.st{color:var(--muted);font-size:14px}
-.btn{min-height:48px;padding:0 20px;border-radius:12px;border:2px solid var(--brand);background:#fff;color:var(--brand);font:600 16px inherit;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+.cover{background:var(--paper-shade);border-radius:10px;width:100%;aspect-ratio:4/3;display:block}
+.cover svg,.fold svg{width:100%;height:100%;display:block}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:15px;margin:6px 0}
+.badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--ink);border-radius:999px;padding:2px 10px;font-size:14px;font-weight:600;background:#fff}
+.btn{min-height:48px;padding:0 18px;border-radius:10px;border:2px solid var(--brand);background:#fff;color:var(--brand);font:inherit;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer}
 .btn.p{background:var(--brand);color:#fff}
-.btn.d{border-color:#B42318;color:#B42318}
-.row{display:flex;gap:12px;flex-wrap:wrap}.row .btn{flex:1}
-.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand)}
-.split{display:grid;gap:16px;grid-template-columns:1fr}
-.panel{display:flex;flex-direction:column;gap:14px}
-.tag{background:#FFF1E8;color:#9A3412;border:1.5px dashed #9A3412;border-radius:8px;padding:2px 10px;width:fit-content;font-weight:600;font-size:14px}
-select{min-height:48px;border:2px solid var(--line);border-radius:12px;padding:0 12px;font-size:16px;font-family:inherit;background:#fff;color:var(--ink)}
-.center{text-align:center;align-items:center}
+.btn.d{background:#B42318;border-color:#B42318;color:#fff}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.row .btn{flex:1}
+.bar{height:10px;background:var(--paper-shade);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--brand)}
 .mir{display:inline-block}[dir=rtl] .mir{transform:scaleX(-1)}
-#model3d{width:0;height:0;overflow:hidden}
-.inst{font-size:20px;font-weight:500}
-@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}.split{grid-template-columns:1.1fr 1fr;align-items:start}h1{font-size:32px}}
-</style></head><body><div id="app"></div>
+.search{display:flex;align-items:center;gap:10px;background:#fff;border:2px solid var(--brand);border-radius:10px;min-height:52px;padding:0 14px;margin-bottom:16px;outline:3px solid #C7D5FA}
+.search .q{flex:1;font-size:17px}.search .ph{color:var(--muted)}
+.cnt{color:var(--muted);margin:0 0 12px}
+table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{text-align:start;padding:0 16px;min-height:56px;height:56px;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th{background:var(--paper-shade);font-weight:700}
+th .h{display:inline-flex;align-items:center;gap:6px;min-height:44px}
+th[aria-sort] .h{color:var(--brand)}
+.focus{outline:3px solid var(--accent);outline-offset:2px}
+.cards{display:none}.tbl{display:block}
+.sortc{display:none}
+.empty{text-align:center;padding:36px 16px}.empty .big{font-size:48px}
+.fold{background:#fff;border:1px solid var(--line);border-radius:14px;aspect-ratio:4/3;width:100%}
+.stepgrid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:900px){.stepgrid{grid-template-columns:1.2fr 1fr}}
+select{min-height:48px;font:inherit;border:2px solid var(--line);border-radius:10px;padding:0 10px;background:#fff;color:var(--ink)}
+.scrim{position:fixed;inset:0;background:rgba(31,42,68,.55)}
+.dlg{position:absolute;top:200px;left:50%;transform:translateX(-50%);width:min(440px,calc(100% - 32px));background:#fff;border-radius:16px;padding:22px;box-shadow:0 10px 40px rgba(0,0,0,.35)}
+.map{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+.tile{background:#fff;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.tile h3{margin:0;padding:8px 12px;background:var(--brand);color:#fff;font-size:15px}
+.mini{display:flex;align-items:center;gap:6px;padding:6px 10px;border-bottom:1px solid var(--line);font-size:12px;background:#F8F9FC}
+.mini b{color:var(--brand)}.mini .sp{flex:1}.mini .l{border:1px solid var(--line);border-radius:5px;padding:0 6px}
+.tb{padding:12px;font-size:14px;min-height:110px}
+.sk{background:var(--paper-shade);border-radius:6px;height:14px;margin:6px 0}
+.flow{margin-top:20px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.flow li{margin:4px 0}
+@media(max-width:700px){
+.links{display:none}.burger{display:flex}.sp{display:none}.bar1{justify-content:space-between}
+.mm.open{display:flex;flex-direction:column;border-top:1px solid var(--line);padding:8px 0}
+.mm a{min-height:48px;display:flex;align-items:center;gap:8px;padding:0 8px;font-weight:600;border-radius:8px}
+.mm a.cur{background:#E6ECFD;color:var(--brand)}
+.tbl{display:none}.cards{display:grid;gap:12px}.sortc{display:flex;align-items:center;gap:10px;margin-bottom:12px}.sortc select{flex:1;min-width:0}
+.map{grid-template-columns:1fr}h1{font-size:22px}
+}
+html.m body{width:390px;margin-left:0;margin-right:auto}
+html.m .links{display:none}html.m .burger{display:flex}html.m .sp{display:none}html.m .bar1{justify-content:space-between}
+html.m .mm.open{display:flex;flex-direction:column;border-top:1px solid var(--line);padding:8px 0}
+html.m .mm a{min-height:48px;display:flex;align-items:center;gap:8px;padding:0 8px;font-weight:600;border-radius:8px}
+html.m .mm a.cur{background:#E6ECFD;color:var(--brand)}
+html.m .tbl{display:none}html.m .cards{display:grid;gap:12px}html.m .sortc{display:flex;align-items:center;gap:10px;margin-bottom:12px}html.m .sortc select{flex:1;min-width:0}
+html.m .map{grid-template-columns:1fr}html.m h1{font-size:22px}
+</style></head><body>
+<div id="app"></div>
 <script>
-const q=new URLSearchParams(location.search),L=q.get('lang')==='he'?'he':'en',S=q.get('screen')||'catalog';
-document.documentElement.lang=L;document.documentElement.dir=L==='he'?'rtl':'ltr';
-const T={en:{app:'Origami Guides',cat:'Choose a guide',n:['Paper Boat','Fold in Half','Tulip','Crane'],d:['Beginner','Beginner','Intermediate','Advanced'],st:['Completed','In progress','Not started','Not started'],b:['Restart','Resume','Start','Start'],steps:n=>n+' steps',step:'Step 3 of 8',home:'Back to catalog',diff:'Difficulty',prog:'3 of 8 steps done',resume:'Resume',restart:'Restart',tag:'Valley fold',inst:'Fold the top half down along the dashed line so the edges meet.',leg:'Dashed line = valley fold',jump:'Jump to step',back:'Back',next:'Next',done:'Well done! You finished the Paper Boat.',fin:'Step 8 of 8',clear:'Clear my progress',lang:'Language'},
-he:{app:'מדריכי אוריגמי',cat:'בחרו מדריך',n:['סירת נייר','קיפול לשניים','צבעוני','עגור'],d:['מתחילים','מתחילים','בינוני','מתקדם'],st:['הושלם','בתהליך','טרם התחיל','טרם התחיל'],b:['התחלה מחדש','המשך','התחלה','התחלה'],steps:n=>n+' שלבים',step:'שלב 3 מתוך 8',home:'חזרה לקטלוג',diff:'רמת קושי',prog:'3 מתוך 8 שלבים הושלמו',resume:'המשך',restart:'התחלה מחדש',tag:'קיפול עמק',inst:'קפלו את החצי העליון כלפי מטה לאורך הקו המקווקו כך שהקצוות ייפגשו.',leg:'קו מקווקו = קיפול עמק',jump:'מעבר לשלב',back:'הקודם',next:'הבא',done:'כל הכבוד! סיימתם את סירת הנייר.',fin:'שלב 8 מתוך 8',clear:'ניקוי ההתקדמות שלי',lang:'שפה'}}[L];
-const stepSvg=`<svg viewBox="0 0 320 240" role="img" aria-label="${T.tag}"><rect x="80" y="40" width="160" height="160" rx="10" fill="#fff" stroke="#1F2A44" stroke-width="3"/><g fill="#C2410C"><circle cx="100" cy="60" r="7"/><circle cx="220" cy="60" r="7"/><circle cx="100" cy="180" r="7"/><circle cx="220" cy="180" r="7"/></g><line x1="70" y1="120" x2="250" y2="120" stroke="#C2410C" stroke-width="4" stroke-dasharray="14 9"/><path d="M160 80 C210 80 220 110 190 126" fill="none" stroke="#1F2A44" stroke-width="4"/><path d="M184 112 L192 128 L174 130Z" fill="#1F2A44"/></svg>`;
-const boatSvg=`<svg viewBox="0 0 320 240" role="img" aria-label="${T.n[0]}"><path d="M160 40 L160 150 L80 150Z" fill="#fff" stroke="#1F2A44" stroke-width="3" stroke-linejoin="round"/><path d="M168 70 L168 150 L225 150Z" fill="#E9EDF5" stroke="#1F2A44" stroke-width="3" stroke-linejoin="round"/><path d="M60 160 H260 L228 200 H92Z" fill="#C2410C" stroke="#1F2A44" stroke-width="3" stroke-linejoin="round"/><path d="M30 215 q20-14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#2F6FBF" stroke-width="4"/></svg>`;
-const hdr=`<header><div class="logo">🦢 ${T.app}</div><div class="sw" role="group" aria-label="${T.lang}"><span class="${L==='he'?'on':''}">עב</span><span class="${L==='en'?'on':''}">EN</span></div></header>`;
-const diffBadge=i=>{const lv=[1,1,2,3][i];return `<span class="badge"><span aria-hidden="true">${'●'.repeat(lv)}${'○'.repeat(3-lv)}</span>${T.d[i]}</span>`};
-const pb=(t,c)=>`<div class="bar" role="progressbar" aria-label="${t}"><i style="width:${c}%"></i></div>`;
-const home=`<div><button class="btn"><span class="mir" aria-hidden="true">←</span> ${T.home}</button></div>`;
-let m='';
-if(S==='catalog'){m=`<h1>${T.cat}</h1><div class="grid">`+[0,1,2,3].map(i=>`<article class="card">${i===0?boatSvg:stepSvg}<h2 style="margin:0">${T.n[i]}</h2><div class="row" style="gap:8px;align-items:center">${diffBadge(i)}<span class="st">${T.steps([8,6,12,18][i])}</span></div><div class="st">${T.st[i]}</div><button class="btn ${i>0?'p':''}">${T.b[i]}</button></article>`).join('')+`</div>`}
-if(S==='overview'){m=`${home}<div class="split" style="margin-top:12px"><div class="hero">${boatSvg}</div><div class="panel"><h1 style="margin:0">${T.n[0]}</h1><div>${diffBadge(0)} <span class="st">· ${T.steps(8)}</span></div><div class="st">${T.prog}</div>${pb(T.prog,37.5)}<div class="row"><button class="btn p">${T.resume}</button><button class="btn">${T.restart}</button></div></div></div>`}
-if(S==='step'){m=`${home}<div class="split" style="margin-top:12px"><div class="hero">${stepSvg}<div id="model3d" aria-hidden="true"></div></div><div class="panel"><div class="st" style="font-weight:600;color:var(--ink)">${T.step}</div>${pb(T.step,37.5)}<span class="tag">${T.tag}</span><p class="inst" style="margin:0">${T.inst}</p><div class="st">${T.leg}</div><label class="panel" style="gap:6px">${T.jump}<select><option>${T.step}</option></select></label><div class="row"><button class="btn"><span class="mir" aria-hidden="true">←</span> ${T.back}</button><button class="btn p">${T.next} <span class="mir" aria-hidden="true">→</span></button></div></div></div>`}
-if(S==='completed'){m=`<div class="panel center" style="max-width:560px;margin:0 auto"><div style="font-size:48px" aria-hidden="true">🎉</div><div class="hero" style="width:100%">${boatSvg}</div><h1 style="margin:0">${T.done}</h1><div class="st">${T.fin}</div>${pb(T.fin,100)}<div class="row" style="width:100%"><button class="btn p">${T.home}</button><button class="btn">${T.restart}</button></div><div class="row" style="width:100%"><button class="btn"><span class="mir" aria-hidden="true">←</span> ${T.back}</button><button class="btn d">${T.clear}</button></div></div>`}
-document.getElementById('app').innerHTML=hdr+`<main>${m}</main>`;
+var q=new URLSearchParams(location.search),L=q.get('lang')==='en'?'en':'he',S=q.get('screen')||'catalog',MENU=q.get('menu')==='open';
+if(q.get('mobile')==='1')document.documentElement.className='m';document.documentElement.lang=L;document.documentElement.dir=L==='he'?'rtl':'ltr';
+var T={en:{app:'Origami Guides',cat:'Catalog',search:'Search',n:['Paper Boat','Fold in Half','Tulip','Crane'],lv:['Beginner','Beginner','Intermediate','Advanced'],tags:['boat, water','basics','flower','bird'],
+ pc:'Pieces',tm:'Time',nm:'Name',lvl:'Level',min:' min',sheets:function(n){return n+(n==1?' sheet':' sheets')},
+ steps:function(n){return n+' steps'},step:function(a,b){return 'Step '+a+' of '+b},menu:'Menu',lang:'Language',
+ ph:'Search guides…',sq:'beginner',nq:'dragon',res:function(n){return n+' guides found'},all:'Showing all 4 guides',none:'No guides match “dragon”',clr:'Clear search',
+ sort:'Sort by',asc:'ascending',back:'Back',next:'Next',jump:'Jump to step',home:'Back to catalog',start:'Start',resume:'Resume at step 3',restart:'Restart',clearp:'Clear progress',
+ prog:'Progress: step 3 of 12',stext:'Fold the bottom edge up to the middle line, then crease firmly.',sdesc:'Valley fold diagram',
+ done:'Well done!',donet:'You finished the Tulip.',again:'Fold it again',
+ ct:'Clear progress?',cb:'This removes your saved place in every guide. This cannot be undone.',cancel:'Cancel',
+ mapt:'Navigation map',mapc:['Catalog (table)','Search','Guide overview','Step','Completed','Clear progress'],
+ flow:['Logo → Catalog; Catalog and Search links are in every navbar.','Catalog row or card → Guide overview → Start / Resume → Step.','Last step → Completed → Fold again or Back to catalog.','Clear progress opens a confirmation dialog from the overview.','Language switch (עב / EN) is only in the navbar.'],
+ sc:'Folding guides, from simple to complex'},
+he:{app:'מדריכי אוריגמי',cat:'קטלוג',search:'חיפוש',n:['סירת נייר','קיפול לשניים','צבעוני','עגור'],lv:['מתחיל','מתחיל','בינוני','מתקדם'],tags:['סירה, מים','בסיס','פרח','ציפור'],
+ pc:'חלקים',tm:'זמן',nm:'שם',lvl:'רמה',min:' דק׳',sheets:function(n){return n==1?'דף אחד':n+' דפים'},
+ steps:function(n){return n+' שלבים'},step:function(a,b){return 'שלב '+a+' מתוך '+b},menu:'תפריט',lang:'שפה',
+ ph:'חיפוש מדריכים…',sq:'מתחיל',nq:'דרקון',res:function(n){return 'נמצאו '+n+' מדריכים'},all:'מוצגים כל 4 המדריכים',none:'לא נמצאו מדריכים עבור “דרקון”',clr:'ניקוי החיפוש',
+ sort:'מיון לפי',asc:'עולה',back:'הקודם',next:'הבא',jump:'קפיצה לשלב',home:'חזרה לקטלוג',start:'התחלה',resume:'המשך משלב 3',restart:'התחלה מחדש',clearp:'ניקוי התקדמות',
+ prog:'התקדמות: שלב 3 מתוך 12',stext:'קפלו את הקצה התחתון כלפי מעלה עד קו האמצע, והדגישו את הקיפול.',sdesc:'תרשים קיפול עמק',
+ done:'כל הכבוד!',donet:'סיימתם את הצבעוני.',again:'לקפל שוב',
+ ct:'לנקות את ההתקדמות?',cb:'הפעולה תמחק את המקום השמור בכל המדריכים ואי אפשר לבטל אותה.',cancel:'ביטול',
+ mapt:'מפת ניווט',mapc:['קטלוג (טבלה)','חיפוש','סקירת מדריך','שלב','הושלם','ניקוי התקדמות'],
+ flow:['לוגו ← קטלוג; הקישורים קטלוג וחיפוש בכל סרגל ניווט.','שורה או כרטיס בקטלוג ← סקירת מדריך ← התחלה / המשך ← שלב.','שלב אחרון ← הושלם ← לקפל שוב או חזרה לקטלוג.','ניקוי התקדמות פותח דיאלוג אישור מתוך הסקירה.','מתג השפה (עב / EN) נמצא רק בסרגל הניווט.'],
+ sc:'מדריכי קיפול, מפשוט למורכב'}}[L];
+var PC=[1,1,2,1],MN=[5,3,10,15],LV=[1,1,2,3],ST=[8,6,12,18];
+var C=['<svg viewBox="0 0 320 240" role="img" aria-label="boat"><rect width="320" height="240" fill="var(--paper-shade)"/><path d="M40 130h240l-45 55H85z" fill="var(--brand)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><path d="M160 40l70 90H160z" fill="#fff" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><path d="M0 200q40-14 80 0t80 0 80 0 80 0v40H0z" fill="var(--water)" opacity=".7"/></svg>',
+'<svg viewBox="0 0 320 240" role="img" aria-label="fold"><rect width="320" height="240" fill="var(--paper-shade)"/><rect x="70" y="45" width="180" height="150" fill="#fff" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><path d="M70 120h180" stroke="var(--accent)" stroke-width="4" stroke-dasharray="10 8"/><path d="M160 85v25m-10-10l10 12 10-12" stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+'<svg viewBox="0 0 320 240" role="img" aria-label="tulip"><rect width="320" height="240" fill="var(--paper-shade)"/><path d="M160 120v100" stroke="#2E7D32" stroke-width="6" stroke-linecap="round"/><path d="M160 200C120 195 95 170 90 135c35 5 62 30 70 65zM160 205c40-5 65-30 70-65-35 5-62 30-70 65z" fill="#43A047" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/><path d="M110 50l25 25 25-35 25 35 25-25c8 45-10 85-50 85s-58-40-50-85z" fill="var(--accent)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/></svg>',
+'<svg viewBox="0 0 320 240" role="img" aria-label="crane"><rect width="320" height="240" fill="var(--paper-shade)"/><path d="M160 130L40 70l60 85zM160 130l120-60-60 85z" fill="#fff" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><path d="M100 155l60-30 70 30-70 40z" fill="var(--brand)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><path d="M228 155l45 25-45-5zM100 155L60 105l15-12 35 52z" fill="#fff" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><circle cx="66" cy="102" r="4" fill="var(--ink)"/></svg>'];
+var STEPSVG='<svg viewBox="0 0 320 240" role="img" aria-label="'+T.sdesc+'"><rect x="70" y="45" width="180" height="150" fill="#fff" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/><rect x="70" y="120" width="180" height="75" fill="var(--paper-shade)"/><path d="M70 120h180" stroke="var(--accent)" stroke-width="4" stroke-dasharray="10 8"/><path d="M160 180v-45m-12 14l12-14 12 14" stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function dots(i){var l=LV[i],s='';for(var k=1;k<=3;k++)s+=k<=l?'●':'○';return '<span class="badge" aria-label="'+T.lv[i]+'"><span aria-hidden="true">'+s+'</span> '+T.lv[i]+'</span>'}
+function nav(cur,menu){
+ var sr='<span class="mir" aria-hidden="true">🔍</span>';
+ var l1='<a href="#" class="'+(cur==='catalog'?'cur':'')+'">'+T.cat+'</a>',l2='<a href="#" class="'+(cur==='search'?'cur':'')+'">'+sr+' '+T.search+'</a>';
+ var sw='<div class="sw" role="group" aria-label="'+T.lang+'"><span class="'+(L==='he'?'on':'')+'">עב</span><span class="'+(L==='en'?'on':'')+'">EN</span></div>';
+ return '<nav class="top" aria-label="'+T.app+'"><div class="bar1"><a class="logo" href="#"><span aria-hidden="true">🦢</span>'+T.app+'</a><div class="links">'+l1+l2+'</div><div class="sp"></div>'+sw+
+ '<button class="burger'+(menu?' focus':'')+'" aria-expanded="'+(!!menu)+'" aria-label="'+T.menu+'">'+(menu?'✕':'☰')+'</button></div>'+
+ '<div class="mm'+(menu?' open':'')+'">'+l1+l2+'</div></nav>'}
+function card(i){return '<a class="card" href="#"><div class="cover">'+C[i]+'</div><h2 style="margin-top:10px">'+T.n[i]+'</h2><div class="meta">'+dots(i)+'<span>'+T.sheets(PC[i])+'</span><span>'+MN[i]+T.min+'</span><span>'+T.steps(ST[i])+'</span></div></a>'}
+function pb(p){return '<div class="bar" role="progressbar" aria-valuenow="'+p+'"><i style="width:'+p+'%"></i></div>'}
+function back(){return '<a class="btn" href="#"><span class="mir">←</span> '+T.home+'</a>'}
+function list(idx){return idx.map(card).join('')}
+function table(order,sortKey){
+ function th(k,t){var on=k===sortKey;return '<th scope="col" '+(on?'aria-sort="ascending"':'aria-sort="none"')+'><span class="h'+(k==='nm'&&0?' focus':'')+'">'+t+' <span aria-hidden="true">'+(on?'▲':'↕')+'</span></span></th>'}
+ var rows=order.map(function(i,j){return '<tr><td><a href="#"><b>'+T.n[i]+'</b></a></td><td>'+dots(i)+'</td><td>'+T.sheets(PC[i])+'</td><td>'+MN[i]+T.min+'</td></tr>'}).join('');
+ var cards=order.map(function(i){return '<a class="card" href="#"><div style="display:flex;gap:12px;align-items:center"><div class="cover" style="width:96px;flex:none">'+C[i]+'</div><div><h2 style="margin:0">'+T.n[i]+'</h2><div class="meta">'+dots(i)+'<span>'+T.sheets(PC[i])+'</span><span>'+MN[i]+T.min+'</span></div></div></div></a>'}).join('');
+ return '<div class="tbl"><table><thead><tr>'+th('nm',T.nm)+th('lv',T.lvl)+th('pc',T.pc)+th('tm',T.tm)+'</tr></thead><tbody>'+rows+'</tbody></table></div>'+
+ '<div class="sortc"><label for="s">'+T.sort+'</label><select id="s"><option>'+T[sortKey==='tm'?'tm':'nm']+' ('+T.asc+')</option></select></div><div class="cards">'+cards+'</div>'}
+function miniTile(t,body){return '<div class="tile"><h3>'+t+'</h3><div class="mini"><b>🦢</b><span>'+T.cat+'</span><span>'+T.search+'</span><span class="sp"></span><span class="l">עב|EN</span></div><div class="tb">'+body+'</div></div>'}
+function sk(n){var s='';for(var i=0;i<n;i++)s+='<div class="sk" style="width:'+(95-i*15)+'%"></div>';return s}
+var m='',cur='',menu=false;
+if(S==='catalog'){cur='catalog';m='<h1>'+T.sc+'</h1><div class="grid">'+list([0,1,2,3])+'</div>'}
+else if(S==='navbar'){cur='catalog';menu=MENU;m='<h1>'+T.sc+'</h1><div class="grid">'+list([0,1])+'</div>'}
+else if(S==='catalog-table'){cur='catalog';m='<h1>'+T.cat+'</h1>'+table([1,0,2,3],'tm')}
+else if(S==='search-empty'){cur='search';m='<h1>'+T.search+'</h1><div class="search"><span class="mir" aria-hidden="true">🔍</span><span class="q ph">'+T.ph+'</span></div><p class="cnt">'+T.all+'</p><div class="grid">'+list([0,1,2,3])+'</div>'}
+else if(S==='search-results'){cur='search';m='<h1>'+T.search+'</h1><div class="search"><span class="mir" aria-hidden="true">🔍</span><span class="q">'+T.sq+'</span><span aria-hidden="true">✕</span></div><p class="cnt" role="status">'+T.res(2)+'</p><div class="grid">'+list([0,1])+'</div>'}
+else if(S==='search-noresults'){cur='search';m='<h1>'+T.search+'</h1><div class="search"><span class="mir" aria-hidden="true">🔍</span><span class="q">'+T.nq+'</span><span aria-hidden="true">✕</span></div><div class="card empty" role="status"><div class="big" aria-hidden="true">🔍</div><h2>'+T.none+'</h2><div class="row" style="justify-content:center"><a class="btn p" href="#" style="flex:none">'+T.clr+'</a></div></div>'}
+else if(S==='step'){cur='';var jump='<label for="j">'+T.jump+'</label> <select id="j"><option>3</option></select>';
+ m='<div class="row" style="margin:0 0 12px">'+back()+'</div><h1>'+T.n[2]+'</h1><div class="meta"><b>'+T.step(3,12)+'</b></div>'+pb(25)+
+ '<div class="stepgrid" style="margin-top:16px"><div class="fold">'+STEPSVG+'</div><div class="card"><h2>'+T.step(3,12)+'</h2><p style="font-size:18px">'+T.stext+'</p><div class="row"><a class="btn" href="#"><span class="mir">←</span> '+T.back+'</a><a class="btn p focus" href="#">'+T.next+' <span class="mir">→</span></a></div><div class="row" style="align-items:center">'+jump+'</div></div></div>'}
+else if(S==='overview'||S==='clear-progress'){cur='catalog';m='<div class="row" style="margin:0 0 12px">'+back()+'</div><div class="grid"><div class="cover">'+C[2]+'</div><div><h1>'+T.n[2]+'</h1><div class="meta">'+dots(2)+'<span>'+T.sheets(PC[2])+'</span><span>'+MN[2]+T.min+'</span><span>'+T.steps(12)+'</span></div><p>'+T.prog+'</p>'+pb(25)+'<div class="row"><a class="btn p" href="#">'+T.resume+' <span class="mir">→</span></a><a class="btn" href="#">'+T.restart+'</a><a class="btn d" href="#">'+T.clearp+'</a></div></div></div>'}
+else if(S==='completed'){cur='catalog';m='<div class="card empty"><div class="big" aria-hidden="true">🎉</div><h1>'+T.done+'</h1><div class="cover" style="max-width:320px;margin:0 auto 12px">'+C[2]+'</div><p>'+T.donet+'</p><div class="row" style="justify-content:center"><a class="btn p" href="#" style="flex:none">'+T.again+'</a><a class="btn" href="#" style="flex:none">'+T.home+'</a></div></div>'}
+else if(S==='nav-overview'){var w=T.mapc,tl=[miniTile(w[0],'<div class="sk" style="height:24px;background:#D5DAE5"></div>'+sk(3)),miniTile(w[1],'<div class="search" style="min-height:30px;margin:0 0 6px;outline:0"><span class="mir">🔍</span></div>'+sk(2)),miniTile(w[2],'<div style="display:flex;gap:8px"><div style="width:70px;height:52px;background:var(--paper-shade);border-radius:6px"></div><div style="flex:1">'+sk(3)+'</div></div>'),miniTile(w[3],'<div style="height:50px;background:var(--paper-shade);border-radius:6px"></div>'+sk(2)),miniTile(w[4],'<div class="big" style="text-align:center;font-size:30px">🎉</div>'+sk(2)),miniTile(w[5],'<div style="border:2px solid #B42318;border-radius:8px;padding:8px;margin-top:6px">'+sk(2)+'</div>')];
+ m='<h1>'+T.mapt+'</h1><div class="map">'+tl.join('')+'</div><div class="flow"><ul style="margin:0;padding-inline-start:20px">'+T.flow.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul></div>'}
+var extra='';
+if(S==='clear-progress')extra='<div class="scrim"></div><div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="ct"><h2 id="ct">'+T.ct+'</h2><p>'+T.cb+'</p><div class="row"><a class="btn focus" href="#">'+T.cancel+'</a><a class="btn d" href="#">'+T.clearp+'</a></div></div>';
+var navHtml=S==='nav-overview'?nav('',false):nav(cur,menu);
+document.getElementById('app').innerHTML=navHtml+'<main>'+m+'</main>'+extra;
+setTimeout(function(){document.title='H'+document.documentElement.scrollHeight},50);
 </script></body></html>

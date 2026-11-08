@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="t"><title id="t">Folded paper tulip with two leaves</title>
+<rect width="320" height="240" fill="var(--paper-shade,#E9EDF5)"/>
+<path d="M160 120 V212" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linecap="round" fill="none"/>
+<path d="M160 205 C120 200 100 170 96 150 C130 158 152 178 160 205 Z" fill="var(--water,#2F6FBF)" stroke="var(--ink,#1F2A44)" stroke-width="3" stroke-linejoin="round"/>
+<path d="M160 190 C200 185 222 160 226 140 C192 148 168 166 160 190 Z" fill="var(--water,#2F6FBF)" stroke="var(--ink,#1F2A44)" stroke-width="3" stroke-linejoin="round"/>
+<path d="M112 52 L134 82 L160 40 L186 82 L208 52 L214 100 C214 128 190 142 160 142 C130 142 106 128 106 100 Z" fill="var(--accent,#C2410C)" stroke="var(--ink,#1F2A44)" stroke-width="4" stroke-linejoin="round"/>
+<path d="M134 82 L160 142 L186 82" fill="none" stroke="var(--ink,#1F2A44)" stroke-width="3" stroke-linejoin="round" opacity=".6"/>
+</svg>
