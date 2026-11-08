@@ -1,6 +1,6 @@
 # Step 1: Create the PRD
 
-Part of the [Origami App Plan](./origami-app-plan.md) (Step 1 — Specify). This plan covers only producing the Product Requirements Document (PRD). It does not authorize design, implementation, or deployment.
+Part of the [Origami App Plan](./00-origami-app-plan.md) (Step 1 — Specify). This plan covers only producing the Product Requirements Document (PRD). It does not authorize design, implementation, or deployment.
 
 ## Goal
 
