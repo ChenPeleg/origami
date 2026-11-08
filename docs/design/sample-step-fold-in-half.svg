@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="t">
+  <title id="t">Square paper with a dashed valley-fold line across the middle and an arrow folding the top half down</title>
+  <g id="paper-state">
+    <rect x="68" y="38" width="184" height="184" rx="10" fill="currentColor" opacity=".08"/>
+    <rect id="paper" x="60" y="30" width="184" height="184" rx="8" fill="var(--paper, #FFFFFF)" stroke="var(--ink, #1F2A44)" stroke-width="3" stroke-linejoin="round"/>
+    <g id="side-marker" fill="var(--accent, #E4572E)">
+      <circle cx="82" cy="52" r="5"/><circle cx="222" cy="52" r="5"/>
+      <circle cx="82" cy="192" r="5"/><circle cx="222" cy="192" r="5"/>
+    </g>
+  </g>
+  <line id="fold-valley" x1="48" y1="122" x2="256" y2="122" stroke="var(--accent, #E4572E)" stroke-width="4" stroke-linecap="round" stroke-dasharray="14 9"/>
+  <g id="fold-arrow" fill="none" stroke="var(--ink, #1F2A44)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M152 70 C 214 70 232 138 190 166"/>
+    <path d="M200 150 L190 166 L172 160"/>
+  </g>
+</svg>

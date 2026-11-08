@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" role="img" aria-labelledby="t">
+  <title id="t">Finished paper boat floating on water, with a triangular sail and a trapezoid hull</title>
+  <g id="water" fill="none" stroke="var(--water, #4C8DDB)" stroke-width="4" stroke-linecap="round">
+    <path d="M28 184 q 16 -12 32 0 t 32 0 t 32 0 t 32 0 t 32 0 t 32 0 t 32 0"/>
+    <path d="M52 206 q 16 -12 32 0 t 32 0 t 32 0 t 32 0 t 32 0"/>
+  </g>
+  <g id="boat" stroke="var(--ink, #1F2A44)" stroke-width="3" stroke-linejoin="round">
+    <path d="M160 34 L160 140 L84 140 Z" fill="var(--paper, #FFFFFF)"/>
+    <path d="M160 34 L236 140 L160 140 Z" fill="var(--paper-shade, #E9EDF5)"/>
+    <path d="M56 140 L264 140 L226 184 L94 184 Z" fill="var(--accent, #E4572E)"/>
+    <path d="M160 140 L160 184" fill="none" stroke-dasharray="2 8" stroke-linecap="round"/>
+  </g>
+</svg>
