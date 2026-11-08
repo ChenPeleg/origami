@@ -30,6 +30,7 @@ Source: `spec/prd-notes.txt` (notes N1-N7, in order of appearance).
 | Q-7 | Review 2 sample SVGs before PRD approval (N6, S-11, AC-48)? Recommend yes. | Yes | Product owner | Resolved 2026-11-08 - owner chose A: owner reviews 2 sample SVGs before approval (matched recommendation) |
 | Q-8 | Remaining non-blocking: browser version list (AC-36), restart/clear-progress confirmation (AC-16), Jump from Not started/Completed and Start-without-Next persistence (6.4), "browser language = he/en only" assumption, server-save intent, export/import, progress granularity. | No | Product owner | Open |
 
-## Non-blocking review findings not yet applied
-AC-traceability table omissions (AC-42, AC-45, AC-47); vague ACs (AC-5, AC-35, AC-37); AC-49 and S-10 to be marked non-v1; AC-48 to move to "Done when"; size budget for AC-45; alt-text non-empty check in both languages; A-6 and A-10 confirmation; P-4..P-6 citations.
+## Non-blocking review findings (2026-11-08 status)
+Applied: AC section rewritten (AC-1..AC-52), AC-49/S-10 non-v1, P-4..P-6 citations, A-2, A-17, A-25 updated.
+Still open (non-blocking, for next round): Jump from Not started/Completed and Start-without-Next persistence (6.4); definition of the clear-progress confirmation (AC-16, with Q-8); AC-1/AC-3 ordering overlap; AC-29 citation; A-9/A-17 residual overlap; remaining citation tidy-ups in sections 7, 8, 11; "browser language = he/en only" assumption needs owner confirmation.
 

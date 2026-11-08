@@ -37,5 +37,5 @@ The language switcher (44 px segments) appears on every screen (AC-52). Difficul
 2. The "clean, simple, modern" sign-off on all four screens in he and en (AC-37).
 3. Hebrew font choice (A-24): mockups use a system fallback stack, not final Heebo/Assistant.
 4. The clear-progress confirmation dialog is not drawn; only the button appears (P-4).
-5. Tulip and Crane cards reuse the sample step image as a placeholder cover.
+5. Fold in Half, Tulip and Crane cards reuse the sample step image as a placeholder cover.
 6. Q-8 (browser list) remains open; PRD approval remains pending.
