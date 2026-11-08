@@ -1,0 +1,17 @@
+PRD free-style notes (verbatim from the product owner)
+=========================================================
+
+I want an app that is purely front end and maybe will be in the stalls via capacitor
+
+The app should have very basic guides for origami first with pictures and maybe later in the future with three D emulation
+
+The steps of the origami should be from very simple and easy to modern complex
+
+The app should be in Hebrew and English to the user's choice
+
+Yeah should have a clean and simple graphic, but also nice and modern
+
+Before I start an approving the spec I also want uh clear images not in Figma but at least in SVGs and I want the app to be um mobile friendly actually mobile first but also desktop compatible
+
+For starters, I want the user to be able to keep its progress, but on the first stages the app should be totally um uh front end and later we will add a server save data save or something else
+
