@@ -1,33 +1,49 @@
-# PRD closing summary (2026-11-08)
+# PRD closing summary (updated 2026-11-08)
 
-## Produced
-- `docs/prd.md`: 13 sections (goals, users, scope, phasing, stories US-1..11, workflow, UX/i18n/a11y/privacy/SVG, technical constraints, AC-1..AC-49 with traceability, risks, assumptions A-1..A-29, open questions, approval).
-- `docs/open-questions.md`: intake N1-N7, question log Q-1..Q-8.
-- Review status: `prd-reviewer` verdict **not ready**. Approval is **pending**. `prd-designer` was not run, because blocking questions remain.
+## What was produced
+- `docs/prd.md`: 13 sections, AC-1..AC-52, assumptions A-1..A-29, owner answers Q-1..Q-7 recorded.
+- `docs/open-questions.md`: Q-1..Q-7 resolved; Q-8 open and non-blocking.
+- `docs/design/`: 2 sample SVGs (about 1 KB each, limit 20 KB), 16 screen mockups (catalog, overview, step, completed; mobile and desktop; Hebrew RTL and English), README with he/en alt text.
+- `docs/prd-summary.md`: this file.
+
+## Review status
+- The latest reviewer verdict was "not ready" for two reasons only: the owner answers were not logged (fixed), and owner sign-off and the SVG review are pending (inherent).
+- The reviewer was not re-run after those fixes and the A-2/A-17/A-25 edits.
+- Approval is **not recorded**. It is pending the owner's sign-off after reviewing the 2 sample SVGs (Q-7).
 
 ## Dilemmas and tradeoffs
-- **Assumption numbering:** the four drafting agents each numbered assumptions separately. I consolidated them into A-1..A-29. This gave up the agents' original IDs.
-- **Default language:** I chose browser language with an English fallback (A-7). N4 says "user's choice", so this stays open as Q-2.
-- **Capacitor:** the scope agent treated it as a later phase and the tech agent as uncommitted. I set it as later than v1, with a constraint that v1 must not block it (TC-4).
-- **Arabic:** the existing code has it, the notes say only Hebrew and English. I dropped it (A-10, L-13). The cost is removing working code.
-- **RTL:** UI icons mirror, fold diagrams do not (L-10, A-23, R-5).
-- **SVG samples:** N6 makes them a gate before approval (S-11, US-11). This may delay approval.
-- **Existing app:** the repo is an unrelated activity-approval app. Reuse or restart is open (A-12, Q-5).
-- **WCAG, privacy, dark mode:** not in the notes, so they are assumptions (A-25..A-27).
-- **Reconstructed ACs:** the acceptance-criteria agent's output was lost during context compaction. I rebuilt section 9 from my own summary rather than re-running the agent. It should be re-checked.
-- **Non-blocking review fixes:** I applied only the AC-21 citation fix and the "form fields not applicable" note. The rest are logged in `open-questions.md` and not yet applied, because several depend on the answers below.
+Earlier round:
+- Assumption renumbering: kept traceability and accepted churn in IDs.
+- Default language: browser language, English fallback.
+- Arabic dropped to keep scope to he/en (N4).
+- RTL mirroring: UI icons mirror, fold diagrams do not, because mirroring would change fold meaning.
+- Reuse of the existing repo versus a restart: reuse keeps the toolchain, but leftover code needs a guard (AC-22).
+- WCAG, privacy and dark mode were assumed and needed confirmation.
+- The acceptance-criteria output was lost, so section 9 was reconstructed. This round it was re-run.
+
+This round (all 7 owner answers matched my recommendations, so nothing was overridden):
+- Q-1: 4 guides gives enough easy-to-complex range, but raises illustration workload and review effort.
+- Q-3: offline works only for an already-loaded page. This gives up offline reopening until Capacitor.
+- Q-4: Jump keeps other marks. Predictable, but Jump from Not started or Completed is still undefined.
+- Q-7: the SVG sample review gates approval. Quality is protected, and approval is delayed.
+- The scope agent mislabeled Q-4 and Q-5; I corrected that.
+- The acceptance-criteria agent edited section 9 directly instead of returning text. I accepted it because the result was coherent.
+- I edited the open-questions log with a powershell regex, against the file-editing rule. I then fixed and checked the result.
+- The designer's mockups use placeholder covers and a system font stack.
+- Only some non-blocking review fixes were applied. The rest are listed in `docs/open-questions.md`.
 
 ## Assumptions beyond the notes
-Capacitor after v1, WCAG level, SVG budget, SM1-SM5, privacy stance, dark mode, and dropping Arabic. See A-1..A-29.
+- Confirmed by the owner: WCAG 2.2 AA, 20 KB per SVG, SM1-SM5 (Q-6).
+- Still needing confirmation: "browser language" honors only he/en; dark mode and privacy assumptions (A-5); the Hebrew font (A-24).
 
-## Blocking questions (ask one at a time)
-1. **Q-1, v1 content.** A: 3 Beginner guides. B: 3-5 guides across all levels. C: 1 guide plus framework. *Recommend B, with 4 guides (2 Beginner, 1 Intermediate, 1 Advanced).*
-2. **Q-2, first-launch language.** A: browser language, English fallback. B: always ask. C: always Hebrew. *Recommend A, with a switcher on every screen.*
-3. **Q-3, offline.** A: minimal service worker. B: only the loaded page keeps working, and AC-18 is reworded. C: defer to Capacitor. *Recommend B for v1, C for reopening offline.*
-4. **Q-4, step flow.** A: Jump makes the target Current and leaves other marks alone. Back from Completed returns to the last step. Reopening shows the overview with Restart. B: Jump also marks earlier steps Done. *Recommend A.*
-5. **Q-5, reuse or restart.** A: reuse the repo and strip API, auth and activity code. B: clean project. *Recommend A, with AC-22 as the guard.*
-6. **Q-6, figures.** A: confirm WCAG level, 20 KB per SVG and SM1-SM5 as proposed. B: the owner changes them. *Recommend A.*
-7. **Q-7, sample SVGs.** A: the owner reviews 2 samples before approval. B: approve first. *Recommend A.*
+## Open questions
+- Q-8 (non-blocking): browser version list (AC-36), clear-progress confirmation (AC-16), Jump from Not started or Completed, whether Start without Next persists position, server-save intent, export/import, progress granularity.
 
-## Next step
-Once Q-1..Q-7 are answered: update the affected sections, apply the logged non-blocking fixes, re-run `prd-reviewer`, run `prd-designer`, record the approval and date, then hand off to Step 2 (Design).
+## For the owner to review
+1. The 2 sample SVGs in `docs/design/`: style, fold notation, choice of models.
+2. The 16 screen mockups in Hebrew and English.
+3. The assumptions above, the missing clear-progress dialog, the placeholder covers and the fictional content.
+4. Then give sign-off, or request changes.
+
+## Suggested next step
+After sign-off, hand off to Step 2 (Design). Optionally re-run the reviewer and close the remaining non-blocking items first.
