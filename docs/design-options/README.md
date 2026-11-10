@@ -1,142 +1,133 @@
-# Design options: style systems
+# Design options: Workbench and its variations
 
-Status: **proposal for owner review**. These options replace the visual language of the current mockups in `docs/design/`, not the screens, flows or PRD requirements.
+Status: **Workbench is chosen. The variation is a proposal for owner review.**
 
-## Why a new style
+Round 1 offered five style systems. The owner chose option 3, **Workbench**. The other four are kept, not deleted, in [archive/](archive/README.md).
 
-The current mockups work, but they look like a generic app template:
-- rounded white cards with a 1px grey border on a pale grey background
-- a stock "SaaS" blue as the only brand color
-- pill-shaped badges
-- emoji used as icons (🦢 🔍 🎉)
-- the system font (Segoe UI)
+This round offers four variations of Workbench. They change the visual language only, not the screens, flows or PRD requirements.
 
-None of that says *paper* or *folding*. Each option below starts from a real paper or print tradition, so the product has a point of view.
-
-## How to read the boards
-
-Each image is a 1600×1000 board with the same content, so the options are easy to compare:
-1. **Palette**: five named colors with hex values
-2. **Type**: a display line in English and Hebrew, body text in both languages, buttons and the level indicator
-3. **Catalog card**: the Crane guide as it would appear in the catalog
-4. **Folding step**: step 3 of the Tulip guide, with progress, the fold diagram, the instruction and Back/Next
-
-All fonts are free Google Fonts that support Hebrew.
-
-| # | Name | One-line idea | Mood | Board |
-|---|---|---|---|---|
-| 1 | Washi & Sumi | Ink on handmade paper | calm, crafted, adult | [01-washi-sumi.png](01-washi-sumi.png) |
-| 2 | Crease Pattern | The fold diagram is the brand | precise, technical, nerdy | [02-crease-pattern.png](02-crease-pattern.png) |
-| 3 | Workbench | A crafting table with taped scraps | warm, tactile, hands-on | [03-workbench.png](03-workbench.png) |
-| 4 | Riso Fold | Two-ink risograph zine | loud, playful, young | [04-riso-fold.png](04-riso-fold.png) |
-| 5 | Kami Grid | Solid origami sheets on a Swiss grid | bold, flat, confident | [05-kami-grid.png](05-kami-grid.png) |
-
----
-
-## 1. Washi & Sumi
-
-![Washi & Sumi board](01-washi-sumi.png)
-
-**Meaning.** Origami is quiet and patient work. This style looks like a well-printed folding book: warm handmade paper, black sumi ink and one vermilion accent, the color of a Japanese name seal (hanko). It says: slow down, this is a craft.
-
-**Language**
-- **Color:** almost monochrome. Vermilion (`#B23A24`) is used only for what matters: the fold line, the progress mark and the current step. Nothing else competes with it.
-- **Type:** *Frank Ruhl Libre*, a serif with excellent Hebrew, for headings and reading text. *Assistant* in small spaced capitals for labels and buttons. Serif reading text gives a book-like rhythm.
-- **Shape:** square corners, no shadows, no cards. Sections are separated by hairline rules and white space, as in a printed page.
-- **Illustration:** thin ink outlines over cream paper tones. The diagram reads like a drawing in a folding book.
-- **Signature details:** a red seal mark (for "completed" or the logo) and a faint paper-fiber texture.
-
-**Good for:** adults, gift-like quality, people who fold to relax.
-**Watch out for:** it can feel too serious for children, and it relies on very good illustration. The seal uses Japanese characters only as decoration; we can swap it for a Hebrew or Latin monogram.
-
-## 2. Crease Pattern
-
-![Crease Pattern board](02-crease-pattern.png)
-
-**Meaning.** Origami artists design models as *crease patterns*: the flat square with every mountain and valley line drawn on it. This style makes that notation the visual identity. It looks like a drafting sheet or blueprint. The app feels like an exact instrument for folding.
-
-**Language**
-- **Color:** dark blueprint navy (`#12314D`) background. Fold lines follow standard origami notation: **valley = cyan dashed line, mountain = amber dash-dot line**. The UI colors *are* the folding legend, so learning the UI also teaches the notation.
-- **Type:** *IBM Plex Sans Hebrew* for text and *IBM Plex Mono* for numbers, step counters, labels and measurements ("STEP 03 / 12", "15 × 15 cm").
-- **Shape:** square, outlined boxes like frames on a technical drawing. A visible grid in the background. Buttons are outlined; only the primary one is filled.
-- **Illustration:** line-only. The crane is drawn over its own crease pattern. Diagrams carry small labels such as "valley fold · 1/2".
-- **Signature details:** dimension notes, a fold legend, sheet numbers.
-
-**Good for:** teens and adults, maker and STEM audiences, and teaching real fold notation (it fits the PRD rule that fold diagrams must stay accurate and never mirror).
-**Watch out for:** a dark-first theme needs a separate light version for printing and bright rooms. It can feel cold for young children.
-
-## 3. Workbench
+## The chosen style: Workbench
 
 ![Workbench board](03-workbench.png)
 
-**Meaning.** Folding is something you do with your hands, on a table. This style shows the app as a crafting table: kraft-board background, paper scraps held by masking tape, red and blue pencil marks and handwritten tips. It feels like a friend's notes next to you.
+**Meaning.** Folding is something you do with your hands, on a table. The app looks like a crafting table: a table surface, paper scraps held in place, pencil marks and handwritten tips. It feels like a friend's notes next to you.
 
-**Language**
-- **Color:** kraft brown (`#C9A47C`) as the "table", off-white scrap paper for content, and two "pencil" colors: red (`#C0392B`) for actions and progress, blue (`#2F5D8A`) for fold lines and handwritten hints.
-- **Type:** *Secular One*, a sturdy Hebrew/Latin display face, for headings and buttons. *Assistant* for reading text. *Amatic SC* (it has Hebrew) only for short handwritten notes.
-- **Shape:** content sits on slightly rotated paper scraps with real shadows and tape. Buttons have hard offset shadows, like cut card.
-- **Illustration:** paper with real soft shadows, so folds look physical. Fold lines are drawn in "blue pencil".
-- **Signature details:** tape strips, handwritten tips ("crease it hard!"), a ruler-style progress bar.
+**What every variation keeps**
+- **Type:** *Secular One* for headings and buttons, *Assistant* for reading text, *Amatic SC* only for short handwritten notes. All three support Hebrew.
+- **Scraps:** content sits on off-white paper scraps with real shadows.
+- **Buttons:** hard offset shadow, like cut card. The primary button is filled with the accent color.
+- **Fold diagram:** paper with a soft shadow, a dashed "pencil" fold line and a hand-drawn arrow.
+- **Progress:** a ruler-style bar with tick marks.
 
-**Good for:** families and classrooms; the warmest and most inviting option.
-**Watch out for:** rotations and shadows must stay decorative only. The reading layout and focus order stay straight. Rotation is turned off when reduced motion is on, and on small screens. Kraft brown needs dark text to keep AA contrast.
+**What a variation changes**
+1. the **table** (surface color and texture)
+2. the **holder** (what keeps the paper in place)
+3. the **marks** (the pencil and accent colors)
+4. one **signature detail**
 
-## 4. Riso Fold
+## How to read the boards
 
-![Riso Fold board](04-riso-fold.png)
+Each image is a 1600×1000 board with the same content as in round 1: palette, type (English and Hebrew), a catalog card and a folding step.
 
-**Meaning.** A risograph is a cheap two-ink printer loved by zines and art schools. Its look is overprinted colors, slightly misaligned layers, halftone dots and grainy ink. This style is energetic and handmade-in-print. It says: folding is fun, and imperfect is fine.
+| # | Name | Table | Holder | Mood | Board |
+|---|---|---|---|---|---|
+| 3A | Cutting Mat | green cutting mat with a grid | tape across the corners | exact, tidy, maker | [03a-workbench-cutting-mat.png](03a-workbench-cutting-mat.png) |
+| 3B | Pinboard | cork board in a wooden frame | push pins | friendly, shared, classroom | [03b-workbench-pinboard.png](03b-workbench-pinboard.png) |
+| 3C | Birch & Washi | pale birch wood | patterned washi tape | light, fresh, colorful | [03c-workbench-birch-washi.png](03c-workbench-birch-washi.png) |
+| 3D | Lamplight | dark walnut under a desk lamp | masking tape | cozy, focused, evening | [03d-workbench-lamplight.png](03d-workbench-lamplight.png) |
 
-**Language**
-- **Color:** two inks, riso blue (`#0078BF`) and fluoro pink (`#FF48B0`), on newsprint, with yellow halftone as a third "ink" for backgrounds. Where inks overlap they multiply into a dark violet. Body text uses a dark navy ink (`#22305E`) for contrast. Pink is never used for text.
-- **Type:** *Rubik Dirt* (a grainy, print-worn cut of Rubik with Hebrew) for big headings only, with a pink "misregistered" offset. *Rubik* for everything else.
-- **Shape:** flat ink blocks with no rounded corners. Buttons have a pink offset shadow, like a layer printed slightly off.
-- **Illustration:** each model is printed as two offset ink layers on a halftone background.
-- **Signature details:** paper grain over everything, halftone dots, overlapping dots for level.
+---
 
-**Good for:** kids and teens, social sharing, a strong memorable brand.
-**Watch out for:** the textured display font is for large headings only, never for instructions. The grain overlay must not reduce text contrast. Overprinting is harder to keep consistent across many illustrations.
+## 3A. Cutting Mat
 
-## 5. Kami Grid
+![Cutting Mat board](03a-workbench-cutting-mat.png)
 
-![Kami Grid board](05-kami-grid.png)
+**Meaning.** The green self-healing cutting mat is the surface of people who measure before they cut. This variation says: folding is a careful craft, and accuracy is part of the fun. It is the Workbench for makers.
 
-**Meaning.** *Kami* is the Japanese word for the colored square sheets sold for origami. This style uses those sheets as flat color blocks on a strict Swiss-style grid, with heavy black type and huge step numbers. It is bold, flat and confident, like a museum poster or a modern children's book.
+**What changes**
+- **Table:** mat green (`#2F6B58`) with a fine grid and a stronger line every 100px. Text on the table is cream, not dark.
+- **Holder:** masking tape across the corners. The scraps are **not rotated**. Everything is squared to the grid.
+- **Marks:** red and blue pencil stay. Mat yellow (`#F2C94C`) is added for marks printed on the mat and for handwritten tips.
+- **Signature detail:** a ruler scale along the edge and angle guides (30°, 45°, 60°), as on a real mat.
 
-**Language**
-- **Color:** white and black, plus four pure "paper pack" colors: red (`#E63322`), blue (`#1E4FA0`), yellow (`#F7C600`) and green (`#1B8A5A`). Each guide can get its own sheet color. Swatches show a diagonal fold shadow.
-- **Type:** *Heebo* Black, very large, for headings and numbers. The step number is the biggest thing on the step screen ("03/12"), so you can read it from across the table. Heebo Medium for text.
-- **Shape:** hard square blocks, thick black rules, no shadows, no rounded corners. The level indicator is small folded triangles.
-- **Illustration:** flat solid facets with no outlines. Each facet is a different paper color.
-- **Signature details:** giant step numbers, a thick header rule, the diagonal "fold" on color blocks.
+**Good for:** teens and adults, and for accurate models where alignment matters. With no rotation it is also the simplest of the four to build, and the calmest layout to read.
+**Watch out for:** the grid must stay faint so it does not compete with the content. It is cooler and less cozy than the kraft table. Red has low contrast on green, so red is used only on the scraps, never directly on the mat.
 
-**Good for:** every age; the easiest to build and to keep consistent across many guides. Very readable at a distance on a tablet propped on the table.
-**Watch out for:** yellow and white need dark text or a black outline. It could slide back toward "generic" if the grid and the giant numbers are softened.
+## 3B. Pinboard
+
+![Pinboard board](03b-workbench-pinboard.png)
+
+**Meaning.** A cork board is where a class or a family pins up what it made. This variation turns the table into a wall. Guides hang like notices, and tips come on sticky notes. It says: we fold together, and we show our work.
+
+**What changes**
+- **Table:** cork (`#C6A072`) with a speckle texture, inside a wooden frame.
+- **Holder:** round push pins instead of tape. Paper hangs from one point, so it swings a little more than in the base style.
+- **Marks:** red and blue stay, now as pin colors too. Sticky-note yellow (`#F6E27A`) is added.
+- **Signature detail:** tips are written on a pinned sticky note. The level indicator is made of small pin heads.
+
+**Good for:** classrooms and families. It fits the "completed" screen well, because finished models can be pinned up like a gallery.
+**Watch out for:** the frame takes space on small screens, so on mobile it should shrink or disappear. Pins and sticky notes are decorative and must not look like buttons. The cork speckle must stay light under text.
+
+## 3C. Birch & Washi
+
+![Birch & Washi board](03c-workbench-birch-washi.png)
+
+**Meaning.** Washi tape is Japanese paper tape with printed patterns. It links the craft table back to Japanese paper without copying a traditional style. On a pale birch table it feels like a modern craft studio: bright, clean and a little playful.
+
+**What changes**
+- **Table:** pale birch plywood (`#E9D6B4`) as a smooth surface with a soft light gradient and no grain lines. It is the lightest of the four.
+- **Holder:** patterned washi tape with torn ends: coral stripes, teal dots and mustard bands.
+- **Marks:** coral (`#C8452A`) replaces red pencil for actions and progress. Teal (`#1F7A7A`) replaces blue pencil for fold lines and handwritten tips.
+- **Signature detail:** the tape patterns. Each guide category or level can get its own tape pattern, and the rolls of tape can appear in empty states.
+
+**Good for:** a wide audience, including younger users. It has the best contrast in bright rooms, and it is the closest to print.
+**Watch out for:** three tape patterns are enough. More becomes noisy. Tape patterns must not be the only way to tell categories apart. Mustard and the light coral stripe are for decoration only, never for text.
+
+## 3D. Lamplight
+
+![Lamplight board](03d-workbench-lamplight.png)
+
+**Meaning.** Many people fold in the evening, at a desk, under one lamp. This variation is the same table at night: dark walnut wood, a warm pool of light and paper that seems to glow. It says: this is your quiet time.
+
+**What changes**
+- **Table:** dark walnut (`#33241B`) with a warm light pool behind the content. Text on the table is cream.
+- **Holder:** masking tape, as in the base style.
+- **Marks:** red and blue pencil stay on the paper. Lamp amber (`#F0B45A`) is used for marks and tips on the dark table.
+- **Signature detail:** the light pool. It can follow the active scrap, so the current step is the brightest thing on the screen.
+
+**Good for:** adults and evening use. It also answers the open point from round 1, where dark mode was marked "hard" for Workbench: this *is* the dark mode.
+**Watch out for:** it can work as a full style or only as the dark theme of another variation. The paper must stay slightly warm and dimmed (`#F5ECD9`), because pure white glares on a dark table. Shadows are deeper, so they need testing on low-quality screens.
 
 ---
 
 ## Comparison
 
-| | Washi & Sumi | Crease Pattern | Workbench | Riso Fold | Kami Grid |
-|---|---|---|---|---|---|
-| Energy | low, calm | medium, precise | medium, warm | high, playful | high, bold |
-| Best age | adults | teens+ | families | kids/teens | all |
-| Teaches fold notation | a little | **yes, built in** | a little | no | a little |
-| Illustration effort | high | low | medium | high | low |
-| Dark mode | needs work | **native** | hard | medium | easy |
-| Hebrew fonts | Frank Ruhl Libre, Assistant | IBM Plex Sans Hebrew | Secular One, Assistant, Amatic SC | Rubik, Rubik Dirt | Heebo |
+| | 3A Cutting Mat | 3B Pinboard | 3C Birch & Washi | 3D Lamplight |
+|---|---|---|---|---|
+| Mood | exact, tidy | friendly, shared | light, fresh | cozy, focused |
+| Best age | teens and adults | children, families | all | adults |
+| Table brightness | dark | medium | light | very dark |
+| Rotated scraps | no | yes, the most | yes, slight | yes, slight |
+| Build effort | low | medium | medium | low to medium |
+| Works as dark mode | partly | no | no | **yes** |
+| Mobile | easy | frame needs care | easy | easy |
 
-Options can also be mixed. For example, Kami Grid layout and type with Crease Pattern fold notation in the diagrams.
+The variations can be combined, because all four share the same type, scraps and buttons. Two examples:
+- **3C by day, 3D by night:** Birch & Washi as the light theme and Lamplight as the dark theme.
+- **3A layout with 3B details:** the straight, grid-aligned scraps of Cutting Mat, with sticky-note tips from Pinboard.
 
-## Accessibility notes (all options)
+## Accessibility notes (all variations)
 
-- Body text color pairs were chosen to meet WCAG 2.2 AA (4.5:1). Accent colors such as fluoro pink and yellow are not used for text.
-- Fold meaning never depends on color alone: valley and mountain lines also differ in dash pattern.
-- Decorative effects (texture, grain, rotation, tape) are purely visual and must be disabled or reduced where they hurt readability.
+- Text color pairs were chosen to meet WCAG 2.2 AA (4.5:1): on the table and on the scraps.
+- White button text sits only on red (`#C0392B`) or coral (`#C8452A`). Both pass 4.5:1.
+- Yellow, mustard and amber are used for large handwritten notes and decoration on dark tables only, never for body text on paper.
+- Fold meaning never depends on color alone: fold lines also differ in dash pattern.
+- Rotation, tape, pins and textures are decorative. The reading layout and focus order stay straight. Rotation is turned off on small screens and when reduced motion is on.
 - Fold diagrams never mirror in RTL (as in the PRD). UI arrows do.
 
 ## Sources and re-rendering
 
-- Single source: `src/board.html?style=washi|crease|bench|riso|kami`. It loads its fonts from Google Fonts.
-- Re-render all boards from the repo root in PowerShell: `& .\docs\design-options\src\render.ps1` (headless Edge, 1600×1000).
-- The boards show the content in English, with a Hebrew line in each type sample. Full Hebrew RTL screens will be made for the chosen option.
+- Single source: `src/workbench.html?v=mat|cork|birch|lamp`. `v=base` shows the chosen Workbench style with the same code. It loads its fonts from Google Fonts.
+- Re-render the four variation boards from the repo root in PowerShell: `& .\docs\design-options\src\render.ps1` (headless Edge, 1600×1000).
+- The boards show the content in English, with a Hebrew line in each type sample. Full Hebrew RTL screens will be made for the chosen variation.
+- The source and boards of the four archived options are in [archive/](archive/README.md).

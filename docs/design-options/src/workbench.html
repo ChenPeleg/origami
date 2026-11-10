@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Workbench variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Secular+One&family=Amatic+SC:wght@700&display=block" rel="stylesheet">
+<style>
+/* ---------- shared skeleton (1600 x 1000), same as the original boards ---------- */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1600px;height:1000px;overflow:hidden;background:var(--table);color:var(--on);font-family:"Assistant",sans-serif;position:relative}
+.board{position:relative;width:1600px;height:1000px;padding:56px 64px;display:grid;grid-template-columns:470px 1fr 1fr;grid-template-rows:auto 1fr;gap:40px 48px}
+.hd{grid-column:1/-1;display:flex;align-items:baseline;gap:28px}
+.num{font-family:"Amatic SC";font-size:44px;color:var(--numc)}
+.name{font-family:"Secular One",sans-serif;font-size:72px;line-height:1;margin:0;font-weight:400}
+.tag{margin:0;font-size:22px;max-width:640px}
+.col{position:relative;min-width:0}
+.lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-muted);margin:0 0 10px}
+.sws{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:34px}
+.sw i{display:block;height:74px;background:var(--c);border:var(--sw-border,0);box-shadow:0 6px 12px -6px rgba(30,15,5,.6)}
+.sw b{display:block;font-size:13px;margin-top:6px;font-weight:600}
+.sw small{font-size:12px;color:var(--on-muted)}
+.disp{font-family:"Secular One",sans-serif;font-size:64px;line-height:1.05;margin:0 0 14px}
+.disp .he{display:block;direction:rtl;text-align:right}
+.bodytx{font-size:18px;line-height:1.55;margin:0 0 10px}
+.bodytx.he{direction:rtl;text-align:right}
+.btns{display:flex;gap:14px;align-items:center;margin-top:26px}
+.b{min-height:52px;padding:0 26px;display:inline-flex;align-items:center;font-size:20px;font-family:"Secular One",sans-serif;
+   background:var(--scrap);color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--bsh)}
+.b.p{background:var(--accent);color:#fff}
+.lvl{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600}
+.lvl i{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.scrap{background:var(--scrap);color:var(--ink);padding:22px;position:relative;align-self:start;--bsh:var(--ink);
+   box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 22px -10px var(--drop)}
+.scrap .lbl,.scrap .meta{color:var(--muted)}
+.card.scrap{transform:rotate(-1.2deg)}
+.step.scrap{transform:rotate(.8deg)}
+.cover{aspect-ratio:4/3;width:100%;position:relative;overflow:hidden;background:var(--cbg)}
+.cover svg,.diag svg{width:100%;height:100%;display:block;filter:drop-shadow(3px 5px 4px rgba(60,35,10,.35))}
+.ttl{font-family:"Secular One",sans-serif;font-size:36px;margin:18px 0 8px}
+.meta{display:flex;gap:18px;align-items:center;font-size:16px;flex-wrap:wrap}
+.stephd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.stepno{font-family:"Secular One",sans-serif;font-size:30px}
+.prog{height:10px;margin-bottom:18px;position:relative;background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 12px),var(--cbg)}
+.prog i{position:absolute;inset:0 75% 0 0;background:var(--accent);opacity:.85}
+.diag{aspect-ratio:16/10;width:100%;margin-bottom:16px;position:relative}
+.instr{font-size:20px;line-height:1.5;margin:0 0 18px}
+.nav{display:flex;gap:14px}.nav .b{flex:1;justify-content:center}
+.deco{position:absolute;pointer-events:none}
+.note{font-family:"Amatic SC";font-size:34px;color:var(--note);transform:rotate(-6deg)}
+.tape{position:absolute;width:120px;height:32px;background:var(--tape);top:-14px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tape.l{left:24px;transform:rotate(-6deg)}.tape.r{right:24px;transform:rotate(5deg)}
+svg .p{stroke:rgba(42,30,18,.25);stroke-width:1;stroke-linejoin:round;stroke-linecap:round}
+
+/* ---------- base Workbench tokens (the chosen option 3) ---------- */
+:root{--table:#C9A47C;--on:#2A1E12;--on-muted:#4E3B27;--ink:#2A1E12;--muted:#4E3B27;--scrap:#FBF8F1;--cbg:#EFE9DC;
+ --accent:#C0392B;--pencil:#2F5D8A;--note:#2F5D8A;--numc:#C0392B;--bsh:#2A1E12;--tape:rgba(236,226,170,.78);--drop:rgba(60,35,10,.55);
+ --wl:#FFFDF8;--wr:#ECE6DA;--bd:var(--accent);--dp:#FFFDF8;--ds:#E9E2D3}
+.base .board{background:radial-gradient(circle at 30% 20%,rgba(255,240,210,.25),transparent 55%),
+ repeating-radial-gradient(circle at 70% 80%,rgba(90,60,30,.05) 0 2px,transparent 2px 5px),#C9A47C}
+
+/* ================= 3A. CUTTING MAT ================= */
+.mat{--table:#2F6B58;--on:#F6F1E4;--on-muted:#D5E3D6;--scrap:#FBFAF5;--cbg:#ECEFE8;--ds:#E3E7DE;
+ --note:#F2C94C;--numc:#F2C94C;--bsh:#14302A;--drop:rgba(8,30,22,.7);--tape:rgba(240,232,190,.9)}
+.mat .board{background:
+ linear-gradient(rgba(255,255,255,.17) 1px,transparent 1px) 0 -1px/100px 100px,
+ linear-gradient(90deg,rgba(255,255,255,.17) 1px,transparent 1px) -1px 0/100px 100px,
+ linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 -1px/20px 20px,
+ linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px) -1px 0/20px 20px,#2F6B58}
+/* everything is squared to the grid: no rotation, tape across the corners */
+.mat .card.scrap,.mat .step.scrap{transform:none}
+.mat .tape{width:72px;height:24px;top:-12px}
+.mat .tape.l{left:-36px;transform:rotate(-45deg)}.mat .tape.r{right:-36px;transform:rotate(45deg)}
+.mat .spec .lvl i,.lamp .spec .lvl i{background:var(--note)}
+.mat{--sw-border:1px solid rgba(246,241,228,.3)}
+.mat .ruler{left:64px;right:64px;bottom:44px;height:30px;color:#F2C94C;font-size:13px;font-weight:600;
+ background:linear-gradient(90deg,#F2C94C 2px,transparent 2px) 0 100%/100px 100% repeat-x,
+            linear-gradient(90deg,rgba(242,201,76,.65) 1px,transparent 1px) 0 100%/10px 9px repeat-x;
+ border-bottom:2px solid #F2C94C}
+.mat .ruler span{position:absolute;top:-2px;margin-left:8px}
+.mat .angle{left:64px;bottom:76px}
+
+/* ================= 3B. PINBOARD ================= */
+.cork{--table:#C6A072;--on:#2A1E12;--on-muted:#432F1C;--numc:#2A1E12;--drop:rgba(50,28,8,.6)}
+.cork .board{background:
+ radial-gradient(rgba(90,55,25,.24) 1px,transparent 1.7px) 0 0/7px 7px,
+ radial-gradient(rgba(255,236,205,.28) 1px,transparent 1.6px) 3px 4px/11px 11px,
+ radial-gradient(rgba(70,40,15,.2) 1.6px,transparent 2.3px) 5px 2px/17px 13px,#C6A072;
+ box-shadow:inset 0 0 0 16px #7A5230,inset 0 0 0 18px rgba(0,0,0,.28),inset 0 0 40px 18px rgba(60,30,5,.25)}
+/* pinned paper hangs from one point, so it swings a little more */
+.cork .card.scrap{transform:rotate(-2.2deg);transform-origin:50% 0}
+.cork .step.scrap{transform:rotate(1.6deg);transform-origin:50% 0}
+.pin{position:absolute;width:24px;height:24px;border-radius:50%;top:-10px;left:calc(50% - 12px);
+ background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.75) 0 12%,var(--pc) 16% 70%,rgba(0,0,0,.25) 100%),var(--pc);
+ box-shadow:4px 7px 5px rgba(30,15,5,.45)}
+.cork .lvl i{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.7) 0 14%,var(--accent) 20%)}
+.cork .sticky{left:1118px;top:762px;width:230px;height:150px;background:#F6E27A;transform:rotate(-4deg);
+ box-shadow:0 12px 16px -10px rgba(50,28,8,.7);display:flex;align-items:center;justify-content:center}
+.cork .sticky .note{transform:none;color:#2F5D8A}
+.cork .sticky .pin{top:-9px}
+
+/* ================= 3C. BIRCH & WASHI TAPE ================= */
+.birch{--table:#E9D6B4;--on:#2B2118;--on-muted:#55432F;--ink:#2B2118;--muted:#55432F;--scrap:#FFFDF8;--cbg:#F3EEE2;
+ --accent:#C8452A;--pencil:#1F7A7A;--note:#1F7A7A;--numc:#C8452A;--bsh:#2B2118;--drop:rgba(90,60,25,.45)}
+.birch .board{background:
+ radial-gradient(ellipse at 25% 15%,rgba(255,255,255,.35),transparent 60%),#E9D6B4}
+.birch .tape{width:150px;height:30px;top:-15px;box-shadow:0 2px 3px rgba(60,35,10,.18);opacity:.93;
+ clip-path:polygon(0 0,100% 0,97% 25%,100% 50%,97% 75%,100% 100%,0 100%,3% 75%,0 50%,3% 25%)}
+.w1{background:repeating-linear-gradient(45deg,#E9805F 0 8px,#F7CDBB 8px 16px)}
+.w2{background:radial-gradient(#FFFDF8 2.6px,transparent 3.1px) 0 0/13px 13px,#3A9A97}
+.w3{background:repeating-linear-gradient(90deg,#E8B94A 0 12px,#F4D98F 12px 16px)}
+.birch .rolls{left:640px;top:770px}
+
+/* ================= 3D. LAMPLIGHT ================= */
+.lamp{--table:#33241B;--on:#F3E9D8;--on-muted:#CDBCA3;--scrap:#F5ECD9;--cbg:#EADFC8;--dp:#FBF4E4;--ds:#E2D6BD;--wl:#FBF4E4;--wr:#E4D9C2;
+ --note:#F0B45A;--numc:#F0B45A;--bsh:#0E0906;--drop:rgba(0,0,0,.85);--tape:rgba(240,228,170,.88);--sw-border:1px solid rgba(243,233,216,.3)}
+.lamp .board{background:
+ radial-gradient(ellipse 880px 600px at 66% 44%,rgba(255,206,130,.5),rgba(255,196,110,.16) 55%,transparent 78%),
+ repeating-linear-gradient(91deg,rgba(0,0,0,.2) 0 2px,transparent 2px 27px),
+ repeating-linear-gradient(89deg,rgba(255,220,170,.035) 0 1px,transparent 1px 11px),#33241B}
+.lamp .scrap{box-shadow:0 1px 0 rgba(0,0,0,.2),0 26px 40px -14px var(--drop)}
+.lamp .sw i{box-shadow:none}
+</style></head>
+<body>
+<div class="board" id="b"></div>
+<script>
+var V=new URLSearchParams(location.search).get('v')||'base';
+document.documentElement.className=V;
+
+var D={
+base:{n:'#3',name:'Workbench',tag:'A real crafting table: kraft board, taped paper scraps and pencil notes. Warm and hands-on.',
+ sw:[['Kraft board','#C9A47C'],['Scrap paper','#FBF8F1'],['Red pencil','#C0392B'],['Blue pencil','#2F5D8A'],['Masking tape','#ECE2AA']],
+ tip:'↑ crease it hard!'},
+mat:{n:'#3A',name:'Cutting Mat',tag:'Workbench on a green cutting mat. Everything is squared to the grid. Careful and exact, for makers.',
+ sw:[['Cutting mat','#2F6B58'],['Scrap paper','#FBFAF5'],['Red pencil','#C0392B'],['Blue pencil','#2F5D8A'],['Mat yellow','#F2C94C']],
+ tip:'↑ line up the edges first'},
+cork:{n:'#3B',name:'Pinboard',tag:'Workbench on a cork board. Paper hangs from push pins and tips come on sticky notes. Friendly and shared.',
+ sw:[['Cork','#C6A072'],['Scrap paper','#FBF8F1'],['Red pin','#C0392B'],['Blue pin','#2F5D8A'],['Sticky note','#F6E27A']],
+ tip:'crease it hard!'},
+birch:{n:'#3C',name:'Birch & Washi',tag:'Workbench on pale birch wood with patterned washi tape. Light, fresh and colorful.',
+ sw:[['Birch ply','#E9D6B4'],['Scrap paper','#FFFDF8'],['Coral','#C8452A'],['Teal pencil','#1F7A7A'],['Mustard tape','#E8B94A']],
+ tip:'↑ crease it hard!'},
+lamp:{n:'#3D',name:'Lamplight',tag:'Workbench at night: a dark walnut table under a warm desk lamp. Cozy and focused. This is the dark mode.',
+ sw:[['Walnut','#33241B'],['Lit paper','#F5ECD9'],['Red pencil','#C0392B'],['Blue pencil','#2F5D8A'],['Lamp glow','#F0B45A']],
+ tip:'↑ crease it hard!'}
+}[V];
+
+var CRANE='<path class="p" d="M160 150 L40 96 L130 130 Z" style="fill:var(--wl)"/>'+
+'<path class="p" d="M160 150 L280 96 L190 130 Z" style="fill:var(--wr)"/>'+
+'<path class="p" d="M130 130 L160 188 L190 130 L160 112 Z" style="fill:var(--bd)"/>'+
+'<path class="p" d="M190 130 L236 70 L246 62 L238 84 L204 142 Z" style="fill:var(--wl)"/>'+
+'<path class="p" d="M130 130 L96 176 L84 202 L110 180 L146 146 Z" style="fill:var(--wr)"/>'+
+'<circle cx="236" cy="78" r="2.6" fill="var(--ink)"/>';
+var cover='<svg viewBox="0 0 320 240">'+CRANE+'</svg>';
+var diagram='<svg viewBox="0 0 400 250">'+
+ '<rect class="p" x="90" y="20" width="220" height="210" style="fill:var(--dp)"/>'+
+ '<rect x="90" y="125" width="220" height="105" style="fill:var(--ds)"/>'+
+ '<path d="M80 125 H320" style="stroke:var(--pencil);stroke-width:3.5;stroke-dasharray:8 6"/>'+
+ '<path d="M200 205 C 240 190, 240 150, 205 138" style="fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round"/>'+
+ '<path d="M215 132 L203 138 L214 147" style="fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round"/>'+
+ '</svg>';
+var lvl='<span class="lvl"><i></i><i></i><i></i><b>Advanced</b></span>';
+
+/* what holds the paper down: the main difference between the variations */
+function hold(which){
+ if(V==='cork') return '<span class="pin" style="--pc:'+(which==='card'?'#C0392B':'#2F5D8A')+'"></span>';
+ if(V==='birch') return which==='card'
+   ?'<span class="tape l w1"></span><span class="tape r w2"></span>'
+   :'<span class="tape r w3"></span>';
+ if(V==='mat') return '<span class="tape l"></span><span class="tape r"></span>';
+ return which==='card'?'<span class="tape l"></span><span class="tape r"></span>':'<span class="tape r"></span>';
+}
+
+var swh=D.sw.map(function(s){return '<div class="sw" style="--c:'+s[1]+'"><i></i><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('');
+
+var html=
+'<header class="hd"><span class="num">'+D.n+'</span><h1 class="name">'+D.name.replace('&','&amp;')+'</h1><p class="tag">'+D.tag+'</p></header>'+
+'<section class="col spec">'+
+ '<p class="lbl">Palette</p><div class="sws">'+swh+'</div>'+
+ '<p class="lbl">Type</p><div class="disp">Fold a crane<span class="he">לקפל עגור</span></div>'+
+ '<p class="bodytx">Fold the bottom edge up to the middle line, then crease firmly.</p>'+
+ '<p class="bodytx he">קפלו את הקצה התחתון עד קו האמצע, והדגישו את הקיפול.</p>'+
+ '<div class="btns"><span class="b p">Start</span><span class="b">Back</span>'+lvl+'</div>'+
+'</section>'+
+'<section class="col card scrap">'+hold('card')+
+ '<p class="lbl">Catalog card</p><div class="cover">'+cover+'</div>'+
+ '<div class="ttl">Crane</div><div class="meta">'+lvl+'<span>1 sheet</span><span>15 min</span><span>18 steps</span></div>'+
+'</section>'+
+'<section class="col step scrap">'+hold('step')+
+ '<p class="lbl">Folding step</p>'+
+ '<div class="stephd"><span class="stepno">Step 3 of 12</span><span class="lbl" style="margin:0">Tulip</span></div><div class="prog"><i></i></div>'+
+ '<div class="diag">'+diagram+'</div>'+
+ '<p class="instr">Fold the bottom edge up to the middle line, then crease firmly.</p>'+
+ '<div class="nav"><span class="b">← Back</span><span class="b p">Next →</span></div>'+
+'</section>';
+
+/* one signature detail per variation, in the empty table area */
+if(V==='cork'){
+ html+='<div class="deco sticky"><span class="pin" style="--pc:#3E8E5A"></span><span class="note">'+D.tip+'</span></div>';
+}else{
+ html+='<div class="deco note" style="left:1150px;top:790px">'+D.tip+'</div>';
+}
+if(V==='mat'){
+ var r='';for(var i=0;i<15;i++)r+='<span style="left:'+(i*100)+'px">'+(i*5)+'</span>';
+ html+='<div class="deco ruler">'+r+'</div>'+
+ '<svg class="deco angle" width="330" height="150" viewBox="0 0 330 150"><g fill="none" stroke="#F2C94C" stroke-width="1.5" opacity=".8">'+
+ '<path d="M0 150 L150 0"/><path d="M0 150 L260 0"/><path d="M0 150 L87 0"/></g>'+
+ '<g fill="#F2C94C" font-family="Assistant" font-size="13" font-weight="600"><text x="96" y="14">60°</text><text x="158" y="14">45°</text><text x="268" y="14">30°</text></g></svg>';
+}
+if(V==='birch'){
+ function roll(x,fill,core){return '<g transform="translate('+x+',70)"><circle r="58" fill="rgba(90,60,25,.25)" cx="5" cy="8"/><circle r="56" fill="'+fill+'"/><circle r="56" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="5" stroke-dasharray="5 11"/><circle r="34" fill="#D9C7A6"/><circle r="29" fill="'+core+'"/></g>'}
+ html+='<svg class="deco rolls" width="330" height="150" viewBox="0 0 330 150">'+roll(66,'#E9805F','#E9D6B4')+roll(176,'#3A9A97','#E9D6B4')+roll(268,'#E8B94A','#E9D6B4')+'</svg>';
+}
+document.getElementById('b').innerHTML=html;
+</script>
+</body></html>
