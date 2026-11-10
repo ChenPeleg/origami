@@ -1,18 +1,16 @@
 import type { ReactNode } from 'react';
 import React, { createContext, useContext, useState } from 'react';
 import { Language } from '../models/Language.ts';
-
-export type Theme = 'light' | 'dark';
+import { useService } from '../services/provider/useService.ts';
+import { TranslationService } from '../services/Translation.service.ts';
 
 export interface GlobalState {
     language: Language;
-    theme: Theme;
 }
 
 interface GlobalStateType {
     globalState: GlobalState;
     setLanguage: (language: Language) => void;
-    setTheme: (theme: Theme) => void;
     setGlobalState: (globalState: GlobalState) => void;
 }
 
@@ -23,22 +21,15 @@ const GlobalStateContext = createContext<GlobalStateType | undefined>(
 export const GlobalStateContextProvider: React.FC<{ children: ReactNode }> = ({
     children,
 }) => {
-    const [globalState, setGlobalState] = useState<GlobalState>({
-        language: Language.Hebrew,
-        theme: 'light',
-    });
+    const translationService = useService(TranslationService);
+    const [globalState, setGlobalState] = useState<GlobalState>(() => ({
+        language: translationService.resolveInitialLanguage(),
+    }));
 
     const setLanguage = (language: Language) => {
         setGlobalState((prevState) => ({
             ...prevState,
             language,
-        }));
-    };
-
-    const setTheme = (theme: Theme) => {
-        setGlobalState((prevState) => ({
-            ...prevState,
-            theme,
         }));
     };
 
@@ -48,7 +39,6 @@ export const GlobalStateContextProvider: React.FC<{ children: ReactNode }> = ({
                 globalState,
                 setGlobalState,
                 setLanguage,
-                setTheme,
             }}
         >
             {children}
@@ -58,12 +48,14 @@ export const GlobalStateContextProvider: React.FC<{ children: ReactNode }> = ({
 
 /**
  * Hook to use global state context
- * @throws Error if used outside UserProvider
+ * @throws Error if used outside GlobalStateContextProvider
  */
 export const useGlobalState = (): GlobalStateType => {
     const context = useContext(GlobalStateContext);
     if (context === undefined) {
-        throw new Error('useUser must be used within a UserProvider');
+        throw new Error(
+            'useGlobalState must be used within a GlobalStateContextProvider'
+        );
     }
     return context;
 };

@@ -4,8 +4,9 @@ import { appConfig } from '../config/appConfig.ts';
 import { EnvironmentType } from '../models/environmentType.ts';
 import { WindowMock } from '../../test/mocks/window.mock.ts';
 
-type WindowLike = Pick<Window, 'location' | 'confirm'> & {
-    document: Pick<Document, 'documentElement'>;
+type WindowLike = Pick<Window, 'location' | 'confirm' | 'scrollTo'> & {
+    document: Pick<Document, 'documentElement' | 'title'>;
+    navigator: Pick<Navigator, 'language'>;
 };
 
 export class WindowService extends AbstractBaseService {

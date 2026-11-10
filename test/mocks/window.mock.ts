@@ -7,13 +7,20 @@ export class WindowMock {
         href: 'http://localhost:3000/',
     };
 
-    document: Pick<Document, 'documentElement'> = {
+    document: Pick<Document, 'documentElement' | 'title'> = {
+        title: '',
         documentElement: {
+            lang: '',
+            dir: '',
             classList: {
                 toggle: () => false,
             },
         } as unknown as HTMLElement,
     };
+
+    navigator: Pick<Navigator, 'language'> = { language: 'en-US' };
+
+    scrollTo(): void {}
 
     confirm(): boolean {
         return this._confirmResponse;

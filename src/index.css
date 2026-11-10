@@ -2,6 +2,107 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* ---------- Birch & Washi design tokens (docs/design/README.md) ---------- */
+@theme {
+    --color-table: #e9d6b4;
+    --color-scrap: #fffdf8;
+    --color-shade: #f3eee2;
+    --color-ink: #2b2118;
+    --color-muted: #55432f;
+    --color-coral: #c8452a;
+    --color-teal: #1f7a7a;
+    --color-mustard: #e8b94a;
+
+    --font-display: 'Secular One', 'Assistant', system-ui, sans-serif;
+    --font-body: 'Assistant', system-ui, 'Segoe UI', Arial, sans-serif;
+    --font-hand: 'Amatic SC', 'Assistant', cursive;
+
+    --shadow-cut: 3px 3px 0 var(--color-ink);
+    --shadow-cut-hover: 4px 4px 0 var(--color-ink);
+    --shadow-cut-press: 1px 1px 0 var(--color-ink);
+    --shadow-scrap:
+        0 1px 0 rgb(0 0 0 / 0.08), 0 12px 24px -12px rgb(90 60 25 / 0.45);
+    --shadow-bar: 0 8px 16px -10px rgb(90 60 25 / 0.45);
+    --shadow-tape: 0 2px 3px rgb(60 35 10 / 0.18);
+
+    /* the mockup's desktop layout starts at 760px */
+    --breakpoint-md: 47.5rem;
+}
+
+@layer base {
+    :focus-visible {
+        outline: 3px solid var(--color-teal);
+        outline-offset: 3px;
+    }
+}
+
+/* ---------- patterns that plain utilities cannot express readably ---------- */
+@utility bg-birch {
+    background:
+        radial-gradient(
+                ellipse 90% 60% at 25% 0%,
+                rgb(255 255 255 / 0.38),
+                transparent 65%
+            )
+            fixed,
+        var(--color-table);
+}
+
+@utility bg-ruler {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--color-ink) 0 1px,
+            transparent 1px 12px
+        ),
+        var(--color-shade);
+}
+
+@utility tape-torn {
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        97% 25%,
+        100% 50%,
+        97% 75%,
+        100% 100%,
+        0 100%,
+        3% 75%,
+        0 50%,
+        3% 25%
+    );
+}
+
+@utility tape-stripes {
+    background: repeating-linear-gradient(
+        45deg,
+        #e9805f 0 8px,
+        #f7cdbb 8px 16px
+    );
+}
+
+@utility tape-dots {
+    background:
+        radial-gradient(#fffdf8 2.6px, transparent 3.1px) 0 0 / 13px 13px,
+        #3a9a97;
+}
+
+@utility tape-bands {
+    background: repeating-linear-gradient(
+        90deg,
+        #e8b94a 0 12px,
+        #f4d98f 12px 16px
+    );
+}
+
+@utility tape-underline {
+    background: repeating-linear-gradient(
+        45deg,
+        #e9805f 0 6px,
+        #f7cdbb 6px 12px
+    );
+}
+
 @keyframes shrink {
     from {
         transform: scaleX(1);
@@ -23,5 +124,9 @@
 
     .shrink-bar {
         animation-duration: 0.01ms !important;
+    }
+
+    * {
+        transition: none !important;
     }
 }

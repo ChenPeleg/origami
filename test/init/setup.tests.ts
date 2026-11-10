@@ -41,6 +41,9 @@ if (!window.ResizeObserver) {
     };
 }
 
+// jsdom does not implement scrolling; pages scroll to the top on navigation.
+window.scrollTo = vi.fn();
+
 if (!Element.prototype.getAnimations) {
     Element.prototype.getAnimations = () => [];
 }

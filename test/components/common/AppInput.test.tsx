@@ -17,14 +17,14 @@ describe('AppInput', () => {
 
     it('applies the default className when none is provided', () => {
         render(<AppInput />);
-        expect(screen.getByRole('textbox').className).toContain('rounded-lg');
+        expect(screen.getByRole('textbox').className).toContain('border-ink');
     });
 
     it('applies a custom className instead of the default', () => {
         render(<AppInput className="my-input" />);
         const input = screen.getByRole('textbox');
         expect(input.className).toContain('my-input');
-        expect(input.className).not.toContain('rounded-lg');
+        expect(input.className).not.toContain('border-ink');
     });
 
     it('calls onChange when the input value changes', () => {

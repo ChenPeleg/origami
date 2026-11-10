@@ -98,7 +98,7 @@ const HomePage = () => {
                 {forms.length === 0 ? (
                     <div className="rounded-lg bg-white py-12 text-center shadow dark:bg-gray-800">
                         <div className="mb-4 text-6xl text-gray-400">📋</div>
-                        <h2 className="mb-2 text-xl font-semibold text-gray-900 dark:text-gray-100">
+                        <h2 className="mb-2 text-[20px] font-semibold text-gray-900 dark:text-gray-100">
                             {t('עמוד_בית_אין_טפסים_כותרת')}
                         </h2>
                         <p className="mb-6 text-gray-600 dark:text-gray-400">
@@ -122,7 +122,7 @@ const HomePage = () => {
                                 <div className="flex items-start justify-between">
                                     <div className="flex-1">
                                         <div className="mb-2 flex items-center gap-3">
-                                            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                                            <h2 className="text-[20px] font-semibold text-gray-900 dark:text-gray-100">
                                                 {form.title}
                                             </h2>
                                             {getStatusBadge(form.status)}

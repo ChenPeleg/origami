@@ -10,6 +10,11 @@ import { ExceptionService } from '../Exception.service.ts';
 import { UserService } from '../User.service.ts';
 import { DevServiceService } from '../DevService.service.ts';
 import { WindowService } from '../Window.service.ts';
+import { GuidesService } from '../Guides.service.ts';
+import { GuideProgressService } from '../GuideProgress.service.ts';
+import { GuideFlowService } from '../GuideFlow.service.ts';
+import { FoldDiagramService } from '../FoldDiagram.service.ts';
+import { PageService } from '../Page.service.ts';
 
 export const injectedServices: ServiceInjectionMethod[] = [
     LibraryProviderService,
@@ -23,4 +28,9 @@ export const injectedServices: ServiceInjectionMethod[] = [
     WindowService,
     UserService,
     DevServiceService,
+    GuidesService,
+    GuideProgressService,
+    GuideFlowService,
+    FoldDiagramService,
+    PageService,
 ];
