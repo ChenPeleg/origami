@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Origami style board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans+Hebrew:wght@400;600;700&family=Secular+One&family=Amatic+SC:wght@700&family=Rubik:wght@400;500;700;900&family=Rubik+Dirt&family=Heebo:wght@400;500;800;900&display=block" rel="stylesheet">
+<style>
+/* ---------- shared skeleton (1600 x 1000) ---------- */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1600px;height:1000px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--f-body);position:relative}
+.board{position:relative;width:1600px;height:1000px;padding:56px 64px;display:grid;grid-template-columns:470px 1fr 1fr;grid-template-rows:auto 1fr;gap:40px 48px}
+.hd{grid-column:1/-1;display:flex;align-items:baseline;gap:28px}
+.num{font-family:var(--f-disp);font-size:28px;opacity:.7}
+.name{font-family:var(--f-disp);font-size:72px;line-height:1;margin:0;font-weight:var(--w-disp,700)}
+.tag{margin:0;font-size:22px;max-width:620px;color:var(--muted)}
+.col{position:relative;min-width:0}
+.lbl{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-family:var(--f-lbl,var(--f-body))}
+.sws{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:34px}
+.sw i{display:block;height:74px;background:var(--c);border:var(--sw-border,0)}
+.sw b{display:block;font-size:13px;margin-top:6px;font-weight:600}
+.sw small{font-size:12px;color:var(--muted);font-family:var(--f-lbl,var(--f-body))}
+.disp{font-family:var(--f-disp);font-size:64px;line-height:1.05;font-weight:var(--w-disp,700);margin:0 0 14px}
+.disp .he{display:block;direction:rtl;text-align:right}
+.bodytx{font-size:18px;line-height:1.55;margin:0 0 10px}
+.bodytx.he{direction:rtl;text-align:right}
+.btns{display:flex;gap:14px;align-items:center;margin-top:26px}
+.b{min-height:52px;padding:0 26px;display:inline-flex;align-items:center;font-weight:700;font-size:18px;font-family:var(--f-btn,var(--f-body))}
+.lvl{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600}
+.lvl i{display:inline-block;width:12px;height:12px}
+.cover{aspect-ratio:4/3;width:100%;position:relative;overflow:hidden}
+.cover svg,.diag svg{width:100%;height:100%;display:block}
+.ttl{font-family:var(--f-disp);font-size:36px;margin:18px 0 8px;font-weight:var(--w-disp,700)}
+.meta{display:flex;gap:18px;align-items:center;font-size:16px;color:var(--muted);flex-wrap:wrap}
+.stephd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.stepno{font-family:var(--f-disp);font-size:30px;font-weight:var(--w-disp,700)}
+.prog{height:8px;margin-bottom:18px;position:relative}
+.prog i{position:absolute;inset:0 75% 0 0;background:var(--accent)}
+.diag{aspect-ratio:16/10;width:100%;margin-bottom:16px;position:relative}
+.instr{font-size:20px;line-height:1.5;margin:0 0 18px}
+.nav{display:flex;gap:14px}.nav .b{flex:1;justify-content:center}
+.deco{position:absolute;pointer-events:none}
+svg .p{stroke:var(--st);stroke-width:var(--sw,4);stroke-linejoin:round;stroke-linecap:round}
+
+/* ================= 1. WASHI & SUMI ================= */
+.washi{--bg:#F3EEE3;--ink:#1C1A17;--muted:#655D52;--accent:#B23A24;--f-disp:"Frank Ruhl Libre",serif;--f-body:"Frank Ruhl Libre",serif;--f-lbl:"Assistant",sans-serif;--f-btn:"Assistant",sans-serif;--w-disp:500;
+ --st:#1C1A17;--sw:2.4;--wl:#FBF8F1;--wr:#EDE5D6;--bd:#B23A24;--nk:#FBF8F1;--tl:#EDE5D6;--cbg:#E7DFCF;
+ --dp:#FBF8F1;--ds:#E7DFCF;--vl:#B23A24;--vd:7 6;--ar:#1C1A17}
+.washi body,.washi{background:#F3EEE3}
+.washi .board{background:
+ radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.55),transparent 60%),
+ repeating-linear-gradient(83deg,rgba(120,100,70,.035) 0 1px,transparent 1px 9px),
+ repeating-linear-gradient(-12deg,rgba(120,100,70,.03) 0 1px,transparent 1px 13px)}
+.washi .num{font-family:"Assistant";font-size:16px;letter-spacing:.3em}
+.washi .col+.col{border-inline-start:1px solid #CFC4B1;padding-inline-start:48px}
+.washi .board{column-gap:0}.washi .spec{padding-inline-end:48px}
+.washi .cover{background:var(--cbg)}
+.washi .b{border:1.5px solid var(--ink);background:transparent;color:var(--ink);letter-spacing:.04em}
+.washi .b.p{background:var(--ink);color:#F3EEE3}
+.washi .lvl i{background:transparent;border:1.5px solid var(--ink);width:10px;height:10px}.washi .lvl i.on{background:var(--ink)}
+.washi .prog{height:2px;background:#CFC4B1}.washi .prog i{background:var(--accent)}
+.washi .diag{background:#EAE2D2}
+.washi .stepno{font-weight:400}
+.washi .hanko{position:absolute;right:64px;top:52px;width:84px;height:84px;border:4px solid var(--accent);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Frank Ruhl Libre";font-size:22px;font-weight:700;line-height:1;text-align:center;transform:rotate(-4deg);opacity:.9}
+.washi .ttl{font-weight:500}
+
+/* ================= 2. CREASE PATTERN ================= */
+.crease{--bg:#12314D;--ink:#EAF1F7;--muted:#A9BED1;--accent:#F2A65A;--f-disp:"IBM Plex Sans Hebrew",sans-serif;--f-body:"IBM Plex Sans Hebrew",sans-serif;--f-lbl:"IBM Plex Mono",monospace;--f-btn:"IBM Plex Mono",monospace;--w-disp:600;
+ --st:#8FD6EA;--sw:2;--wl:none;--wr:none;--bd:rgba(242,166,90,.18);--nk:none;--tl:none;
+ --dp:none;--ds:rgba(143,214,234,.08);--vl:#8FD6EA;--vd:9 6;--ar:#EAF1F7;--sw-border:1px solid rgba(234,241,247,.35)}
+.crease .board{background-image:linear-gradient(rgba(143,214,234,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(143,214,234,.09) 1px,transparent 1px),linear-gradient(rgba(143,214,234,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(143,214,234,.04) 1px,transparent 1px);background-size:80px 80px,80px 80px,16px 16px,16px 16px}
+.crease .num,.crease .meta,.crease .stepno{font-family:"IBM Plex Mono",monospace}
+.crease .num::before{content:"SHEET "}
+.crease .cover,.crease .diag{border:1px solid rgba(143,214,234,.55)}
+.crease .cover::after,.crease .diag::after{content:attr(data-dim);position:absolute;left:10px;bottom:8px;font:12px "IBM Plex Mono";color:var(--muted)}
+.crease .b{border:1.5px solid var(--st);color:var(--st);background:transparent;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.crease .b.p{background:var(--st);color:#12314D}
+.crease .lvl i{width:4px;height:16px;background:rgba(234,241,247,.25)}.crease .lvl i.on{background:var(--st)}
+.crease .prog{height:6px;border:1px solid rgba(143,214,234,.5)}.crease .prog i{background:var(--accent)}
+.crease .stepno{font-size:22px;font-weight:600}
+.crease .cpl{stroke-width:1.2;fill:none}
+.crease .cp-m{stroke:#F2A65A;stroke-dasharray:10 4 2 4}.crease .cp-v{stroke:#8FD6EA;stroke-dasharray:6 5}
+.crease .legend{display:flex;gap:22px;font:13px "IBM Plex Mono";color:var(--muted);margin-top:22px}
+.crease .legend span::before{content:"";display:inline-block;width:34px;margin-inline-end:8px;vertical-align:middle;border-top:2px dashed var(--st)}
+.crease .legend span.m::before{border-top:2px dotted var(--accent)}
+.crease .ttl{font-weight:600}
+
+/* ================= 3. WORKBENCH ================= */
+.bench{--bg:#C9A47C;--ink:#2A1E12;--muted:#4E3B27;--accent:#C0392B;--f-disp:"Secular One",sans-serif;--f-body:"Assistant",sans-serif;--f-btn:"Secular One",sans-serif;--w-disp:400;
+ --st:rgba(42,30,18,.25);--sw:1;--wl:#FFFDF8;--wr:#ECE6DA;--bd:#C0392B;--nk:#FFFDF8;--tl:#ECE6DA;
+ --dp:#FFFDF8;--ds:#E9E2D3;--vl:#2F5D8A;--vd:8 6;--ar:#C0392B}
+.bench .board{background:
+ radial-gradient(circle at 30% 20%,rgba(255,240,210,.25),transparent 55%),
+ repeating-radial-gradient(circle at 70% 80%,rgba(90,60,30,.05) 0 2px,transparent 2px 5px),#C9A47C}
+.bench .num{font-family:"Amatic SC";font-size:40px;opacity:1;color:var(--accent)}
+.bench .tag{color:var(--ink)}
+.bench .scrap{background:#FBF8F1;padding:22px;box-shadow:0 1px 0 rgba(0,0,0,.08),0 10px 22px -10px rgba(60,35,10,.55);position:relative}
+.bench .scrap{align-self:start}
+.bench .card.scrap{transform:rotate(-1.2deg)}
+.bench .step.scrap{transform:rotate(.8deg)}
+.bench .tape{position:absolute;width:120px;height:32px;background:rgba(236,226,170,.78);top:-14px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.bench .tape.l{left:24px;transform:rotate(-6deg)}.bench .tape.r{right:24px;transform:rotate(5deg)}
+.bench .cover{background:#EFE9DC}
+.bench .cover svg,.bench .diag svg{filter:drop-shadow(3px 5px 4px rgba(60,35,10,.35))}
+.bench .b{background:#FBF8F1;color:var(--ink);border:2px solid var(--ink);box-shadow:3px 3px 0 var(--ink);font-weight:400;font-size:20px}
+.bench .b.p{background:var(--accent);color:#fff}
+.bench .lvl i{border-radius:50%;background:transparent;border:2px solid var(--ink)}.bench .lvl i.on{background:var(--accent);border-color:var(--accent)}
+.bench .prog{height:10px;background:repeating-linear-gradient(90deg,#2A1E12 0 1px,transparent 1px 12px),#EFE9DC}.bench .prog i{background:rgba(192,57,43,.8)}
+.bench .note{font-family:"Amatic SC";font-size:34px;color:#2F5D8A;position:absolute;transform:rotate(-6deg)}
+.bench .sw i{box-shadow:0 6px 12px -6px rgba(60,35,10,.6)}
+.bench .meta,.bench .sw small,.bench .lbl{color:#4E3B27}
+.bench .spec .lbl{color:var(--ink)}
+
+/* ================= 4. RISO FOLD ================= */
+.riso{--bg:#F4EEDD;--ink:#22305E;--muted:#4A5478;--accent:#FF48B0;--f-disp:"Rubik Dirt",sans-serif;--f-body:"Rubik",sans-serif;--f-btn:"Rubik",sans-serif;--w-disp:400;
+ --st:none;--sw:0;--dp:#F4EEDD;--ds:rgba(0,120,191,.35);--vl:#FF48B0;--vd:10 7;--ar:#22305E}
+.riso .board{background:#F4EEDD}
+.riso .sw:last-child i{border:2px solid #22305E}
+.riso .grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply}
+.riso .name{color:#0078BF;text-shadow:5px 4px 0 rgba(255,72,176,.85)}
+.riso .num{font-family:"Rubik";font-weight:900;color:#FF48B0;opacity:1}
+.riso .disp{color:#0078BF;text-shadow:4px 3px 0 rgba(255,72,176,.8)}
+.riso .cover,.riso .diag{background:radial-gradient(circle,rgba(255,232,0,.75) 2.2px,transparent 2.6px) 0 0/11px 11px,#FFF6C2}
+.riso .l1{--wl:#0078BF;--wr:#0078BF;--bd:#0078BF;--nk:#0078BF;--tl:#0078BF;mix-blend-mode:multiply;opacity:.9}
+.riso .l2{--wl:#FF48B0;--wr:transparent;--bd:#FF48B0;--nk:transparent;--tl:#FF48B0;mix-blend-mode:multiply;opacity:.9}
+.riso .b{background:#0078BF;color:#fff;box-shadow:4px 4px 0 #FF48B0;font-weight:700}
+.riso .b:not(.p){background:transparent;color:#22305E;border:3px solid #22305E;box-shadow:4px 4px 0 rgba(255,72,176,.7)}
+.riso .lvl i{border-radius:50%;width:16px;height:16px;background:rgba(0,120,191,.2);margin-inline-end:-8px}.riso .lvl i.on{background:#0078BF;mix-blend-mode:multiply}
+.riso .lvl i:nth-child(2).on{background:#FF48B0}
+.riso .lvl{gap:0}.riso .lvl b{margin-inline-start:16px;font-weight:600}
+.riso .prog{height:12px;background:rgba(0,120,191,.15)}.riso .prog i{background:#FF48B0}
+.riso .ttl,.riso .stepno{color:#0078BF}
+.riso .ttl{font-size:40px}
+
+/* ================= 5. KAMI GRID ================= */
+.kami{--bg:#FFFFFF;--ink:#111111;--muted:#4D4D4D;--accent:#E63322;--f-disp:"Heebo",sans-serif;--f-body:"Heebo",sans-serif;--w-disp:900;
+ --st:none;--sw:0;--wl:#1E4FA0;--wr:#2C67C9;--bd:#E63322;--nk:#F7C600;--tl:#1B8A5A;
+ --dp:#F7C600;--ds:#D9AC00;--vl:#111;--vd:12 8;--ar:#111}
+.kami .board{grid-template-columns:470px 1fr 1fr}
+.kami .name{font-size:96px;letter-spacing:-.04em;text-transform:uppercase}
+.kami .num{font-size:96px;font-weight:900;opacity:1;color:var(--accent);letter-spacing:-.05em}
+.kami .hd{border-bottom:6px solid #111;padding-bottom:18px}
+.kami .tag{font-weight:500;color:#111}
+.kami .cover{background:#F1F1EE}
+.kami .sw i{position:relative;overflow:hidden}
+.kami .sw i::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 50%,rgba(0,0,0,.12) 50%)}
+.kami .sw:first-child i{border:1px solid #111}
+.kami .b{background:#111;color:#fff;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.kami .b:not(.p){background:#fff;color:#111;border:3px solid #111}
+.kami .b.p{background:var(--accent)}
+.kami .lvl i{width:14px;height:14px;background:#DDD;clip-path:polygon(0 100%,100% 100%,0 0)}.kami .lvl i.on{background:#111}
+.kami .prog{height:14px;background:#EEE}.kami .prog i{background:#111}
+.kami .bignum{font-family:"Heebo";font-weight:900;font-size:180px;line-height:.8;letter-spacing:-.06em;color:var(--accent)}
+.kami .bignum small{font-size:40px;color:#111;letter-spacing:0;font-weight:800}
+.kami .stephd{align-items:flex-end}
+.kami .ttl{text-transform:uppercase;font-size:40px;letter-spacing:-.02em}
+.kami .instr{font-weight:500}
+.kami .lbl{color:#111;font-weight:800}
+</style></head>
+<body>
+<div class="board" id="b"></div>
+<script>
+var S=new URLSearchParams(location.search).get('style')||'washi';
+document.documentElement.className=S;
+
+var D={
+washi:{n:'01',name:'Washi &amp; Sumi',tag:'Ink on handmade paper. Quiet, unhurried and calm, like a printed folding book.',
+ sw:[['Kozo paper','#F3EEE3'],['Sumi ink','#1C1A17'],['Shu vermilion','#B23A24'],['Tea stone','#655D52'],['Mulberry','#E7DFCF']],
+ lv:'Advanced'},
+crease:{n:'02',name:'Crease Pattern',tag:'The fold itself is the art. Drafting lines, folding notation and a measured, technical calm.',
+ sw:[['Blueprint','#12314D'],['Valley cyan','#8FD6EA'],['Mountain amber','#F2A65A'],['Vellum','#EAF1F7'],['Graphite','#A9BED1']],
+ lv:'LVL 3/3'},
+bench:{n:'#3',name:'Workbench',tag:'A real crafting table: kraft board, taped paper scraps and pencil notes. Warm and hands-on.',
+ sw:[['Kraft board','#C9A47C'],['Scrap paper','#FBF8F1'],['Red pencil','#C0392B'],['Blue pencil','#2F5D8A'],['Masking tape','#ECE2AA']],
+ lv:'Advanced'},
+riso:{n:'04',name:'Riso Fold',tag:'Two-ink risograph print: misregistered layers, halftone dots and grain. Loud, playful, zine-like.',
+ sw:[['Riso blue','#0078BF'],['Fluoro pink','#FF48B0'],['Riso yellow','#FFE800'],['Federal ink','#22305E'],['Newsprint','#F4EEDD']],
+ lv:'Advanced'},
+kami:{n:'05',name:'Kami Grid',tag:'Solid sheets of origami paper on a strict Swiss grid. Bold, flat and confident.',
+ sw:[['White','#FFFFFF'],['Kami red','#E63322'],['Kami blue','#1E4FA0'],['Kami yellow','#F7C600'],['Kami green','#1B8A5A']],
+ lv:'Advanced'}
+}[S];
+
+var CRANE='<path class="p" d="M160 150 L40 96 L130 130 Z" style="fill:var(--wl)"/>'+
+'<path class="p" d="M160 150 L280 96 L190 130 Z" style="fill:var(--wr)"/>'+
+'<path class="p" d="M130 130 L160 188 L190 130 L160 112 Z" style="fill:var(--bd)"/>'+
+'<path class="p" d="M190 130 L236 70 L246 62 L238 84 L204 142 Z" style="fill:var(--nk)"/>'+
+'<path class="p" d="M130 130 L96 176 L84 202 L110 180 L146 146 Z" style="fill:var(--tl)"/>';
+
+function cover(){
+ var extra='';
+ if(S==='crease'){ // crease pattern under the crane
+  extra='<g class="cpl"><rect x="70" y="20" width="180" height="180" style="stroke:rgba(234,241,247,.35);fill:none;stroke-width:1"/>'+
+  '<path class="cp-v" d="M70 20 L250 200 M250 20 L70 200"/><path class="cp-m" d="M160 20 L160 200 M70 110 L250 110"/>'+
+  '<path class="cp-v" d="M160 20 L70 110 L160 200 L250 110 Z"/></g>';
+  return '<svg viewBox="0 0 320 240">'+extra+'<g transform="translate(0,6)">'+CRANE+'</g></svg>';
+ }
+ if(S==='riso') return '<svg viewBox="0 0 320 240"><defs><g id="cr">'+CRANE+'</g></defs><use href="#cr" class="l1"/><use href="#cr" class="l2" transform="translate(7,-5)"/></svg>';
+ var eye=S==='kami'?'':'<circle cx="236" cy="78" r="2.6" fill="var(--ink)"/>';
+ return '<svg viewBox="0 0 320 240">'+CRANE+eye+'</svg>';
+}
+function diagram(){
+ var shade=S==='riso'?'<rect x="94" y="94" width="210" height="72" fill="#0078BF" opacity=".55" style="mix-blend-mode:multiply"/>':'';
+ return '<svg viewBox="0 0 400 250">'+
+ '<rect class="p" x="90" y="20" width="220" height="210" style="fill:var(--dp)"/>'+
+ '<rect x="90" y="125" width="220" height="105" style="fill:var(--ds)"/>'+shade+
+ '<path d="M80 125 H320" style="stroke:var(--vl);stroke-width:3.5;stroke-dasharray:var(--vd)"/>'+
+ '<path d="M200 205 C 240 190, 240 150, 205 138" style="fill:none;stroke:var(--ar);stroke-width:3.5;stroke-linecap:round"/>'+
+ '<path d="M215 132 L203 138 L214 147" style="fill:none;stroke:var(--ar);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round"/>'+
+ '</svg>';
+}
+function lvl(){return '<span class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><b>'+D.lv+'</b></span>'}
+
+var swh=D.sw.map(function(s){return '<div class="sw" style="--c:'+s[1]+'"><i></i><b>'+s[0]+'</b><small>'+s[1]+'</small></div>'}).join('');
+var stepHead=S==='kami'
+ ?'<div class="stephd"><div class="bignum">03<small>/12</small></div></div>'
+ :'<div class="stephd"><span class="stepno">'+(S==='crease'?'STEP 03 / 12':'Step 3 of 12')+'</span><span class="lbl" style="margin:0">Tulip</span></div>';
+
+var html=
+'<header class="hd"><span class="num">'+D.n+'</span><h1 class="name">'+D.name+'</h1><p class="tag">'+D.tag+'</p></header>'+
+'<section class="col spec">'+
+ '<p class="lbl">Palette</p><div class="sws">'+swh+'</div>'+
+ '<p class="lbl">Type</p><div class="disp">Fold a crane<span class="he">לקפל עגור</span></div>'+
+ '<p class="bodytx">Fold the bottom edge up to the middle line, then crease firmly.</p>'+
+ '<p class="bodytx he">קפלו את הקצה התחתון עד קו האמצע, והדגישו את הקיפול.</p>'+
+ '<div class="btns"><span class="b p">Start</span><span class="b">Back</span>'+lvl()+'</div>'+
+ (S==='crease'?'<div class="legend"><span>valley fold</span><span class="m">mountain fold</span></div>':'')+
+'</section>'+
+'<section class="col card'+(S==='bench'?' scrap':'')+'">'+(S==='bench'?'<span class="tape l"></span><span class="tape r"></span>':'')+
+ '<p class="lbl">Catalog card</p><div class="cover" data-dim="15 × 15 cm · 1 sheet">'+cover()+'</div>'+
+ '<div class="ttl">Crane</div><div class="meta">'+lvl()+'<span>1 sheet</span><span>15 min</span><span>18 steps</span></div>'+
+'</section>'+
+'<section class="col step'+(S==='bench'?' scrap':'')+'">'+(S==='bench'?'<span class="tape r"></span>':'')+
+ '<p class="lbl">Folding step</p>'+stepHead+'<div class="prog"><i></i></div>'+
+ '<div class="diag" data-dim="valley fold · 1/2">'+diagram()+'</div>'+
+ '<p class="instr">Fold the bottom edge up to the middle line, then crease firmly.</p>'+
+ '<div class="nav"><span class="b">← Back</span><span class="b p">Next →</span></div>'+
+'</section>';
+
+if(S==='washi')html+='<div class="deco hanko">折<br>紙</div>';
+if(S==='bench')html+='<div class="deco note" style="left:1150px;top:790px">↑ crease it hard!</div>';
+if(S==='riso')html+='<svg class="deco grain" width="1600" height="1000"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .2  0 0 0 0 .2  0 0 0 0 .3  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>';
+document.getElementById('b').innerHTML=html;
+</script>
+</body></html>
