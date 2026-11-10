@@ -401,4 +401,4 @@ See `docs/open-questions.md`. Q-1..Q-7 are resolved (owner chose option A/B as r
 
 ## 13. Approval
 
-Decision: pending owner sign-off after review of the 2 sample SVGs (Q-7). Not approved. Design outputs are in `docs/design/`.
+Decision: pending owner sign-off after review of the 2 sample SVGs (Q-7). Not approved. Design outputs are in `docs/design/` (final style and demo; older mockups in `docs/design/archive/`).

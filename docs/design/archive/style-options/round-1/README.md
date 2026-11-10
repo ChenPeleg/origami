@@ -2,7 +2,7 @@
 
 Status: **archived**. The owner chose option 3, **Workbench**. The four options below are kept for reference only. They are not planned work.
 
-The current proposal (Workbench and its variations) is in [../README.md](../README.md).
+The final style is described in [docs/design/README.md](../../../README.md). Round 2 (the Workbench variations) is in [../round-2/](../round-2/README.md).
 
 ## Why a new style
 
@@ -27,7 +27,7 @@ Each image is a 1600×1000 board with the same content:
 |---|---|---|---|---|---|
 | 1 | Washi & Sumi | Ink on handmade paper | calm, crafted, adult | [01-washi-sumi.png](01-washi-sumi.png) | archived |
 | 2 | Crease Pattern | The fold diagram is the brand | precise, technical, nerdy | [02-crease-pattern.png](02-crease-pattern.png) | archived |
-| 3 | Workbench | A crafting table with taped scraps | warm, tactile, hands-on | [../03-workbench.png](../03-workbench.png) | **chosen** |
+| 3 | Workbench | A crafting table with taped scraps | warm, tactile, hands-on | [../round-2/03-workbench.png](../round-2/03-workbench.png) | **chosen** |
 | 4 | Riso Fold | Two-ink risograph zine | loud, playful, young | [04-riso-fold.png](04-riso-fold.png) | archived |
 | 5 | Kami Grid | Solid origami sheets on a Swiss grid | bold, flat, confident | [05-kami-grid.png](05-kami-grid.png) | archived |
 
@@ -113,4 +113,4 @@ Each image is a 1600×1000 board with the same content:
 ## Sources and re-rendering
 
 - Source of the original five boards: `src/board.html?style=washi|crease|bench|riso|kami` (in this archive folder). It loads its fonts from Google Fonts.
-- Re-render from the repo root in PowerShell: `& .\docs\design-options\archive\src\render.ps1` (headless Edge, 1600×1000). The four archived boards are written to this folder. The Workbench board is written one level up, where it lives now.
+- Re-render from the repo root in PowerShell: `& .\docs\design\archive\style-options\round-1\src\render.ps1` (headless Edge, 1600×1000). The four archived boards are written to this folder. The Workbench board is written to `../round-2/`.

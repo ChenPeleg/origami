@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Origami – Birch & Washi demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;600;700&family=Secular+One&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   Origami – style demo: Workbench 3C "Birch & Washi"
+   One file, no build step. Tokens first, then components, then screens.
+   Mobile first; the desktop layout starts at 760px.
+   ===================================================================== */
+:root{
+  /* table */
+  --table:#E9D6B4; --on:#2B2118; --on-muted:#55432F;
+  /* paper scraps */
+  --scrap:#FFFDF8; --cbg:#F3EEE2; --ink:#2B2118; --muted:#55432F;
+  /* marks */
+  --accent:#C8452A;      /* coral: actions, progress, arrows */
+  --pencil:#1F7A7A;      /* teal: fold lines, handwritten tips */
+  --mustard:#E8B94A;     /* decoration only, never text */
+  --drop:rgba(90,60,25,.45);
+  /* type */
+  --f-display:"Secular One","Assistant",system-ui,sans-serif;
+  --f-body:"Assistant",system-ui,"Segoe UI",Arial,sans-serif;
+  --f-hand:"Amatic SC","Assistant",cursive;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;color:var(--on);font:400 18px/1.55 var(--f-body);
+  background:radial-gradient(ellipse 90% 60% at 25% 0%,rgba(255,255,255,.38),transparent 65%) fixed,var(--table)}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+svg{display:block}
+:focus-visible{outline:3px solid var(--pencil);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:8px;top:-60px;z-index:30;background:var(--scrap);color:var(--ink);padding:8px 14px;border:2px solid var(--ink)}
+.skip:focus{top:8px}
+
+/* ---------- buttons: cut card with a hard offset shadow ---------- */
+.b{min-height:48px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;
+  font:400 19px/1 var(--f-display);text-decoration:none;white-space:nowrap;
+  background:var(--scrap);color:var(--ink);border:2px solid var(--ink);border-radius:0;box-shadow:3px 3px 0 var(--ink)}
+.b.p{background:var(--accent);color:#fff}
+.b:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.b:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.b[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:3px 3px 0 var(--ink)}
+.b.sm{min-height:44px;padding:0 14px;font-size:16px}
+
+/* ---------- paper scrap + washi tape ---------- */
+.scrap{position:relative;background:var(--scrap);color:var(--ink);padding:20px;
+  box-shadow:0 1px 0 rgba(0,0,0,.08),0 12px 24px -12px var(--drop)}
+.tape{position:absolute;top:-14px;width:112px;height:28px;opacity:.93;pointer-events:none;box-shadow:0 2px 3px rgba(60,35,10,.18);
+  clip-path:polygon(0 0,100% 0,97% 25%,100% 50%,97% 75%,100% 100%,0 100%,3% 75%,0 50%,3% 25%)}
+.tape.l{left:18px;transform:rotate(-6deg)}
+.tape.r{right:18px;transform:rotate(5deg)}
+.tape.c{left:calc(50% - 56px);transform:rotate(-2deg)}
+.w1{background:repeating-linear-gradient(45deg,#E9805F 0 8px,#F7CDBB 8px 16px)}
+.w2{background:radial-gradient(#FFFDF8 2.6px,transparent 3.1px) 0 0/13px 13px,#3A9A97}
+.w3{background:repeating-linear-gradient(90deg,#E8B94A 0 12px,#F4D98F 12px 16px)}
+
+.lbl{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hand{font:700 30px/1.1 var(--f-hand);color:var(--pencil)}
+.lvl{display:inline-flex;align-items:center;gap:5px;font-weight:600}
+.lvl i{width:11px;height:11px;border-radius:50%;border:2px solid var(--accent)}
+.lvl i.on{background:var(--accent)}
+.lvl b{margin-inline-start:3px;font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:16px;color:var(--muted);list-style:none;padding:0;margin:0}
+
+/* ---------- navigation ---------- */
+.bar{position:sticky;top:0;z-index:20;background:var(--scrap);color:var(--ink);border-bottom:2px solid var(--ink);
+  box-shadow:0 8px 16px -10px var(--drop)}
+.bar-in{max-width:1120px;margin:0 auto;padding:0 16px;min-height:60px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font:400 26px/1 var(--f-display);text-decoration:none;margin-inline-end:auto;min-height:44px}
+.brand svg{width:34px;height:34px}
+.links{display:none;list-style:none;margin:0;padding:0}
+.links a{display:flex;align-items:center;min-height:44px;padding:0 14px;font:400 18px var(--f-display);text-decoration:none;position:relative}
+.links a[aria-current="page"]::after{content:"";position:absolute;inset-inline:10px;bottom:4px;height:8px;opacity:.9;
+  background:repeating-linear-gradient(45deg,#E9805F 0 6px,#F7CDBB 6px 12px)}
+.links a:hover{color:var(--accent)}
+.menu-btn{width:48px;padding:0}
+.menu-btn svg{width:22px;height:22px}
+.bar.open .links{display:block;position:absolute;top:100%;inset-inline:0;background:var(--scrap);border-bottom:2px solid var(--ink);
+  padding:8px 16px 14px;box-shadow:0 14px 18px -12px var(--drop)}
+.bar.open .links a{min-height:52px;font-size:21px;border-bottom:1px dashed rgba(43,33,24,.25)}
+
+/* ---------- page frame ---------- */
+main{flex:1;width:100%;max-width:1120px;margin:0 auto;padding:28px 16px 56px}
+h1{font:400 clamp(34px,7vw,58px)/1.05 var(--f-display)}
+h1:focus{outline:none}
+.lead{font-size:20px;color:var(--on-muted);max-width:44ch;margin-top:8px}
+.head{margin-bottom:34px}
+.crumb{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:600;color:var(--on-muted);text-decoration:none;margin-bottom:4px}
+.crumb:hover{color:var(--accent)}
+footer{padding:18px 16px 26px;text-align:center;font-size:15px;color:var(--on-muted)}
+
+/* ---------- catalog ---------- */
+.grid{display:grid;grid-template-columns:1fr;gap:38px 30px;list-style:none;padding:0;margin:0}
+.card{display:block;text-decoration:none;height:100%}
+.card:hover .ttl{color:var(--accent)}
+.cover{aspect-ratio:4/3;background:var(--cbg);overflow:hidden}
+.cover svg{width:100%;height:100%}
+.ttl{font:400 30px/1.1 var(--f-display);margin:16px 0 6px}
+.desc{color:var(--muted);margin-bottom:12px}
+.resume{display:inline-block;margin-top:12px;font:700 26px/1 var(--f-hand);color:var(--pencil)}
+
+/* ---------- search ---------- */
+.search{display:flex;gap:12px;margin-bottom:30px;max-width:560px}
+.search input{flex:1;min-width:0;min-height:48px;padding:0 14px;font:400 19px var(--f-body);color:var(--ink);
+  background:var(--scrap);border:2px solid var(--ink);border-radius:0;box-shadow:inset 2px 2px 0 rgba(43,33,24,.08)}
+.empty{display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 0;text-align:center}
+.empty svg{width:250px;max-width:80%}
+
+/* ---------- guide overview ---------- */
+.over{display:grid;gap:30px}
+.need{margin:18px 0 22px;padding:0;list-style:none}
+.need li{padding:8px 0;border-bottom:1px dashed rgba(43,33,24,.3);display:flex;gap:10px}
+.need li::before{content:"";flex:none;width:14px;height:14px;margin-top:7px;background:var(--pencil);clip-path:polygon(0 0,100% 0,0 100%)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* ---------- folding step ---------- */
+.stephd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.stepno{font:400 28px/1 var(--f-display)}
+.prog{height:12px;margin-bottom:18px;position:relative;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 12px),var(--cbg)}
+.prog i{position:absolute;inset-block:0;inset-inline-start:0;background:var(--accent);opacity:.85;transition:width .25s}
+.stepbody{display:grid;gap:18px}
+.diag{background:var(--cbg);aspect-ratio:4/3;direction:ltr}   /* fold diagrams never mirror in RTL */
+.diag svg{width:100%;height:100%}
+.instr{font-size:21px;line-height:1.5}
+.tip{margin-top:12px;transform:rotate(-2deg);transform-origin:0 50%}
+[dir=rtl] .tip{transform:rotate(2deg);transform-origin:100% 50%}
+.key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;padding:12px 0 0;border-top:1px dashed rgba(43,33,24,.3);font-size:15px;color:var(--muted);list-style:none}
+.key li{display:flex;align-items:center;gap:8px}
+.key svg{width:44px;height:12px}
+.nav2{display:flex;gap:14px;margin-top:20px}
+.nav2 .b{flex:1}
+.jump{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 0;padding:0;list-style:none}
+.jump a{width:44px;height:44px;display:grid;place-items:center;text-decoration:none;font:400 17px var(--f-display);
+  background:var(--scrap);color:var(--ink);border:2px solid var(--ink)}
+.jump a.done{background:var(--cbg)}
+.jump a[aria-current="step"]{background:var(--pencil);color:#fff}
+
+/* ---------- completed ---------- */
+.done-wrap{max-width:560px;margin:0 auto;text-align:center}
+.done-wrap .cover{margin:14px 0 18px}
+.done-wrap .actions{justify-content:center;margin-top:22px}
+
+/* fold-diagram drawing rules */
+.pp{stroke:rgba(42,30,18,.4);stroke-width:1.2;stroke-linejoin:round}
+.f-back{fill:#FFFDF8}.f-backsh{fill:#EFE8D8}
+.f-front{fill:var(--pf)}.f-flap{fill:var(--pfl)}
+.valley{stroke:var(--pencil);stroke-width:3.2;stroke-dasharray:9 6;fill:none}
+.mountain{stroke:var(--pencil);stroke-width:3.2;stroke-dasharray:14 5 2 5 2 5;fill:none}
+.arrow{stroke:var(--accent);stroke-width:3.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.arrow.behind{stroke-dasharray:1 7}
+.shadow{filter:drop-shadow(3px 5px 4px rgba(60,35,10,.3))}
+
+/* ---------- desktop ---------- */
+@media (min-width:760px){
+  main{padding:44px 32px 80px}
+  .bar-in{padding:0 32px;min-height:68px}
+  .menu-btn{display:none}
+  .links,.bar.open .links{display:flex;position:static;gap:4px;padding:0;border:0;box-shadow:none;background:none}
+  .bar.open .links a,.links a{min-height:44px;font-size:18px;border:0}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:48px 44px}
+  .scrap{padding:24px}
+  .over{grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .stepwrap{max-width:980px;margin:0 auto}
+  .stepbody{grid-template-columns:1.15fr 1fr;gap:28px;align-items:start}
+  .tape{width:140px;height:30px;top:-15px}
+  .tape.c{left:calc(50% - 70px)}
+}
+/* rotation is decoration: only on large screens, and only if motion is welcome */
+@media (min-width:760px) and (prefers-reduced-motion:no-preference){
+  .grid li:nth-child(odd) .scrap{transform:rotate(-1.1deg)}
+  .grid li:nth-child(even) .scrap{transform:rotate(.9deg)}
+  .over .scrap{transform:rotate(-1deg)}
+  .grid li .scrap{transition:transform .15s}
+  .grid li:hover .scrap{transform:rotate(0)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" id="skip"></a>
+<header class="bar" id="bar">
+  <div class="bar-in">
+    <a class="brand" href="#/" id="brand">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M3 31V5l26 26z" fill="#C8452A"/><path d="M3 5h26v26z" fill="#1F7A7A"/><path d="M3 5l13 13V5z" fill="#E8B94A"/></svg>
+      <span id="brand-t"></span>
+    </a>
+    <nav id="nav"><ul class="links" id="links"></ul></nav>
+    <button class="b sm" id="lang" type="button"></button>
+    <button class="b sm menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="links">
+      <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M2 5h18M2 11h18M2 17h18" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main"></main>
+<footer id="foot"></footer>
+
+<script>
+/* ====================== content ====================== */
+var T = {
+  en:{brand:'Origami',catalog:'Catalog',search:'Search',langBtn:'עברית',langLabel:'Switch to Hebrew',menu:'Menu',skip:'Skip to content',
+    catTitle:'Pick something to fold',catLead:'Two guides to start with. One square sheet of paper is all you need.',
+    easy:'Easy',sheet:'1 sheet',min:'min',steps:'steps',resume:'continue from step',
+    sTitle:'Search guides',sLabel:'Search by name',sPh:'cup, puppy…',sNone:'No guides found. Try another word.',sHint:'Type a name to find a guide.',
+    back2cat:'All guides',need:'What you need',need1:'One square sheet, about 15 × 15 cm',need2:'A flat, hard table',need3:'A pen, for the last step',needCup:'Wax or baking paper, if it should hold water',
+    start:'Start folding',cont:'Continue',restart:'Start over',step:'Step',of:'of',back:'Back',next:'Next',finish:'Finish',
+    valley:'valley fold (towards you)',mountain:'mountain fold (away from you)',dir:'fold direction',jump:'Jump to a step',
+    doneT:'Well done!',doneL:'You folded the',doneHand:'made by hand',again:'Fold it again',other:'Choose another guide',
+    foot:'Style demo: Workbench 3C, Birch & Washi. All content is sample data.',diagAlt:'Fold diagram'},
+  he:{brand:'אוריגמי',catalog:'קטלוג',search:'חיפוש',langBtn:'English',langLabel:'מעבר לאנגלית',menu:'תפריט',skip:'דילוג לתוכן',
+    catTitle:'בחרו מה לקפל',catLead:'שני מדריכים להתחלה. כל מה שצריך הוא דף נייר מרובע אחד.',
+    easy:'קל',sheet:'דף אחד',min:'דק׳',steps:'שלבים',resume:'להמשיך משלב',
+    sTitle:'חיפוש מדריכים',sLabel:'חיפוש לפי שם',sPh:'כוס, כלבלב…',sNone:'לא נמצאו מדריכים. נסו מילה אחרת.',sHint:'הקלידו שם כדי למצוא מדריך.',
+    back2cat:'כל המדריכים',need:'מה צריך',need1:'דף מרובע אחד, בערך 15 × 15 ס״מ',need2:'שולחן ישר וקשיח',need3:'עט, לשלב האחרון',needCup:'נייר אפייה או נייר שעווה, אם רוצים שיחזיק מים',
+    start:'להתחיל לקפל',cont:'להמשיך',restart:'להתחיל מחדש',step:'שלב',of:'מתוך',back:'הקודם',next:'הבא',finish:'סיום',
+    valley:'קיפול עמק (אליכם)',mountain:'קיפול הר (מכם והלאה)',dir:'כיוון הקיפול',jump:'קפיצה לשלב',
+    doneT:'כל הכבוד!',doneL:'קיפלתם את',doneHand:'עבודת יד',again:'לקפל שוב',other:'לבחור מדריך אחר',
+    foot:'הדגמת סגנון: Workbench 3C, Birch & Washi. כל התוכן הוא נתוני דוגמה.',diagAlt:'תרשים קיפול'}
+};
+
+/* Fold geometry. Units: 1 = half the diagonal of the sheet, y points up.
+   Each diagram has a scale `s` and an origin `o` inside a 400 x 300 viewBox. */
+var k = 0.4142, h = 0.5858, d = 0.1716;            /* paper-cup construction points */
+var A=[-1,0], B=[1,0], C=[0,1], D=[d,0], D2=[-d,0], E=[k,h], P=[-k,h];
+var F2 = {s:170,o:[200,245]};
+/* puppy: triangle pointing down, tip at 0,0 */
+var a=[-1,1], b=[1,1], c=[0,0], tl=[-.15,1], tr=[.15,1], sl=[-.7,.7], sr=[.7,.7], el=[-.61,.286], er=[.61,.286], cl=[-.18,.18], cr=[.18,.18];
+var G2 = {s:170,o:[200,255]};
+var DIAMOND = [[0,1],[1,0],[0,-1],[-1,0]];
+
+var GUIDES = [
+ {id:'cup', tape:'w2', pf:'#4FA9A5', pfl:'#3A9390', min:5,
+  name:{en:'Paper Cup',he:'כוס נייר'},
+  desc:{en:'A real cup that holds water. Five folds, no cutting.',he:'כוס אמיתית שמחזיקה מים. חמישה קיפולים, בלי גזירה.'},
+  alt:{en:'A folded paper cup, wide at the top, with a white flap folded over the front.',he:'כוס נייר מקופלת, רחבה למעלה, עם דש לבן מקופל מלפנים.'},
+  final:{s:300,o:[200,238],sh:[['poly',[D2,D,E,P],'front'],['poly',[D,E,P],'flap'],['poly',[D2,P,E],'flap'],['poly',[P,E,[0,d]],'back']]},
+  steps:[
+   {en:'Place the paper with one corner pointing at you, colored side down. Fold the bottom corner up to the top corner.',
+    he:'הניחו את הנייר כשפינה אחת פונה אליכם והצד הצבעוני למטה. קפלו את הפינה התחתונה אל הפינה העליונה.',
+    tip:{en:'corner to corner!',he:'פינה לפינה!'},
+    d:{s:112,o:[200,150],sh:[['poly',DIAMOND,'back'],['poly',[[-1,0],[1,0],[0,-1]],'backsh'],['valley',[-1.12,0],[1.12,0]],['arrow',[0,-.82],[0,.82],.35]]}},
+   {en:'Fold the right corner across to the left edge. The top edge of the flap should lie flat, parallel to the bottom.',
+    he:'קפלו את הפינה הימנית אל הצלע השמאלית. הקצה העליון של הדש צריך להיות ישר, מקביל לתחתית.',
+    tip:{en:'keep it level',he:'לשמור על קו ישר'},
+    d:{s:F2.s,o:F2.o,sh:[['poly',[A,B,C],'front'],['valley',[.13,-.1],[.455,.686]],['arrow',[.93,.06],[-.36,.6],.3],['dot',P]]}},
+   {en:'Fold the left corner across to the right corner of the shape, over the first flap.',
+    he:'קפלו את הפינה השמאלית אל הפינה הימנית של הצורה, מעל הדש הראשון.',
+    tip:{en:'crease it hard!',he:'להדק חזק!'},
+    d:{s:F2.s,o:F2.o,sh:[['poly',[A,D,E,C],'front'],['poly',[D,E,P],'flap'],['valley',[-.13,-.1],[-.455,.686]],['arrow',[-.93,.06],[.36,.6],-.3],['dot',E]]}},
+   {en:'Fold the front top corner down over the flaps.',
+    he:'קפלו את הפינה העליונה הקדמית כלפי מטה, מעל הדשים.',
+    tip:{en:'one layer only',he:'רק שכבה אחת'},
+    d:{s:230,o:[200,262],sh:[['poly',[D2,D,E,C,P],'front'],['poly',[D,E,P],'flap'],['poly',[D2,P,E],'flap'],['valley',[-.52,h],[.52,h]],['arrow',[.06,.93],[.03,.24],-.4]]}},
+   {en:'Fold the other top corner down behind. Then open the cup from the top.',
+    he:'קפלו את הפינה העליונה השנייה לאחור. אחר כך פתחו את הכוס מלמעלה.',
+    tip:{en:'this one goes behind',he:'הפעם לאחור'},
+    d:{s:230,o:[200,262],sh:[['poly',[P,E,C],'front'],['poly',[D2,D,E,P],'front'],['poly',[D,E,P],'flap'],['poly',[D2,P,E],'flap'],['poly',[P,E,[0,d]],'back'],['mountain',[-.52,h],[.52,h]],['behind',[.08,.95],[.62,.4],-.45]]}}
+  ]},
+ {id:'puppy', tape:'w1', pf:'#EE8D6C', pfl:'#DC7350', min:3,
+  name:{en:'Puppy Face',he:'פרצוף כלבלב'},
+  desc:{en:'A friendly puppy in four folds. A great first model for children.',he:'כלבלב חמוד בארבעה קיפולים. מודל ראשון מצוין לילדים.'},
+  alt:{en:'A folded paper puppy face with two floppy ears, two eyes and a nose.',he:'פרצוף כלבלב מנייר מקופל, עם שתי אוזניים שמוטות, שתי עיניים ואף.'},
+  final:{s:215,o:[200,268],sh:[['poly',[tl,tr,sr,cr,cl,sl],'front'],['poly',[tl,sl,el],'flap'],['poly',[tr,sr,er],'flap'],['eye',[-.24,.62]],['eye',[.24,.62]],['nose',[0,.3]]]},
+  steps:[
+   {en:'Place the paper with one corner pointing at you, colored side down. Fold the top corner down to the bottom corner.',
+    he:'הניחו את הנייר כשפינה אחת פונה אליכם והצד הצבעוני למטה. קפלו את הפינה העליונה אל הפינה התחתונה.',
+    tip:{en:'corner to corner!',he:'פינה לפינה!'},
+    d:{s:112,o:[200,150],sh:[['poly',DIAMOND,'back'],['poly',[[-1,0],[1,0],[0,-1]],'backsh'],['valley',[-1.12,0],[1.12,0]],['arrow',[0,.82],[0,-.82],-.35]]}},
+   {en:'Fold both side corners down to make the ears. Let them stick out a little.',
+    he:'קפלו את שתי הפינות הצדדיות כלפי מטה כדי ליצור אוזניים. תנו להן לבלוט מעט.',
+    tip:{en:'floppy ears!',he:'אוזניים שמוטות!'},
+    d:{s:G2.s,o:G2.o,sh:[['poly',[a,b,c],'front'],['valley',[-.04,1.06],[-.81,.64]],['valley',[.04,1.06],[.81,.64]],['arrow',[-.9,.93],[-.6,.36],-.45],['arrow',[.9,.93],[.6,.36],.45]]}},
+   {en:'Fold the bottom tip behind to make a flat chin.',
+    he:'קפלו את הקצה התחתון לאחור כדי ליצור סנטר ישר.',
+    tip:{en:'a mountain fold',he:'זה קיפול הר'},
+    d:{s:G2.s,o:G2.o,sh:[['poly',[tl,tr,sr,c,sl],'front'],['poly',[tl,sl,el],'flap'],['poly',[tr,sr,er],'flap'],['mountain',[-.36,.18],[.36,.18]],['behind',[.05,.02],[.42,.34],.6]]}},
+   {en:'Draw two eyes and a nose. Your puppy is ready!',
+    he:'ציירו שתי עיניים ואף. הכלבלב מוכן!',
+    tip:{en:'now give it a name',he:'עכשיו תנו לו שם'},
+    d:{s:215,o:[200,268],sh:[['poly',[tl,tr,sr,cr,cl,sl],'front'],['poly',[tl,sl,el],'flap'],['poly',[tr,sr,er],'flap'],['eye',[-.24,.62]],['eye',[.24,.62]],['nose',[0,.3]]]}}
+  ]}
+];
+
+/* ====================== state ====================== */
+var store = {
+  get:function(key,def){try{var v=localStorage.getItem('origami-demo-'+key);return v===null?def:JSON.parse(v)}catch(e){return def}},
+  set:function(key,v){try{localStorage.setItem('origami-demo-'+key,JSON.stringify(v))}catch(e){}}
+};
+var lang = store.get('lang','en') === 'he' ? 'he' : 'en';
+var progress = store.get('progress',{}) || {};
+var query = '';
+function t(key){return T[lang][key]}
+function esc(s){return String(s).replace(/[&<>"]/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
+function guide(id){for(var i=0;i<GUIDES.length;i++)if(GUIDES[i].id===id)return GUIDES[i];return null}
+
+/* ====================== drawing ====================== */
+function draw(dg, g, label){
+  function X(p){return [dg.o[0]+p[0]*dg.s, dg.o[1]-p[1]*dg.s]}
+  function f(n){return n.toFixed(1)}
+  function arrow(p,q,bend,cls){
+    var s=X(p), e=X(q), mx=(s[0]+e[0])/2, my=(s[1]+e[1])/2, dx=e[0]-s[0], dy=e[1]-s[1];
+    var cx=mx-dy*bend, cy=my+dx*bend, ang=Math.atan2(e[1]-cy,e[0]-cx), L=13, w=.5;
+    var h1=[e[0]-L*Math.cos(ang-w),e[1]-L*Math.sin(ang-w)], h2=[e[0]-L*Math.cos(ang+w),e[1]-L*Math.sin(ang+w)];
+    return '<path class="arrow '+cls+'" d="M'+f(s[0])+' '+f(s[1])+' Q'+f(cx)+' '+f(cy)+' '+f(e[0])+' '+f(e[1])+'"/>'+
+           '<path class="arrow" d="M'+f(h1[0])+' '+f(h1[1])+' L'+f(e[0])+' '+f(e[1])+' L'+f(h2[0])+' '+f(h2[1])+'"/>';
+  }
+  var paper='', marks='';
+  dg.sh.forEach(function(sh){
+    var p;
+    switch(sh[0]){
+      case 'poly': paper+='<polygon class="pp f-'+sh[2]+'" points="'+sh[1].map(function(q){q=X(q);return f(q[0])+','+f(q[1])}).join(' ')+'"/>';break;
+      case 'valley': case 'mountain': var s=X(sh[1]),e=X(sh[2]); marks+='<path class="'+sh[0]+'" d="M'+f(s[0])+' '+f(s[1])+' L'+f(e[0])+' '+f(e[1])+'"/>';break;
+      case 'arrow': marks+=arrow(sh[1],sh[2],sh[3],'');break;
+      case 'behind': marks+=arrow(sh[1],sh[2],sh[3],'behind');break;
+      case 'dot': p=X(sh[1]); marks+='<circle cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="5" fill="none" stroke="#C8452A" stroke-width="2.5"/>';break;
+      case 'eye': p=X(sh[1]); marks+='<circle cx="'+f(p[0])+'" cy="'+f(p[1])+'" r="'+f(dg.s*.045)+'" fill="#2B2118"/>';break;
+      case 'nose': p=X(sh[1]); marks+='<ellipse cx="'+f(p[0])+'" cy="'+f(p[1])+'" rx="'+f(dg.s*.085)+'" ry="'+f(dg.s*.06)+'" fill="#2B2118"/>';break;
+    }
+  });
+  return '<svg viewBox="0 0 400 300" role="img" aria-label="'+esc(label)+'" style="--pf:'+g.pf+';--pfl:'+g.pfl+'"><g class="shadow">'+paper+'</g>'+marks+'</svg>';
+}
+function level(){return '<span class="lvl"><i class="on"></i><i></i><i></i><b>'+t('easy')+'</b></span>'}
+function meta(g){return '<ul class="meta"><li>'+level()+'</li><li>'+t('sheet')+'</li><li>'+g.min+' '+t('min')+'</li><li>'+g.steps.length+' '+t('steps')+'</li></ul>'}
+function tapes(g,two){return two?'<span class="tape l '+g.tape+'"></span><span class="tape r w3"></span>':'<span class="tape c '+g.tape+'"></span>'}
+function card(g,i){
+  var pr=progress[g.id];
+  return '<li><a class="card scrap" href="#/guide/'+g.id+'">'+tapes(g,i%2===0)+
+    '<div class="cover">'+draw(g.final,g,g.alt[lang])+'</div>'+
+    '<h2 class="ttl">'+esc(g.name[lang])+'</h2><p class="desc">'+esc(g.desc[lang])+'</p>'+meta(g)+
+    (pr?'<span class="resume">'+t('resume')+' '+pr+' →</span>'.replace('→',lang==='he'?'←':'→'):'')+'</a></li>';
+}
+
+/* ====================== screens ====================== */
+function vCatalog(){
+  return '<div class="head"><h1 tabindex="-1">'+t('catTitle')+'</h1><p class="lead">'+t('catLead')+'</p></div>'+
+    '<ul class="grid">'+GUIDES.map(card).join('')+'</ul>';
+}
+function results(){
+  var q=query.trim().toLowerCase();
+  if(!q) return '<div class="empty">'+rolls()+'<p class="hand">'+t('sHint')+'</p></div>';
+  var hit=GUIDES.filter(function(g){return (g.name.en+' '+g.name.he+' '+g.desc.en+' '+g.desc.he).toLowerCase().indexOf(q)>-1});
+  if(!hit.length) return '<div class="empty">'+rolls()+'<p class="hand">'+t('sNone')+'</p></div>';
+  return '<ul class="grid">'+hit.map(card).join('')+'</ul>';
+}
+function rolls(){
+  function roll(x,fill){return '<g transform="translate('+x+',70)"><circle r="58" fill="rgba(90,60,25,.25)" cx="5" cy="8"/><circle r="56" fill="'+fill+'"/><circle r="56" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="5" stroke-dasharray="5 11"/><circle r="34" fill="#D9C7A6"/><circle r="29" fill="#E9D6B4"/></g>'}
+  return '<svg viewBox="0 0 330 150" aria-hidden="true">'+roll(66,'#E9805F')+roll(176,'#3A9A97')+roll(268,'#E8B94A')+'</svg>';
+}
+function vSearch(){
+  return '<div class="head"><h1 tabindex="-1">'+t('sTitle')+'</h1></div>'+
+    '<form class="search" role="search" onsubmit="return false"><label class="sr" for="q">'+t('sLabel')+'</label>'+
+    '<input id="q" type="search" autocomplete="off" placeholder="'+esc(t('sPh'))+'" value="'+esc(query)+'"></form>'+
+    '<div id="results" aria-live="polite">'+results()+'</div>';
+}
+function crumb(href,label){return '<a class="crumb" href="'+href+'"><span aria-hidden="true">'+(lang==='he'?'→':'←')+'</span> '+esc(label)+'</a>'}
+function vGuide(g){
+  var pr=progress[g.id];
+  return crumb('#/',t('back2cat'))+
+   '<div class="over"><div class="scrap">'+tapes(g,true)+'<div class="cover">'+draw(g.final,g,g.alt[lang])+'</div></div>'+
+   '<div><h1 tabindex="-1">'+esc(g.name[lang])+'</h1><p class="lead" style="margin-bottom:14px">'+esc(g.desc[lang])+'</p>'+meta(g)+
+   '<h2 class="lbl" style="margin-top:30px;color:var(--on-muted)">'+t('need')+'</h2>'+
+   '<ul class="need"><li>'+t('need1')+'</li><li>'+t('need2')+'</li><li>'+(g.id==='cup'?t('needCup'):t('need3'))+'</li></ul>'+
+   '<div class="actions">'+
+     (pr?'<a class="b p" href="#/guide/'+g.id+'/step/'+pr+'">'+t('cont')+' · '+t('step')+' '+pr+'</a><a class="b" href="#/guide/'+g.id+'/step/1" data-restart="'+g.id+'">'+t('restart')+'</a>'
+        :'<a class="b p" href="#/guide/'+g.id+'/step/1">'+t('start')+'</a>')+
+   '</div></div></div>';
+}
+function vStep(g,n){
+  var N=g.steps.length, s=g.steps[n-1], rtl=lang==='he', base='#/guide/'+g.id;
+  var label=t('step')+' '+n+' '+t('of')+' '+N;
+  var jump=''; for(var i=1;i<=N;i++) jump+='<li><a href="'+base+'/step/'+i+'"'+(i===n?' aria-current="step"':'')+(i<n?' class="done"':'')+' aria-label="'+t('step')+' '+i+'">'+i+'</a></li>';
+  return crumb(base,g.name[lang])+
+   '<div class="stepwrap"><div class="scrap"><span class="tape r w3"></span>'+
+    '<div class="stephd"><h1 class="stepno" tabindex="-1">'+label+'</h1><span class="lbl">'+esc(g.name[lang])+'</span></div>'+
+    '<div class="prog" role="progressbar" aria-valuemin="1" aria-valuemax="'+N+'" aria-valuenow="'+n+'" aria-label="'+label+'"><i style="width:'+(n/N*100)+'%"></i></div>'+
+    '<div class="stepbody"><div class="diag">'+draw(s.d,g,t('diagAlt')+': '+s[lang])+'</div>'+
+     '<div><p class="instr">'+esc(s[lang])+'</p><p class="hand tip">'+esc(s.tip[lang])+'</p>'+
+      '<div class="nav2">'+
+        (n>1?'<a class="b" href="'+base+'/step/'+(n-1)+'" id="prev"><span aria-hidden="true">'+(rtl?'→':'←')+'</span> '+t('back')+'</a>'
+            :'<button class="b" disabled><span aria-hidden="true">'+(rtl?'→':'←')+'</span> '+t('back')+'</button>')+
+        '<a class="b p" id="next" href="'+(n<N?base+'/step/'+(n+1):base+'/done')+'">'+(n<N?t('next'):t('finish'))+' <span aria-hidden="true">'+(rtl?'←':'→')+'</span></a>'+
+      '</div>'+
+      '<ul class="key">'+
+       '<li><svg viewBox="0 0 44 12" aria-hidden="true"><path class="valley" d="M1 6H43"/></svg>'+t('valley')+'</li>'+
+       '<li><svg viewBox="0 0 44 12" aria-hidden="true"><path class="mountain" d="M1 6H43"/></svg>'+t('mountain')+'</li>'+
+       '<li><svg viewBox="0 0 44 12" aria-hidden="true"><path class="arrow" d="M2 6H40M33 1l7 5-7 5"/></svg>'+t('dir')+'</li>'+
+      '</ul></div></div></div>'+
+    '<nav aria-label="'+t('jump')+'"><ul class="jump">'+jump+'</ul></nav></div>';
+}
+function vDone(g){
+  return '<div class="done-wrap"><div class="scrap"><span class="tape l w1"></span><span class="tape r w2"></span>'+
+    '<h1 tabindex="-1">'+t('doneT')+'</h1><p class="lead" style="margin-inline:auto;color:var(--muted)">'+t('doneL')+' '+esc(g.name[lang])+'.</p>'+
+    '<div class="cover">'+draw(g.final,g,g.alt[lang])+'</div><p class="hand">'+t('doneHand')+' ♥</p></div>'+
+    '<div class="actions"><a class="b p" href="#/">'+t('other')+'</a><a class="b" href="#/guide/'+g.id+'/step/1">'+t('again')+'</a></div></div>';
+}
+
+/* ====================== router ====================== */
+var first=true;
+function chrome(page){
+  document.documentElement.lang=lang; document.documentElement.dir=lang==='he'?'rtl':'ltr';
+  document.getElementById('skip').textContent=t('skip');
+  document.getElementById('brand-t').textContent=t('brand');
+  document.getElementById('links').innerHTML=
+    '<li><a href="#/"'+(page==='catalog'?' aria-current="page"':'')+'>'+t('catalog')+'</a></li>'+
+    '<li><a href="#/search"'+(page==='search'?' aria-current="page"':'')+'>'+t('search')+'</a></li>';
+  var lb=document.getElementById('lang'); lb.textContent=t('langBtn'); lb.setAttribute('aria-label',t('langLabel')); lb.lang=lang==='he'?'en':'he';
+  document.getElementById('menu').setAttribute('aria-label',t('menu'));
+  document.getElementById('foot').textContent=t('foot');
+}
+function setMenu(open){
+  document.getElementById('bar').classList.toggle('open',open);
+  document.getElementById('menu').setAttribute('aria-expanded',open?'true':'false');
+}
+function render(keepFocus){
+  var parts=location.hash.replace(/^#\/?/,'').split('/'), main=document.getElementById('main'), page='catalog', html, g;
+  if(parts[0]==='search'){page='search';html=vSearch()}
+  else if(parts[0]==='guide'&&(g=guide(parts[1]))){
+    page='guide';
+    if(parts[2]==='step'){
+      var n=Math.min(Math.max(parseInt(parts[3],10)||1,1),g.steps.length);
+      progress[g.id]=n; store.set('progress',progress); html=vStep(g,n);
+    }else if(parts[2]==='done'){delete progress[g.id]; store.set('progress',progress); html=vDone(g)}
+    else html=vGuide(g);
+  }else html=vCatalog();
+  chrome(page); setMenu(false); main.innerHTML=html;
+  document.title=(main.querySelector('h1')||{}).textContent+' – '+t('brand');
+  if(!first&&!keepFocus){window.scrollTo(0,0);var h1=main.querySelector('h1');if(h1)h1.focus({preventScroll:true})}
+  first=false;
+}
+window.addEventListener('hashchange',function(){render(false)});
+document.getElementById('menu').addEventListener('click',function(){setMenu(!document.getElementById('bar').classList.contains('open'))});
+document.getElementById('lang').addEventListener('click',function(){lang=lang==='he'?'en':'he';store.set('lang',lang);render(true)});
+document.addEventListener('input',function(e){if(e.target.id==='q'){query=e.target.value;document.getElementById('results').innerHTML=results()}});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){setMenu(false);return}
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.altKey||e.ctrlKey||e.metaKey)return;
+  var fwd=lang==='he'?'ArrowLeft':'ArrowRight', bwd=lang==='he'?'ArrowRight':'ArrowLeft';
+  var el=e.key===fwd?document.getElementById('next'):e.key===bwd?document.getElementById('prev'):null;
+  if(el){e.preventDefault();location.hash=el.getAttribute('href')}
+});
+render(false);
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 ## What was produced
 - `docs/prd.md`: 13 sections, AC-1..AC-52, assumptions A-1..A-29, owner answers Q-1..Q-7 recorded.
 - `docs/open-questions.md`: Q-1..Q-7 resolved; Q-8 open and non-blocking.
-- `docs/design/`: 2 sample SVGs (about 1 KB each, limit 20 KB), 16 screen mockups (catalog, overview, step, completed; mobile and desktop; Hebrew RTL and English), README with he/en alt text.
+- `docs/design/`: the final style (Birch & Washi) with a single-file demo, and 4 sample SVGs. The first screen mockups and the unchosen style options are in `docs/design/archive/`.
 - `docs/prd-summary.md`: this file.
 
 ## Review status

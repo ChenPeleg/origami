@@ -1,6 +1,6 @@
-# Renders each Workbench variation in workbench.html to a 1600x1000 PNG in docs/design-options.
-# Usage (from repo root): & .\docs\design-options\src\render.ps1
-# The original five boards are archived: see docs/design-options/archive/src.
+# Renders each Workbench variation in workbench.html to a 1600x1000 PNG in docs/design/archive/style-options/round-2.
+# Usage (from repo root): & .\docs\design\archive\style-options\round-2\src\render.ps1
+# The original five boards are archived: see ../round-1/src.
 $edge = "${env:ProgramFiles(x86)}\Microsoft\Edge\Application\msedge.exe"
 $src  = Join-Path $PSScriptRoot 'workbench.html'
 $out  = Split-Path $PSScriptRoot -Parent

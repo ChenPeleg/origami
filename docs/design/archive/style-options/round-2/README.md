@@ -1,8 +1,8 @@
-# Design options: Workbench and its variations
+# Archive: Workbench and its variations (round 2)
 
-Status: **Workbench is chosen. The variation is a proposal for owner review.**
+Status: **archived**. The owner chose variation **3C, Birch & Washi**. It is the final style: see [docs/design/README.md](../../../README.md) and the [demo](../../../demo.html). The other variations below are kept for reference only.
 
-Round 1 offered five style systems. The owner chose option 3, **Workbench**. The other four are kept, not deleted, in [archive/](archive/README.md).
+Round 1 offered five style systems. The owner chose option 3, **Workbench**. The other four are kept, not deleted, in [../round-1/](../round-1/README.md).
 
 This round offers four variations of Workbench. They change the visual language only, not the screens, flows or PRD requirements.
 
@@ -128,6 +128,6 @@ The variations can be combined, because all four share the same type, scraps and
 ## Sources and re-rendering
 
 - Single source: `src/workbench.html?v=mat|cork|birch|lamp`. `v=base` shows the chosen Workbench style with the same code. It loads its fonts from Google Fonts.
-- Re-render the four variation boards from the repo root in PowerShell: `& .\docs\design-options\src\render.ps1` (headless Edge, 1600×1000).
+- Re-render the four variation boards from the repo root in PowerShell: `& .\docs\design\archive\style-options\round-2\src\render.ps1` (headless Edge, 1600×1000).
 - The boards show the content in English, with a Hebrew line in each type sample. Full Hebrew RTL screens will be made for the chosen variation.
-- The source and boards of the four archived options are in [archive/](archive/README.md).
+- The source and boards of the four archived options are in [../round-1/](../round-1/README.md).
