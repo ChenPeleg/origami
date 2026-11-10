@@ -1,13 +1,21 @@
-name: Deploy mockup to GitHub Pages
+name: Deploy app to GitHub Pages
 
-# For now this publishes the single-file HTML mockup (docs/design/demo.html),
-# not the React app.
+# Builds the React app and publishes it.
+# The original single-file HTML mockup stays available at /mockup.html
+# as the style reference.
 
 on:
   push:
     branches: [main]
     paths:
-      - 'docs/design/**'
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.ts'
+      - 'tsconfig*.json'
+      - 'docs/design/demo.html'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
@@ -27,12 +35,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
       - name: Prepare site
         run: |
-          mkdir -p _site
-          cp docs/design/demo.html _site/index.html
-          cp docs/design/*.svg _site/
-          touch _site/.nojekyll
+          cp docs/design/demo.html dist/mockup.html
+          touch dist/.nojekyll
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
@@ -40,7 +61,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: _site
+          path: dist
 
   deploy:
     needs: build

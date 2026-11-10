@@ -1,31 +1,23 @@
-import { BrowserRouter } from 'react-router';
+import { HashRouter } from 'react-router';
 
-import { ReactQueryProvider } from './query/ReactQueryProvider.tsx';
 import { ServicesProvider } from './services/provider/ServicesProvider.tsx';
 import { injectedServices } from './services/injection/injectedServices.ts';
 import { GlobalStateContextProvider } from './stores/GlobalState.tsx';
-import { UserProvider } from './stores/UserContext.tsx';
 import { AppRoutes } from './AppRoutes.tsx';
-import { ToastProvider } from './common';
-import { AppModalNotice } from './layouts/AppModalNotice.tsx';
 
+/**
+ * Hash routing needs no server rewrites, so deep links reload on any static
+ * host and under any base path (TC-4).
+ */
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <ServicesProvider services={injectedServices}>
-                <ReactQueryProvider>
-                    <GlobalStateContextProvider>
-                        <UserProvider>
-                            <ToastProvider>
-                                <AppModalNotice>
-                                    <AppRoutes />
-                                </AppModalNotice>
-                            </ToastProvider>
-                        </UserProvider>
-                    </GlobalStateContextProvider>
-                </ReactQueryProvider>
+                <GlobalStateContextProvider>
+                    <AppRoutes />
+                </GlobalStateContextProvider>
             </ServicesProvider>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

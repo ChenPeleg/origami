@@ -193,7 +193,7 @@ Pass `duration: 0` for a persistent toast that only closes manually.
 
 ### AppButton
 
-Polymorphic, styled button component. Renders as a `<button>` by default but can render as any element (`span`, `div`, `a`, …) via the `as` prop.
+Polymorphic button styled as a piece of cut card: square, 2px ink border and a hard offset shadow. `primary` is coral, `secondary` is scrap paper. Renders as a `<button>` by default but can render as any element (`span`, `div`, `a`, …) via the `as` prop.
 
 ```tsx
 import { AppButton } from '@/common';
@@ -210,6 +210,9 @@ import { AppButton } from '@/common';
 // Render as <a> link
 <AppButton as="a" href="/profile" variant="link">Profile</AppButton>
 
+// Render as a router link that looks like a button
+<AppButton as={Link} to="/guide/cup/step/1">Start folding</AppButton>
+
 // Small size, ghost style
 <AppButton variant="ghost" size="sm">Cancel</AppButton>
 ```
@@ -220,7 +223,7 @@ import { AppButton } from '@/common';
 | ----------- | --------------------------------------------------------- | ----------- | ---------------------------------------------- |
 | `as`        | `React.ElementType`                                       | `'button'`  | Underlying HTML element or component to render |
 | `variant`   | `'primary' \| 'secondary' \| 'danger' \| 'ghost' \| 'link'` | `'primary'` | Visual style                                |
-| `size`      | `'sm' \| 'md' \| 'lg'`                                  | `'md'`      | Padding / font-size preset (ignored for `link`) |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                  | `'md'`      | Height / padding / font-size preset: 44px, 48px, 56px (ignored for `link`) |
 | `className` | `string`                                                  | —           | Additional classes merged onto the element     |
 | `children`  | `React.ReactNode`                                         | —           | Button label / content                         |
 
@@ -381,3 +384,101 @@ import { AppMultiList } from '@/common';
 | `searchable`  | `boolean`                               | `false`      | Enables client-side label filtering input         |
 | `placeholder` | `string`                                | `'Search...'`| Search input placeholder                          |
 | `className`   | `string`                                | —            | Additional classes on the wrapper                 |
+
+---
+
+### AppPaperScrap
+
+The content surface of the app: a scrap of off-white paper with a soft shadow and square corners, optionally held by washi tape. Polymorphic like `AppButton`: renders a `<div>` by default, or any element or component via `as`.
+
+```tsx
+import { AppPaperScrap } from '@/common';
+
+<AppPaperScrap tapes={[{ pattern: 'dots', position: 'center' }]}>
+  <p>One square sheet of paper is all you need.</p>
+</AppPaperScrap>
+
+// A whole card that is a router link
+<AppPaperScrap as={Link} to="/guide/cup" tapes={[{ pattern: 'stripes', position: 'left' }]}>
+  Paper Cup
+</AppPaperScrap>
+```
+
+**Props**
+
+| Prop        | Type                 | Default | Description                                    |
+| ----------- | -------------------- | ------- | ---------------------------------------------- |
+| `as`        | `React.ElementType`  | `'div'` | Underlying element or component to render      |
+| `tapes`     | `PaperScrapTape[]`   | `[]`    | Washi tapes drawn on the top edge              |
+| `className` | `string`             | —       | Additional classes merged onto the element     |
+| `children`  | `React.ReactNode`    | —       | Content                                        |
+
+**PaperScrapTape**: `{ pattern: WashiTapePattern; position: WashiTapePosition }`
+
+All other props are forwarded to the underlying element.
+
+---
+
+### AppWashiTape
+
+A strip of patterned tape with torn ends. Decoration only (`aria-hidden`). It is positioned on the top edge of its parent, which must be `relative` (`AppPaperScrap` is).
+
+```tsx
+import { AppWashiTape } from '@/common';
+
+<div className="relative">
+  <AppWashiTape pattern="bands" position="right" />
+</div>
+```
+
+**Props**
+
+| Prop        | Type                               | Default    | Description                                                        |
+| ----------- | ---------------------------------- | ---------- | ------------------------------------------------------------------ |
+| `pattern`   | `'stripes' \| 'dots' \| 'bands'`   | —          | Coral stripes, teal dots or mustard bands                          |
+| `position`  | `'left' \| 'center' \| 'right'`    | `'center'` | Place on the top edge. Physical on purpose: it does not mirror in RTL |
+| `className` | `string`                           | —          | Additional classes                                                 |
+
+---
+
+### AppProgressBar
+
+Ruler-style progress bar with tick marks. Exposes `role="progressbar"` with its values. The fill starts at the inline start, so it mirrors in RTL.
+
+```tsx
+import { AppProgressBar } from '@/common';
+
+<AppProgressBar value={2} max={5} label="Step 2 of 5" />
+```
+
+**Props**
+
+| Prop        | Type     | Default | Description                         |
+| ----------- | -------- | ------- | ----------------------------------- |
+| `value`     | `number` | —       | Current value                       |
+| `max`       | `number` | —       | Largest value                       |
+| `min`       | `number` | `0`     | Smallest value                      |
+| `label`     | `string` | —       | Accessible name of the progress bar |
+| `className` | `string` | —       | Additional classes                  |
+
+---
+
+### AppHandNote
+
+A short handwritten note in pencil teal. For tips and small remarks only, never for reading text.
+
+```tsx
+import { AppHandNote } from '@/common';
+
+<AppHandNote>corner to corner!</AppHandNote>
+<AppHandNote as="span" size="md">continue from step 2</AppHandNote>
+```
+
+**Props**
+
+| Prop        | Type                        | Default | Description            |
+| ----------- | --------------------------- | ------- | ---------------------- |
+| `as`        | `'p' \| 'span' \| 'div'`    | `'p'`   | Element to render      |
+| `size`      | `'md' \| 'lg'`              | `'lg'`  | 26px or 30px           |
+| `className` | `string`                    | —       | Additional classes     |
+| `children`  | `React.ReactNode`           | —       | The note               |

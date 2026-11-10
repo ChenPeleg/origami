@@ -1,59 +1,47 @@
 import { useEffect } from 'react';
 import { useService } from '../services/provider/useService';
 import { TranslationService } from '../services/Translation.service';
+import { PageService } from '../services/Page.service';
 import { useGlobalState } from '../stores/GlobalState';
 import { Language } from '../models/Language';
-
-/**
- * Helper function to get document direction based on language
- * Hebrew and Arabic are RTL (right-to-left), English is LTR (left-to-right)
- */
-const getDirectionForLanguage = (language: Language): 'rtl' | 'ltr' => {
-    return language === Language.Hebrew || language === Language.Arabic
-        ? 'rtl'
-        : 'ltr';
-};
 
 /**
  * Hook to manage language switching and document direction
  *
  * This hook provides:
- * - Current language
- * - setLanguage method to switch languages
- * - Automatically sets document direction (rtl for Hebrew/Arabic, ltr for English)
- * - Access to translation service for getting available languages
+ * - Current language and the language the switch moves to
+ * - setLanguage / toggleLanguage, which also save the choice
+ * - Automatically sets the document language and direction
  *
- * @returns Object containing language, setLanguage method, and available languages
+ * The rules live in `TranslationService` and `PageService`.
  */
 export const useLanguage = () => {
-    const translationService = useService(TranslationService);
+    const [translationService, pageService] = useService([
+        TranslationService,
+        PageService,
+    ]);
     const { globalState, setLanguage: setGlobalLanguage } = useGlobalState();
 
     const currentLanguage: Language = globalState.language;
+    const nextLanguage = translationService.getNextLanguage(currentLanguage);
 
-    /**
-     * Set the language and update document direction
-     * @param language - The language to switch to
-     */
     const setLanguage = (language: Language) => {
+        translationService.saveLanguage(language);
         setGlobalLanguage(language);
     };
 
-    // Set initial document direction on mount or when language changes
-    useEffect(() => {
-        const direction = getDirectionForLanguage(currentLanguage);
-        document.documentElement.dir = direction;
-        document.documentElement.lang = currentLanguage;
-    }, [currentLanguage]);
+    const toggleLanguage = () => setLanguage(nextLanguage);
 
-    /**
-     * Get all available languages from the translation service
-     */
-    const availableLanguages = translationService.getAvailableLanguages();
+    // Keep <html lang dir> in sync with the current language
+    useEffect(() => {
+        pageService.setDocumentLanguage(currentLanguage);
+    }, [currentLanguage, pageService]);
 
     return {
         language: currentLanguage,
+        nextLanguage,
         setLanguage,
-        availableLanguages,
+        toggleLanguage,
+        availableLanguages: translationService.getAvailableLanguages(),
     };
 };
