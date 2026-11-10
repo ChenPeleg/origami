@@ -1,6 +1,6 @@
 # Plan: port the Birch & Washi mockup into the React app
 
-Status: **plan only, nothing implemented.** Source of truth for the look and behaviour is [`docs/design/demo.html`](../docs/design/demo.html) (the page GitHub Pages serves today). Source of truth for requirements is [`docs/prd.md`](../docs/prd.md).
+Status: **implemented.** Progress is tracked in [section 9](#9-order-of-work); what changed while building is in [section 11](#11-implementation-notes). Source of truth for the look and behaviour is [`docs/design/demo.html`](../docs/design/demo.html) (the page GitHub Pages serves today). Source of truth for requirements is [`docs/prd.md`](../docs/prd.md).
 
 ## 1. Goal and scope
 
@@ -273,15 +273,27 @@ The old pages (`HomePage`, `ProfilePage`, `NewFormPage`, `EditFormPage`) leave t
 
 Each step is one small, reviewable change. All repo checks (`typecheck`, `lint`, `test`) pass after each.
 
-1. Foundations: tokens and utilities in `index.css`, fonts in `index.html`, `HashRouter`, Vite `base`, trimmed app shell.
-2. Language: `TranslationService` changes, Arabic removed, 44 strings added, `useLanguage` / `useTranslate` updated, `WindowService` extended.
-3. Common components: restyle `AppButton` and `AppInput`; add `AppPaperScrap`, `AppWashiTape`, `AppProgressBar`, `AppHandNote`.
-4. Layout: `Navbar`, `LanguageToggle`, `SkipLink`, `AppFooter`, `PageHeading`, `BackLink`, `DirectionalArrow`, `MainLayout`, `PageService`.
-5. Content and diagrams: models, guide content files, `GuidesService`, `FoldDiagramService`, `FoldDiagram`, `GuideCover`.
-6. Catalog: `GuideMeta`, `DifficultyDots`, `GuideCard`, `GuideGrid`, `CatalogPage`, `GuideProgressService`.
-7. Overview and step flow: `GuideFlowService`, overview page and its components, step page and its components, done page, keyboard hook.
-8. Search: `SearchForm`, `SearchEmptyState`, `TapeRollsIllustration`, `SearchPage`.
-9. Parity pass against the mockup, then switch the Pages workflow from copying `demo.html` to building the app.
+- [x] **1. Foundations:** tokens and utilities in `index.css`, fonts in `index.html`, `HashRouter`, Vite `base`, trimmed app shell.
+- [x] **2. Language:** `TranslationService` changes, Arabic removed, mockup strings added, `useLanguage` / `useTranslate` updated, `WindowService` extended.
+- [x] **3. Common components:** restyle `AppButton` and `AppInput`; add `AppPaperScrap`, `AppWashiTape`, `AppProgressBar`, `AppHandNote`.
+- [x] **4. Layout:** `Navbar`, `LanguageToggle`, `SkipLink`, `AppFooter`, `PageHeading`, `BackLink`, `DirectionalArrow`, `MainLayout`, `PageService`.
+- [x] **5. Content and diagrams:** models, guide content files, `GuidesService`, `FoldDiagramService`, `FoldDiagram`, `GuideCover`.
+- [x] **6. Catalog:** `GuideMeta`, `DifficultyDots`, `GuideCard`, `GuideGrid`, `CatalogPage`, `GuideProgressService`.
+- [x] **7. Overview and step flow:** `GuideFlowService`, overview page and its components, step page and its components, done page, keyboard hook.
+- [x] **8. Search:** `SearchForm`, `SearchEmptyState`, `TapeRollsIllustration`, `SearchPage`.
+- [x] **9. Parity pass** against the mockup, then switch the Pages workflow from copying `demo.html` to building the app.
+
+Also done:
+
+- [x] Service tests, component tests and app-flow tests (section 8).
+- [x] A story for every new component, and for `AppButton`.
+- [x] `src/common/README.md` and `docs/design/README.md` updated.
+
+Not done (by decision, see section 10):
+
+- [ ] D-1: PRD statuses (Completed, done steps).
+- [ ] D-2: sortable catalog table, 4 guides, clear-progress dialog.
+- [ ] D-3: delete the old activity-approval code (AC-22).
 
 ## 10. Decisions for the owner
 
@@ -292,3 +304,23 @@ Each step is one small, reviewable change. All repo checks (`typecheck`, `lint`,
 | D-3 | The old activity-approval code (pages, `FormsDataService`, `UserService`, `ApiService`, generated API, axios, TanStack Query). | This port only disconnects it from the app shell. Delete it in a separate change with the AC-22 check, so this diff stays readable. |
 | D-4 | Fonts load from Google Fonts, as in the mockup. | Keep for now. Self-hosting is a small later change if offline or privacy needs it (A-24 is still open). |
 | D-5 | Translation keys: the repo uses Hebrew-named keys. | Follow the existing style for the new strings. Say so if you prefer English keys; that is the cheapest moment to switch. |
+
+The implementation followed the recommendation in every row, because no other answer was given. Each one can still be changed.
+
+## 11. Implementation notes
+
+What turned out different from the plan above:
+
+- **Document language moved to `PageService`.** `setDocumentLanguage` sets `lang` and `dir` on `<html>`; `useLanguage` only calls it. The lint rules do not allow a hook to change a value it got from another hook.
+- **Focus rule lives in `PageService.enterPage(path)`.** It answers "did the user navigate here?" so `PageHeading` takes focus after navigation, but not on the first load, not on a language switch and not while typing in search.
+- **`PageHeading` takes a `title` prop** (text for both the `h1` and the document title) and a `size` (`page` or `step`) instead of `titleText`.
+- **The page background is on `MainLayout`, not on `body`** (the `bg-birch` utility). The old shared components and their stories keep their neutral background.
+- **`SkipLink` moves focus with a click handler.** With hash routing, a plain `#main` link would change the route.
+- **`GuideProgressService.getResumeSteps()`** was added, so list pages read all progress in one call.
+- **Level names** got three keys (Easy, Medium, Advanced) because the model has three levels; the mockup only shows Easy.
+- **Translation strings:** 48 new keys instead of 44. Text with numbers became one string with placeholders, and "1 sheet" got a plural form.
+- **Search placeholder color** is the muted ink instead of the browser default grey, for contrast. This is the only visible difference from the mockup.
+- **Storybook:** app components use a new `AppProvidersDecorator` (router, services, global state). The toolbar direction also picks the language, so RTL shows Hebrew.
+- **Pages workflow** now runs the tests, builds the app and publishes it. The mockup is still published as `mockup.html`.
+
+How parity was checked: screenshots of all five screens, at 375px and 1280px, in English and Hebrew, compared pixel by pixel with `demo.html`. They match except for the search placeholder color and a few anti-aliasing pixels.

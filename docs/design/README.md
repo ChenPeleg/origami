@@ -2,6 +2,12 @@
 
 Status: **final style, chosen by the owner.** It is Workbench variation 3C. Everything in an older style is in [archive/](archive/).
 
+## In the app
+
+The style is implemented in the React app. The tokens (colors, fonts, shadows, the 760px breakpoint) and the pattern utilities (washi tape, ruler, birch table) are in [`src/index.css`](../../src/index.css). The building blocks are `AppButton`, `AppPaperScrap`, `AppWashiTape`, `AppProgressBar` and `AppHandNote` in [`src/common/`](../../src/common/README.md).
+
+GitHub Pages serves the app. The demo below stays the style reference and is published next to the app as `mockup.html`.
+
 ## Demo
 
 **[demo.html](demo.html)** is the reference for the style. It is one HTML file with no build step: open it in a browser.
