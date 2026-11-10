@@ -15,7 +15,7 @@ Input: reviewed `docs/prd.md` (UX/i18n/a11y and user stories sections). Runs aft
 
 ## How
 - Use the image generation tool, or Figma tools when available, to render each screen as a PNG.
-- Follow the clean modern Tailwind style from `.github/copilot-instructions.md`; SVG-illustration style per the PRD.
+- Follow the Birch & Washi style in `docs/design/README.md`; `docs/design/demo.html` is the reference. Do not use the styles in `docs/design/archive/`.
 - Meet the PRD accessibility requirements (contrast, tap target size).
 
 ## Rules
