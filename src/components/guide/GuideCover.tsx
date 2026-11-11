@@ -1,6 +1,6 @@
 import type { Guide } from '../../models/Guide';
 import { useTranslate } from '../../hooks/useTranslate';
-import { FoldDiagram } from './FoldDiagram';
+import { GuideFoldDiagram } from './GuideFoldDiagram';
 
 export interface GuideCoverProps {
     guide: Guide;
@@ -14,7 +14,7 @@ export function GuideCover({ guide, className }: GuideCoverProps) {
     const { tl } = useTranslate();
 
     return (
-        <FoldDiagram
+        <GuideFoldDiagram
             diagram={guide.cover}
             paperColor={guide.paperColor}
             flapColor={guide.flapColor}

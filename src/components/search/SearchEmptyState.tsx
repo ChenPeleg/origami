@@ -1,5 +1,5 @@
 import { AppHandNote } from '../../common';
-import { TapeRollsIllustration } from './TapeRollsIllustration';
+import { SearchEmptyStateTapeRollsIllustration } from './SearchEmptyStateTapeRollsIllustration';
 
 export interface SearchEmptyStateProps {
     message: string;
@@ -12,7 +12,7 @@ export interface SearchEmptyStateProps {
 export function SearchEmptyState({ message }: SearchEmptyStateProps) {
     return (
         <div className="flex flex-col items-center gap-2 py-[30px] text-center">
-            <TapeRollsIllustration className="w-[250px] max-w-[80%]" />
+            <SearchEmptyStateTapeRollsIllustration className="w-[250px] max-w-[80%]" />
             <AppHandNote>{message}</AppHandNote>
         </div>
     );

@@ -2,7 +2,7 @@ import type { PaperScrapTape } from '../../common';
 import type { Guide } from '../../models/Guide';
 import { useService } from '../../services/provider/useService';
 import { GuideFlowService } from '../../services/GuideFlow.service';
-import { GuideCard } from './GuideCard';
+import { GuideGridCard } from './GuideGridCard';
 
 export interface GuideGridProps {
     guides: Guide[];
@@ -38,7 +38,7 @@ export function GuideGrid({ guides, resumeSteps }: GuideGridProps) {
         <ul className="m-0 grid list-none grid-cols-1 gap-x-[30px] gap-y-[38px] p-0 md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:gap-x-11 md:gap-y-12">
             {guides.map((guide, index) => (
                 <li key={guide.id}>
-                    <GuideCard
+                    <GuideGridCard
                         guide={guide}
                         to={flowService.paths.guide(guide.id)}
                         resumeStep={resumeSteps[guide.id] ?? null}

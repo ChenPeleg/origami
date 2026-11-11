@@ -1,6 +1,6 @@
 import type { Guide } from '../../models/Guide';
 import { useTranslate } from '../../hooks/useTranslate';
-import { DifficultyDots } from './DifficultyDots';
+import { GuideMetaDifficultyDots } from './GuideMetaDifficultyDots';
 
 export interface GuideMetaProps {
     guide: Guide;
@@ -15,7 +15,7 @@ export function GuideMeta({ guide }: GuideMetaProps) {
     return (
         <ul className="text-muted m-0 flex list-none flex-wrap items-center gap-x-[18px] gap-y-1.5 p-0 text-[16px]">
             <li>
-                <DifficultyDots level={guide.level} />
+                <GuideMetaDifficultyDots level={guide.level} />
             </li>
             <li>
                 {guide.sheets === 1

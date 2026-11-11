@@ -64,17 +64,74 @@ docker compose up --build -d
 ```
 src/
 ├── common/        # Reusable UI components (see src/common/README.md)
-├── components/    # App-specific composite components
+├── components/    # Active screens and their feature-local component trees
 ├── config/        # Environment-specific configuration
 ├── errors/        # Error boundary and error types
 ├── generated/     # Auto-generated API types (do not edit)
 ├── hooks/         # Custom React hooks
-├── layouts/       # Page layout wrappers
+├── layouts/       # Starter-kit modal notice (active shell is components/layout)
 ├── models/        # Domain model types
-├── pages/         # Route-level page components
+├── pages/         # Unrouted starter-kit example pages
 ├── query/         # TanStack Query setup and query hooks
 ├── scripts/       # Code-generation scripts
 ├── services/      # API, storage, logging, translation services
 ├── stores/        # Global state (React context)
 └── stories/       # Storybook stories
 ```
+
+### Feature component trees
+
+The active app follows the [concatenated-component-tree skill (v1.0.0)](https://github.com/ChenPeleg/skills/blob/v1.0.0/skills/concatenated-component-tree/SKILL.md).
+Each feature lives in a flat `src/components/<feature>/` folder. Filenames
+mirror the render tree: a child adds a segment to its parent's name.
+Existing PascalCase is preserved, and exported component names match filenames.
+Stories stay beside the components they describe.
+
+```text
+components/
+├── catalog/
+│   └── Catalog.tsx
+├── guide/
+│   ├── GuideCover.tsx
+│   ├── GuideDone.tsx
+│   ├── GuideDoneContent.tsx
+│   ├── GuideFoldDiagram.tsx
+│   ├── GuideGrid.tsx
+│   ├── GuideGridCard.tsx
+│   ├── GuideMeta.tsx
+│   ├── GuideMetaDifficultyDots.tsx
+│   ├── GuideOverview.tsx
+│   ├── GuideOverviewActions.tsx
+│   ├── GuideOverviewRequirements.tsx
+│   ├── GuideStep.tsx
+│   ├── GuideStepContent.tsx
+│   ├── GuideStepContentFoldLegend.tsx
+│   ├── GuideStepContentHeader.tsx
+│   ├── GuideStepContentInstruction.tsx
+│   ├── GuideStepContentJumpNav.tsx
+│   ├── GuideStepContentNavButtons.tsx
+│   └── GuideUtilsFoldNotation.ts
+├── layout/
+│   ├── Layout.tsx
+│   ├── LayoutBackLink.tsx
+│   ├── LayoutDirectionalArrow.tsx
+│   ├── LayoutFooter.tsx
+│   ├── LayoutNavbar.tsx
+│   ├── LayoutNavbarBrandLogo.tsx
+│   ├── LayoutNavbarLanguageToggle.tsx
+│   ├── LayoutPageHeading.tsx
+│   └── LayoutSkipLink.tsx
+└── search/
+    ├── Search.tsx
+    ├── SearchEmptyState.tsx
+    ├── SearchEmptyStateTapeRollsIllustration.tsx
+    └── SearchForm.tsx
+```
+
+Pieces shared across sections, such as `GuideCover` and `GuideMeta`, use the
+feature prefix rather than a single parent's prefix. Non-components use a
+`Utils` segment or live in `models/`. Keep folders flat; split a large section
+into a subfolder only when it grows past about six files, retaining full prefixes.
+`AppRoutes.tsx` imports active screens directly from their feature folders.
+The reusable `src/common/` library, services, domain models, and unrouted
+starter-kit examples retain their existing organization.

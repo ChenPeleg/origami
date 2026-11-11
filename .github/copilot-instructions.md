@@ -22,14 +22,14 @@ This is a **React Starter Kit** — a minimal, opinionated boilerplate with work
 ```
 src/
 ├── common/        # Shared, reusable UI components — prefer these over raw HTML
-├── components/    # App-specific composite components
+├── components/    # Active screens and feature-local component trees
 ├── config/        # Per-environment configuration (dev / staging / prod / tests)
 ├── errors/        # Error boundary and custom error types
 ├── generated/     # Auto-generated API types — DO NOT edit manually
 ├── hooks/         # Custom React hooks
-├── layouts/       # Page layout wrappers (MainLayout, etc.)
+├── layouts/       # Starter-kit modal notice; active shell is components/layout
 ├── models/        # Domain model types and interfaces
-├── pages/         # Route-level page components
+├── pages/         # Unrouted starter-kit example pages
 ├── query/         # TanStack Query client setup and query hooks
 ├── scripts/       # Code-generation helper scripts
 ├── services/      # API, local storage, logging, translation, versioning
@@ -38,6 +38,15 @@ src/
 ```
 
 ## Conventions
+
+### Feature components (`src/components/`)
+- Follow the [concatenated-component-tree skill (v1.0.0)](https://github.com/ChenPeleg/skills/blob/v1.0.0/skills/concatenated-component-tree/SKILL.md).
+- Keep each feature in one flat folder; active route components live with their children, not in `src/pages/`.
+- A child's filename adds a segment to its parent's name (e.g. `GuideGrid` renders `GuideGridCard`); exported component names match filenames.
+- Preserve PascalCase in existing feature folders. Use kebab-case for greenfield features.
+- Shared pieces use the feature prefix (`GuideCover`); non-components use a `Utils` segment or live in `models/`.
+- Keep stories beside their components. When renaming a parent, cascade its prefix through descendants and update all imports.
+- Only introduce a subfolder when a section grows past about six files, retaining full filename prefixes.
 
 ### Component library (`src/common/`)
 - Always prefer components from `src/common/` (e.g. `AppButton`, `AppInput`, `AppModal`, `AppSelect`, `AppToast`) over raw HTML equivalents.
