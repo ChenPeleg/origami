@@ -1,0 +1,91 @@
+{
+  "note": "Built from the contents pages (PDF pages 2-3); printed page = PDF page. The book prints no difficulty levels (lv-00); Part 1 uses one sheet, Part 2 two sheets.",
+  "pages": {
+    "1": {
+      "kind": "title"
+    },
+    "2": {
+      "kind": "contents"
+    },
+    "3": {
+      "kind": "contents"
+    },
+    "4": {
+      "kind": "intro"
+    },
+    "5": {
+      "kind": "symbols"
+    },
+    "6": {
+      "kind": "divider",
+      "subject": "part-1-boxes-from-one-sheet"
+    },
+    "7": {
+      "kind": "model",
+      "subject": "chunky-whale",
+      "titleOriginal": "Chunky Whale"
+    },
+    "10": {
+      "kind": "model",
+      "subject": "penguin-chick",
+      "titleOriginal": "Penguin Chick"
+    },
+    "13": {
+      "kind": "model",
+      "subject": "cubic-cat",
+      "titleOriginal": "Cubic Cat"
+    },
+    "17": {
+      "kind": "model",
+      "subject": "boxy-collie",
+      "titleOriginal": "Boxy Collie"
+    },
+    "21": {
+      "kind": "model",
+      "subject": "afghan-hound-in-the-round",
+      "titleOriginal": "Afghan Hound in the Round"
+    },
+    "24": {
+      "kind": "divider",
+      "subject": "part-2-boxes-from-two-sheets"
+    },
+    "25": {
+      "kind": "model",
+      "subject": "husky-tusky-elephant",
+      "titleOriginal": "Husky-Tusky Elephant"
+    },
+    "29": {
+      "kind": "model",
+      "subject": "hefty-hippos-a-and-b",
+      "titleOriginal": "Hefty Hippos A & B"
+    },
+    "35": {
+      "kind": "model",
+      "subject": "big-orca",
+      "titleOriginal": "Big Orca"
+    },
+    "40": {
+      "kind": "model",
+      "subject": "french-bulldog",
+      "titleOriginal": "French Bulldog"
+    },
+    "45": {
+      "kind": "model",
+      "subject": "box-dragons-a-and-b",
+      "titleOriginal": "Box Dragons A & B"
+    },
+    "53": {
+      "kind": "model",
+      "subject": "stash-a-lot-cachalot-whale",
+      "titleOriginal": "Stash-a-lot Cachalot Whale"
+    },
+    "58": {
+      "kind": "model",
+      "subject": "angular-anglerfish",
+      "titleOriginal": "Angular Anglerfish"
+    },
+    "64": {
+      "kind": "credits"
+    }
+  }
+}

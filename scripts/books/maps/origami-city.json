@@ -1,0 +1,280 @@
+{
+  "note": "Scanned book, no text layer. First pages found by eye from contact sheets and checked against the page list in About the Authors (PDF page = printed page + 1). Seven models (Gherkin, Statue of Liberty, Sears Tower, Thinker, Wellington Monument, Lotus Temple, Taj Mahal) have only a title/photo page in this scan and no step diagrams. No difficulty levels printed (lv-00).",
+  "pages": {
+    "1": {
+      "kind": "cover"
+    },
+    "2": {
+      "kind": "half-title"
+    },
+    "3": {
+      "kind": "photo",
+      "subject": "photo-the-coliseum"
+    },
+    "4": {
+      "kind": "title"
+    },
+    "5": {
+      "kind": "copyright"
+    },
+    "6": {
+      "kind": "contents"
+    },
+    "7": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "8": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "9": {
+      "kind": "intro"
+    },
+    "10": {
+      "kind": "model",
+      "subject": "gherkin",
+      "titleOriginal": "The Gherkin"
+    },
+    "11": {
+      "kind": "symbols"
+    },
+    "12": {
+      "kind": "chapter",
+      "subject": "the-basics",
+      "titleOriginal": "The Basics"
+    },
+    "18": {
+      "kind": "photo",
+      "subject": "photo-leaning-tower-of-pisa"
+    },
+    "19": {
+      "kind": "divider",
+      "subject": "getting-started"
+    },
+    "20": {
+      "kind": "photo",
+      "subject": "photo-fire-hydrant"
+    },
+    "21": {
+      "kind": "model",
+      "subject": "house",
+      "titleOriginal": "House"
+    },
+    "25": {
+      "kind": "model",
+      "subject": "car",
+      "titleOriginal": "Car"
+    },
+    "27": {
+      "kind": "model",
+      "subject": "stop-sign",
+      "titleOriginal": "Stop Sign"
+    },
+    "29": {
+      "kind": "model",
+      "subject": "sign-post",
+      "titleOriginal": "Sign Post"
+    },
+    "31": {
+      "kind": "model",
+      "subject": "fire-hydrant",
+      "titleOriginal": "Fire Hydrant"
+    },
+    "34": {
+      "kind": "model",
+      "subject": "mail-box",
+      "titleOriginal": "Mail Box"
+    },
+    "37": {
+      "kind": "model",
+      "subject": "park-bench",
+      "titleOriginal": "Park Bench"
+    },
+    "39": {
+      "kind": "model",
+      "subject": "pigeon",
+      "titleOriginal": "Pigeon"
+    },
+    "43": {
+      "kind": "divider",
+      "subject": "the-americas"
+    },
+    "44": {
+      "kind": "model",
+      "subject": "statue-of-liberty",
+      "titleOriginal": "The Statue of Liberty"
+    },
+    "45": {
+      "kind": "model",
+      "subject": "washington-monument",
+      "titleOriginal": "The Washington Monument"
+    },
+    "49": {
+      "kind": "model",
+      "subject": "white-house",
+      "titleOriginal": "The White House"
+    },
+    "51": {
+      "kind": "model",
+      "subject": "empire-state-building",
+      "titleOriginal": "The Empire State Building"
+    },
+    "57": {
+      "kind": "model",
+      "subject": "sears-tower",
+      "titleOriginal": "Sears Tower"
+    },
+    "58": {
+      "kind": "model",
+      "subject": "middle-of-the-earth",
+      "titleOriginal": "Middle of the Earth"
+    },
+    "61": {
+      "kind": "model",
+      "subject": "christ-the-redeemer",
+      "titleOriginal": "Christ the Redeemer"
+    },
+    "65": {
+      "kind": "divider",
+      "subject": "europe"
+    },
+    "66": {
+      "kind": "model",
+      "subject": "thinker",
+      "titleOriginal": "The Thinker"
+    },
+    "67": {
+      "kind": "model",
+      "subject": "big-ben",
+      "titleOriginal": "Big Ben"
+    },
+    "71": {
+      "kind": "model",
+      "subject": "canary-wharf",
+      "titleOriginal": "Canary Wharf"
+    },
+    "74": {
+      "kind": "model",
+      "subject": "wellington-monument",
+      "titleOriginal": "The Wellington Monument"
+    },
+    "75": {
+      "kind": "model",
+      "subject": "eiffel-tower",
+      "titleOriginal": "Eiffel Tower"
+    },
+    "80": {
+      "kind": "model",
+      "subject": "louvre-pyramid",
+      "titleOriginal": "Le Louvre Pyramid"
+    },
+    "85": {
+      "kind": "model",
+      "subject": "arc-de-triomphe",
+      "titleOriginal": "Arc de Triomphe"
+    },
+    "87": {
+      "kind": "model",
+      "subject": "coliseum",
+      "titleOriginal": "The Coliseum"
+    },
+    "90": {
+      "kind": "model",
+      "subject": "leaning-tower-of-pisa",
+      "titleOriginal": "The Leaning Tower of Pisa"
+    },
+    "93": {
+      "kind": "model",
+      "subject": "pantheon",
+      "titleOriginal": "The Pantheon"
+    },
+    "97": {
+      "kind": "divider",
+      "subject": "middle-east-and-africa"
+    },
+    "98": {
+      "kind": "photo",
+      "subject": "photo-burj-khalifa"
+    },
+    "99": {
+      "kind": "model",
+      "subject": "giza-pyramid",
+      "titleOriginal": "Giza Pyramid"
+    },
+    "103": {
+      "kind": "model",
+      "subject": "sphinx",
+      "titleOriginal": "Sphinx"
+    },
+    "109": {
+      "kind": "model",
+      "subject": "burj-khalifa",
+      "titleOriginal": "Burj Khalifa"
+    },
+    "113": {
+      "kind": "model",
+      "subject": "burj-al-arab",
+      "titleOriginal": "Burj Al Arab"
+    },
+    "115": {
+      "kind": "divider",
+      "subject": "asia-and-australia"
+    },
+    "116": {
+      "kind": "model",
+      "subject": "lotus-temple",
+      "titleOriginal": "Lotus Temple"
+    },
+    "117": {
+      "kind": "model",
+      "subject": "taipei-101",
+      "titleOriginal": "Taipei 101"
+    },
+    "121": {
+      "kind": "model",
+      "subject": "bank-of-china",
+      "titleOriginal": "The Bank of China"
+    },
+    "124": {
+      "kind": "model",
+      "subject": "taj-mahal",
+      "titleOriginal": "Taj Mahal"
+    },
+    "125": {
+      "kind": "model",
+      "subject": "tokyo-tower",
+      "titleOriginal": "Tokyo Tower"
+    },
+    "135": {
+      "kind": "model",
+      "subject": "torii",
+      "titleOriginal": "Torii"
+    },
+    "138": {
+      "kind": "photo",
+      "subject": "photo-sydney-opera-house"
+    },
+    "139": {
+      "kind": "model",
+      "subject": "sydney-opera-house",
+      "titleOriginal": "Sydney Opera House"
+    },
+    "143": {
+      "kind": "index"
+    },
+    "144": {
+      "kind": "index"
+    },
+    "145": {
+      "kind": "credits",
+      "subject": "about-the-authors"
+    },
+    "146": {
+      "kind": "blank"
+    },
+    "147": {
+      "kind": "back-cover"
+    }
+  }
+}

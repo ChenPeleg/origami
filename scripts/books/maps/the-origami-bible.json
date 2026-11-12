@@ -1,0 +1,532 @@
+{
+  "note": "Scanned book, no text layer. Built from the contents pages (PDF 5-6) and checked by eye on contact sheets. PDF page = printed page + 1 up to the Daffodil, then equal to the printed page from Corgi (104) on, so one printed page around 102-103 seems to be missing from the scan. Skill level is the number of kite marks printed next to each title (1-5), read from crops of every title.",
+  "pages": {
+    "1": {
+      "kind": "cover"
+    },
+    "2": {
+      "kind": "half-title"
+    },
+    "3": {
+      "kind": "endpaper"
+    },
+    "4": {
+      "kind": "title"
+    },
+    "5": {
+      "kind": "contents"
+    },
+    "6": {
+      "kind": "contents"
+    },
+    "7": {
+      "kind": "chapter",
+      "subject": "introduction",
+      "titleOriginal": "Introduction"
+    },
+    "9": {
+      "kind": "chapter",
+      "subject": "paper-types",
+      "titleOriginal": "Paper types"
+    },
+    "15": {
+      "kind": "chapter",
+      "subject": "essential-origami-folds",
+      "titleOriginal": "Essential origami folds"
+    },
+    "21": {
+      "kind": "chapter",
+      "subject": "origami-bases",
+      "titleOriginal": "Origami bases"
+    },
+    "24": {
+      "kind": "chapter",
+      "subject": "cutting-your-paper",
+      "titleOriginal": "Cutting your paper"
+    },
+    "26": {
+      "kind": "chapter",
+      "subject": "origami-tools",
+      "titleOriginal": "Origami tools"
+    },
+    "27": {
+      "kind": "endpaper"
+    },
+    "28": {
+      "kind": "divider",
+      "subject": "the-projects"
+    },
+    "29": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "30": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "31": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "32": {
+      "kind": "contents",
+      "subject": "project-selector"
+    },
+    "33": {
+      "kind": "divider",
+      "subject": "containers"
+    },
+    "34": {
+      "kind": "model",
+      "subject": "gift-envelope",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Gift envelope"
+    },
+    "36": {
+      "kind": "model",
+      "subject": "folded-envelope-1",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Folded envelope 1"
+    },
+    "38": {
+      "kind": "model",
+      "subject": "folded-envelope-2",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Folded envelope 2"
+    },
+    "39": {
+      "kind": "model",
+      "subject": "star-pot",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Star pot"
+    },
+    "41": {
+      "kind": "model",
+      "subject": "japanese-box",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Japanese box"
+    },
+    "44": {
+      "kind": "model",
+      "subject": "circular-dish",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Circular dish"
+    },
+    "47": {
+      "kind": "model",
+      "subject": "fuse-box",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Fuse box"
+    },
+    "49": {
+      "kind": "model",
+      "subject": "twisted-dish",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Twisted dish"
+    },
+    "51": {
+      "kind": "model",
+      "subject": "incense-burner",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Incense burner"
+    },
+    "54": {
+      "kind": "photo",
+      "subject": "photo-hexagonal-boxes"
+    },
+    "55": {
+      "kind": "model",
+      "subject": "hexagonal-box",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Hexagonal box"
+    },
+    "57": {
+      "kind": "divider",
+      "subject": "napkins"
+    },
+    "58": {
+      "kind": "model",
+      "subject": "water-lily",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Water lily"
+    },
+    "61": {
+      "kind": "model",
+      "subject": "sail",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Sail"
+    },
+    "63": {
+      "kind": "model",
+      "subject": "fan",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Fan"
+    },
+    "65": {
+      "kind": "model",
+      "subject": "flame",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Flame"
+    },
+    "67": {
+      "kind": "model",
+      "subject": "cockade",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Cockade"
+    },
+    "69": {
+      "kind": "model",
+      "subject": "swan",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Swan"
+    },
+    "71": {
+      "kind": "divider",
+      "subject": "animals-and-flowers"
+    },
+    "72": {
+      "kind": "model",
+      "subject": "crane",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Crane"
+    },
+    "75": {
+      "kind": "model",
+      "subject": "butterfly",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Butterfly"
+    },
+    "77": {
+      "kind": "model",
+      "subject": "fox",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Fox"
+    },
+    "79": {
+      "kind": "model",
+      "subject": "cat",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Cat"
+    },
+    "81": {
+      "kind": "photo",
+      "subject": "photo-tulips"
+    },
+    "82": {
+      "kind": "model",
+      "subject": "tulip",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Tulip"
+    },
+    "84": {
+      "kind": "model",
+      "subject": "frog",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Frog"
+    },
+    "87": {
+      "kind": "model",
+      "subject": "rooster",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Rooster"
+    },
+    "90": {
+      "kind": "model",
+      "subject": "rabbit",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Rabbit"
+    },
+    "93": {
+      "kind": "photo",
+      "subject": "photo-rabbit-and-tortoise"
+    },
+    "94": {
+      "kind": "model",
+      "subject": "tortoise",
+      "level": 5,
+      "levelOriginal": "5 of 5 kites",
+      "titleOriginal": "Tortoise"
+    },
+    "99": {
+      "kind": "model",
+      "subject": "daffodil",
+      "level": 5,
+      "levelOriginal": "5 of 5 kites",
+      "titleOriginal": "Daffodil"
+    },
+    "104": {
+      "kind": "model",
+      "subject": "corgi",
+      "level": 5,
+      "levelOriginal": "5 of 5 kites",
+      "titleOriginal": "Corgi"
+    },
+    "109": {
+      "kind": "model",
+      "subject": "vase-of-flowers",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Vase of flowers"
+    },
+    "117": {
+      "kind": "photo",
+      "subject": "photo-vase-of-flowers"
+    },
+    "118": {
+      "kind": "divider",
+      "subject": "childrens-origami"
+    },
+    "119": {
+      "kind": "model",
+      "subject": "elephant-plane",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Elephant plane"
+    },
+    "122": {
+      "kind": "model",
+      "subject": "banger",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Banger"
+    },
+    "124": {
+      "kind": "model",
+      "subject": "parrot",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Parrot"
+    },
+    "129": {
+      "kind": "photo",
+      "subject": "photo-banger-and-parrot"
+    },
+    "130": {
+      "kind": "model",
+      "subject": "pirates-hat",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Pirate's hat"
+    },
+    "132": {
+      "kind": "model",
+      "subject": "looping-glider",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Looping glider"
+    },
+    "134": {
+      "kind": "model",
+      "subject": "flapping-bird",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Flapping bird"
+    },
+    "136": {
+      "kind": "model",
+      "subject": "rowing-boat",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Rowing boat"
+    },
+    "138": {
+      "kind": "model",
+      "subject": "puzzle",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Puzzle"
+    },
+    "140": {
+      "kind": "model",
+      "subject": "barking-dog",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Barking dog"
+    },
+    "142": {
+      "kind": "model",
+      "subject": "flying-saucer",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Flying saucer"
+    },
+    "144": {
+      "kind": "model",
+      "subject": "woodpecker",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Woodpecker"
+    },
+    "146": {
+      "kind": "model",
+      "subject": "pinwheel",
+      "level": 5,
+      "levelOriginal": "5 of 5 kites",
+      "titleOriginal": "Pinwheel"
+    },
+    "148": {
+      "kind": "model",
+      "subject": "ghost",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Ghost"
+    },
+    "151": {
+      "kind": "photo",
+      "subject": "photo-childrens-origami"
+    },
+    "152": {
+      "kind": "divider",
+      "subject": "christmas-origami"
+    },
+    "153": {
+      "kind": "model",
+      "subject": "bauble",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Bauble"
+    },
+    "156": {
+      "kind": "model",
+      "subject": "four-piece-star",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Four-piece star"
+    },
+    "158": {
+      "kind": "model",
+      "subject": "placecard",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Placecard"
+    },
+    "160": {
+      "kind": "model",
+      "subject": "six-point-star",
+      "level": 1,
+      "levelOriginal": "1 of 5 kites",
+      "titleOriginal": "Six-point star"
+    },
+    "162": {
+      "kind": "model",
+      "subject": "angel",
+      "level": 3,
+      "levelOriginal": "3 of 5 kites",
+      "titleOriginal": "Angel"
+    },
+    "164": {
+      "kind": "model",
+      "subject": "man-in-the-moon",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Man in the Moon"
+    },
+    "167": {
+      "kind": "photo",
+      "subject": "photo-christmas-tree"
+    },
+    "168": {
+      "kind": "divider",
+      "subject": "folders-heaven"
+    },
+    "169": {
+      "kind": "model",
+      "subject": "pop-up-box",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Pop-up box"
+    },
+    "172": {
+      "kind": "model",
+      "subject": "snap-hexahedron",
+      "level": 2,
+      "levelOriginal": "2 of 5 kites",
+      "titleOriginal": "Snap hexahedron"
+    },
+    "174": {
+      "kind": "model",
+      "subject": "modular-ball",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Modular ball"
+    },
+    "176": {
+      "kind": "model",
+      "subject": "paper-mosaic",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Paper mosaic"
+    },
+    "178": {
+      "kind": "model",
+      "subject": "stretch-wall",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Stretch wall"
+    },
+    "182": {
+      "kind": "model",
+      "subject": "cube",
+      "level": 5,
+      "levelOriginal": "5 of 5 kites",
+      "titleOriginal": "Cube"
+    },
+    "185": {
+      "kind": "model",
+      "subject": "un-unfoldable-box",
+      "level": 4,
+      "levelOriginal": "4 of 5 kites",
+      "titleOriginal": "Un-unfoldable box"
+    },
+    "187": {
+      "kind": "photo",
+      "subject": "photo-un-unfoldable-box"
+    },
+    "188": {
+      "kind": "index"
+    },
+    "189": {
+      "kind": "index"
+    },
+    "190": {
+      "kind": "index"
+    },
+    "191": {
+      "kind": "index"
+    },
+    "192": {
+      "kind": "symbols",
+      "titleOriginal": "Key to symbols"
+    },
+    "193": {
+      "kind": "credits"
+    },
+    "194": {
+      "kind": "back-cover"
+    }
+  }
+}

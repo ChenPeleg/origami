@@ -1,0 +1,15 @@
+{
+  "note": "Front and back matter only. The 20 models are found from their page headings. The book prints no difficulty levels, so every model is lv-00.",
+  "pages": {
+    "1": {"kind": "cover"},
+    "2": {"kind": "title"},
+    "3": {"kind": "contents"},
+    "4": {"kind": "contents"},
+    "5": {"kind": "intro"},
+    "6": {"kind": "symbols", "titleOriginal": "How to Fold 1: Recognizing the Symbols"},
+    "7": {"kind": "technique", "subject": "practice-neat-folding", "titleOriginal": "How to Fold 2: Practicing Neat Folding"},
+    "8": {"kind": "technique", "subject": "practice-inside-reverse-fold", "titleOriginal": "How to Fold 3: Learning the Inside Reverse Fold"},
+    "49": {"kind": "credits", "subject": "about-the-author"},
+    "50": {"kind": "back-cover"}
+  }
+}

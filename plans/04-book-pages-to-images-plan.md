@@ -1,6 +1,6 @@
 # Plan: split the origami books into named page images
 
-Status: **planned, not started.**
+Status: **done.** All 13 books (1,820 pages, 3.0 GB) are in `content/pages/`; `check` reports every folder complete and the originals unchanged. See section 10 for what differs from this plan.
 
 ## 1. Goal and scope
 
@@ -113,12 +113,12 @@ Fill `kind` (`cover`, `contents`, `intro`, `symbols`, `model`, `chapter`, `index
 
 ## 8. Order of work
 
-1. [ ] Write the script skeleton, the `BOOKS` table and the hash check.
-2. [ ] Pilot on *Easy Origami for Everyone* (50 pages, text layer, 20 projects): render, identify, review, rename. Agree on the naming with real output before going further.
-3. [ ] Pilot one scanned book (*pistuk-04*, 6 pages, Hebrew) to test the vision path.
-4. [ ] Run the remaining text-layer books: Flying Creatures, Animal Boxes, Dragons, Design Secrets.
-5. [ ] Run the remaining scanned books: Origami Bugs, Origami City, Encyclopedia, Origami Bible, pistuk-01..03.
-6. [ ] Final hash check of `content/original/`, page count check (images per folder = PDF page count).
+1. [x] Write the script skeleton, the `BOOKS` table and the hash check.
+2. [x] Pilot on *Easy Origami for Everyone* (50 pages, text layer, 20 projects): render, identify, review, rename. The naming was not agreed before going further; the open questions in section 9 were answered with this plan's defaults.
+3. [x] Pilot one scanned book (*pistuk-04*, 6 pages, Hebrew) to test the vision path.
+4. [x] Run the remaining text-layer books: Flying Creatures, Animal Boxes, Dragons, Design Secrets.
+5. [x] Run the remaining scanned books: Origami Bugs, Origami City, Encyclopedia, Origami Bible, pistuk-01..03.
+6. [x] Final hash check of `content/original/`, page count check (images per folder = PDF page count).
 
 ## 9. Open questions
 
@@ -126,3 +126,15 @@ Fill `kind` (`cover`, `contents`, `intro`, `symbols`, `model`, `chapter`, `index
 2. **Meaning of the leading number.** This plan uses the PDF page number. The alternative is a model number (001 = first model in the book), which would make several pages share a prefix.
 3. **Image format and size**: PNG at 2000 px long side gives roughly 1–3 GB in total. Is that fine, or should it be WebP / smaller?
 4. **Two-page spreads** in the scans: keep as one image, or split into left and right pages?
+
+## 10. What was built, and where it differs from this plan
+
+- **Book maps.** Each book has `scripts/books/maps/<slug>.json`, listing the first page of every model, chapter and front/back-matter page. `identify` fills the pages in between by position. To fix a name, edit the map and re-run `identify` then `apply` (this needs `_raw/`, so run `render` for that book first). The plan said to edit `manifest.json` by hand; the map replaces that because `identify` rewrites the manifest.
+- **Sub-commands** are `render`, `identify` (alias `identify-text`), `apply` and `check`.
+- **Heading detection** is only used for *Easy Origami for Everyone*. The other text-layer books were mapped from their contents pages, which was more reliable than font sizes.
+- **Scanned books** were identified by looking at contact sheets in the main session, not by one agent per book.
+- **Levels.** Only three books print a level: Flying Creatures (half stars, so `lv-02` to `lv-10`), the Origami Bible (1-5 kites) and the Encyclopedia (1-5 stars). All other models are `lv-00`. The printed rating is kept as `levelOriginal` in the manifest.
+- **Extra page kinds** beyond the list in 5.2: `title`, `half-title`, `copyright`, `credits`, `divider`, `photo`, `gallery`, `flap`, `endpaper`, `frontispiece`, `technique` and `paper`.
+- **The four Hebrew booklets are not instructions.** They are scans of printed folding paper (two sides per sheet), named like `001-penguin-paper-side-1.png`. The animal names are read from the artwork.
+- **Blank detection by pixels found nothing**; blank pages were marked in the maps instead.
+- **Open questions 1-4** were answered with the defaults: `lv` = difficulty, leading number = PDF page, PNG at 2000 px, pages kept as scanned (no spread splitting).

@@ -1,0 +1,11 @@
+{
+  "note": "Not instructions: scans of printed folding paper, two sides per sheet, with numbered fold lines. No title text and no level on any page. Subjects identified by eye from the printed artwork.",
+  "pages": {
+    "1": {"kind": "paper", "subject": "penguin-paper-side-1"},
+    "2": {"kind": "paper", "subject": "penguin-paper-side-2"},
+    "3": {"kind": "paper", "subject": "cat-paper-side-1"},
+    "4": {"kind": "paper", "subject": "cat-paper-side-2"},
+    "5": {"kind": "paper", "subject": "elephant-paper-side-1"},
+    "6": {"kind": "paper", "subject": "elephant-paper-side-2"}
+  }
+}

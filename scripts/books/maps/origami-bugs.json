@@ -1,0 +1,78 @@
+{
+  "note": "Scanned book (Kindle screenshots, no text layer, no contents page). First pages found by eye from contact sheets; each model opens with a title page, then About, Tips and the steps. No difficulty levels printed (lv-00).",
+  "pages": {
+    "1": {
+      "kind": "cover"
+    },
+    "2": {
+      "kind": "chapter",
+      "subject": "symbols-and-terminology",
+      "titleOriginal": "Symbols and Terminology"
+    },
+    "8": {
+      "kind": "model",
+      "subject": "beetle",
+      "titleOriginal": "Beetle"
+    },
+    "20": {
+      "kind": "model",
+      "subject": "mosquito",
+      "titleOriginal": "Mosquito"
+    },
+    "48": {
+      "kind": "model",
+      "subject": "cankerworm",
+      "titleOriginal": "Cankerworm"
+    },
+    "85": {
+      "kind": "model",
+      "subject": "fly",
+      "titleOriginal": "Fly"
+    },
+    "106": {
+      "kind": "model",
+      "subject": "housefly",
+      "titleOriginal": "Housefly"
+    },
+    "130": {
+      "kind": "model",
+      "subject": "cockroach",
+      "titleOriginal": "Cockroach"
+    },
+    "158": {
+      "kind": "model",
+      "subject": "black-pine-sawyer",
+      "titleOriginal": "Black Pine Sawyer"
+    },
+    "184": {
+      "kind": "model",
+      "subject": "dragonfly",
+      "titleOriginal": "Dragonfly"
+    },
+    "208": {
+      "kind": "model",
+      "subject": "butterfly",
+      "titleOriginal": "Butterfly"
+    },
+    "239": {
+      "kind": "model",
+      "subject": "bee",
+      "titleOriginal": "Bee"
+    },
+    "271": {
+      "kind": "model",
+      "subject": "ladybug",
+      "titleOriginal": "Ladybug"
+    },
+    "308": {
+      "kind": "chapter",
+      "subject": "materials-and-methods",
+      "titleOriginal": "Materials and Methods"
+    },
+    "325": {
+      "kind": "chapter",
+      "subject": "ratio-information",
+      "titleOriginal": "Ratio Information"
+    }
+  }
+}

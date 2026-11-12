@@ -1,0 +1,79 @@
+{
+  "note": "Built from the contents pages (PDF pages 3-4); PDF page = printed page + 1. The introduction says the models run roughly from easy to hard, but no level is printed per model (lv-00).",
+  "pages": {
+    "1": {
+      "kind": "copyright"
+    },
+    "2": {
+      "kind": "title"
+    },
+    "3": {
+      "kind": "contents"
+    },
+    "4": {
+      "kind": "contents"
+    },
+    "5": {
+      "kind": "intro"
+    },
+    "6": {
+      "kind": "chapter",
+      "subject": "symbols-and-terminology",
+      "titleOriginal": "Origami Symbols and Terminology"
+    },
+    "9": {
+      "kind": "model",
+      "subject": "dragon-footprint",
+      "titleOriginal": "Dragon Footprint"
+    },
+    "11": {
+      "kind": "model",
+      "subject": "amphiptere-the-winged-serpent",
+      "titleOriginal": "Amphiptere—The Winged Serpent"
+    },
+    "14": {
+      "kind": "model",
+      "subject": "lindwyrm",
+      "titleOriginal": "The Lindwyrm"
+    },
+    "17": {
+      "kind": "model",
+      "subject": "dragon-hatchling",
+      "titleOriginal": "Dragon Hatchling"
+    },
+    "21": {
+      "kind": "model",
+      "subject": "zhulong-the-torch-dragon",
+      "titleOriginal": "Zhulong—The Torch Dragon"
+    },
+    "25": {
+      "kind": "model",
+      "subject": "wyvern",
+      "titleOriginal": "The Wyvern"
+    },
+    "29": {
+      "kind": "model",
+      "subject": "european-dragon",
+      "titleOriginal": "The European Dragon"
+    },
+    "33": {
+      "kind": "model",
+      "subject": "faerie-dragon",
+      "titleOriginal": "Faerie Dragon"
+    },
+    "38": {
+      "kind": "model",
+      "subject": "chinese-dragon",
+      "titleOriginal": "The Chinese Dragon"
+    },
+    "43": {
+      "kind": "model",
+      "subject": "rearing-dragon",
+      "titleOriginal": "The Rearing Dragon"
+    },
+    "50": {
+      "kind": "credits",
+      "subject": "also-available"
+    }
+  }
+}

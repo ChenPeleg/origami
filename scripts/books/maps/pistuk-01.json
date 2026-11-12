@@ -1,0 +1,13 @@
+{
+  "note": "Not instructions: scans of printed folding paper, two sides per sheet, with numbered fold lines. No title text and no level. Animal names are my reading of the printed artwork, not text from the page.",
+  "pages": {
+    "1": {
+      "kind": "paper",
+      "subject": "panda-paper-side-1"
+    },
+    "2": {
+      "kind": "paper",
+      "subject": "panda-paper-side-2"
+    }
+  }
+}

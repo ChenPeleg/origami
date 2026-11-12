@@ -1,0 +1,21 @@
+{
+  "note": "Not instructions: scans of printed folding paper, two sides per sheet, with numbered fold lines. No title text and no level. Animal names are my reading of the printed artwork, not text from the page. Pages 3-4 could be a tiger or a lion.",
+  "pages": {
+    "1": {
+      "kind": "paper",
+      "subject": "koala-paper-side-1"
+    },
+    "2": {
+      "kind": "paper",
+      "subject": "koala-paper-side-2"
+    },
+    "3": {
+      "kind": "paper",
+      "subject": "tiger-paper-side-1"
+    },
+    "4": {
+      "kind": "paper",
+      "subject": "tiger-paper-side-2"
+    }
+  }
+}

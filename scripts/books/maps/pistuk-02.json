@@ -1,0 +1,21 @@
+{
+  "note": "Not instructions: scans of printed folding paper, two sides per sheet, with numbered fold lines. No title text and no level. Animal names are my reading of the printed artwork, not text from the page. Page 2 (feather pattern) is assumed to be the back of the owl sheet.",
+  "pages": {
+    "1": {
+      "kind": "paper",
+      "subject": "owl-paper-side-1"
+    },
+    "2": {
+      "kind": "paper",
+      "subject": "owl-paper-side-2"
+    },
+    "3": {
+      "kind": "paper",
+      "subject": "orangutan-paper-side-1"
+    },
+    "4": {
+      "kind": "paper",
+      "subject": "orangutan-paper-side-2"
+    }
+  }
+}

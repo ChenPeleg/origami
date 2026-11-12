@@ -1,0 +1,253 @@
+{
+  "note": "Built from the contents pages (PDF pages 7-10). PDF page = printed page + 5. The book rates difficulty with 1-5 stars in half-star steps; level = number of half stars (lv-02 = 1 star ... lv-10 = 5 stars).",
+  "pages": {
+    "1": {
+      "kind": "cover"
+    },
+    "2": {
+      "kind": "flap",
+      "subject": "front-flap"
+    },
+    "3": {
+      "kind": "gallery"
+    },
+    "4": {
+      "kind": "gallery"
+    },
+    "5": {
+      "kind": "gallery"
+    },
+    "6": {
+      "kind": "title"
+    },
+    "7": {
+      "kind": "contents"
+    },
+    "8": {
+      "kind": "contents"
+    },
+    "9": {
+      "kind": "contents"
+    },
+    "10": {
+      "kind": "contents"
+    },
+    "11": {
+      "kind": "intro"
+    },
+    "12": {
+      "kind": "symbols"
+    },
+    "13": {
+      "kind": "technique",
+      "subject": "specialized-folding-procedures"
+    },
+    "14": {
+      "kind": "technique",
+      "subject": "specialized-folding-procedures"
+    },
+    "15": {
+      "kind": "technique",
+      "subject": "origami-bases"
+    },
+    "16": {
+      "kind": "technique",
+      "subject": "origami-bases"
+    },
+    "17": {
+      "kind": "technique",
+      "subject": "how-to-make-lifelike-origami"
+    },
+    "18": {
+      "kind": "technique",
+      "subject": "about-the-paper"
+    },
+    "19": {
+      "kind": "model",
+      "subject": "mandarin-duck",
+      "level": 2,
+      "levelOriginal": "1 of 5 stars",
+      "titleOriginal": "Mandarin Duck"
+    },
+    "21": {
+      "kind": "model",
+      "subject": "swan",
+      "level": 2,
+      "levelOriginal": "1 of 5 stars",
+      "titleOriginal": "Swan"
+    },
+    "23": {
+      "kind": "model",
+      "subject": "crane-box",
+      "level": 3,
+      "levelOriginal": "1.5 of 5 stars",
+      "titleOriginal": "Crane Box"
+    },
+    "25": {
+      "kind": "model",
+      "subject": "swallow",
+      "level": 3,
+      "levelOriginal": "1.5 of 5 stars",
+      "titleOriginal": "Swallow"
+    },
+    "27": {
+      "kind": "model",
+      "subject": "peacock-with-train",
+      "level": 3,
+      "levelOriginal": "1.5 of 5 stars",
+      "titleOriginal": "Peacock with Train"
+    },
+    "31": {
+      "kind": "model",
+      "subject": "peacock-with-tail-fan",
+      "level": 4,
+      "levelOriginal": "2 of 5 stars",
+      "titleOriginal": "Peacock with Tail Fan"
+    },
+    "35": {
+      "kind": "model",
+      "subject": "crow",
+      "level": 4,
+      "levelOriginal": "2 of 5 stars",
+      "titleOriginal": "Crow"
+    },
+    "39": {
+      "kind": "model",
+      "subject": "flamingo",
+      "level": 5,
+      "levelOriginal": "2.5 of 5 stars",
+      "titleOriginal": "Flamingo"
+    },
+    "45": {
+      "kind": "model",
+      "subject": "sparrow",
+      "level": 6,
+      "levelOriginal": "3 of 5 stars",
+      "titleOriginal": "Sparrow"
+    },
+    "49": {
+      "kind": "model",
+      "subject": "common-gull",
+      "level": 7,
+      "levelOriginal": "3.5 of 5 stars",
+      "titleOriginal": "Common Gull"
+    },
+    "53": {
+      "kind": "model",
+      "subject": "crested-kingfisher",
+      "level": 9,
+      "levelOriginal": "4.5 of 5 stars",
+      "titleOriginal": "Crested Kingfisher"
+    },
+    "59": {
+      "kind": "model",
+      "subject": "eagle",
+      "level": 10,
+      "levelOriginal": "5 of 5 stars",
+      "titleOriginal": "Eagle"
+    },
+    "65": {
+      "kind": "model",
+      "subject": "locust",
+      "level": 3,
+      "levelOriginal": "1.5 of 5 stars",
+      "titleOriginal": "Locust"
+    },
+    "69": {
+      "kind": "model",
+      "subject": "butterfly",
+      "level": 4,
+      "levelOriginal": "2 of 5 stars",
+      "titleOriginal": "Butterfly"
+    },
+    "72": {
+      "kind": "model",
+      "subject": "stink-bug",
+      "level": 5,
+      "levelOriginal": "2.5 of 5 stars",
+      "titleOriginal": "Stink Bug"
+    },
+    "75": {
+      "kind": "model",
+      "subject": "cicada",
+      "level": 7,
+      "levelOriginal": "3.5 of 5 stars",
+      "titleOriginal": "Cicada"
+    },
+    "81": {
+      "kind": "model",
+      "subject": "japanese-horned-beetle",
+      "level": 7,
+      "levelOriginal": "3.5 of 5 stars",
+      "titleOriginal": "Japanese Horned Beetle"
+    },
+    "84": {
+      "kind": "model",
+      "subject": "five-horned-rhinoceros-beetle",
+      "level": 8,
+      "levelOriginal": "4 of 5 stars",
+      "titleOriginal": "Five-horned Rhinoceros Beetle"
+    },
+    "89": {
+      "kind": "model",
+      "subject": "dragonfly",
+      "level": 10,
+      "levelOriginal": "5 of 5 stars",
+      "titleOriginal": "Dragonfly"
+    },
+    "95": {
+      "kind": "model",
+      "subject": "pteranodon",
+      "level": 4,
+      "levelOriginal": "2 of 5 stars",
+      "titleOriginal": "Pteranodon"
+    },
+    "99": {
+      "kind": "model",
+      "subject": "archaeopteryx",
+      "level": 5,
+      "levelOriginal": "2.5 of 5 stars",
+      "titleOriginal": "Archaeopteryx"
+    },
+    "103": {
+      "kind": "model",
+      "subject": "chinese-bird-lizard",
+      "level": 8,
+      "levelOriginal": "4 of 5 stars",
+      "titleOriginal": "Chinese Bird-lizard"
+    },
+    "107": {
+      "kind": "model",
+      "subject": "chinese-dragon",
+      "level": 8,
+      "levelOriginal": "4 of 5 stars",
+      "titleOriginal": "Chinese Dragon"
+    },
+    "111": {
+      "kind": "model",
+      "subject": "chinese-phoenix",
+      "level": 10,
+      "levelOriginal": "5 of 5 stars",
+      "titleOriginal": "Chinese Phoenix"
+    },
+    "117": {
+      "kind": "credits"
+    },
+    "118": {
+      "kind": "gallery"
+    },
+    "119": {
+      "kind": "gallery"
+    },
+    "120": {
+      "kind": "gallery"
+    },
+    "121": {
+      "kind": "flap",
+      "subject": "back-flap"
+    },
+    "122": {
+      "kind": "back-cover"
+    }
+  }
+}
